@@ -1,0 +1,41 @@
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll.config
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.pdb
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csc.exe
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csc.exe.config
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csc.rsp
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csi.exe
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csi.exe.config
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\csi.rsp
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Buffers.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Collections.Immutable.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Memory.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Numerics.Vectors.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Reflection.Metadata.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.exe
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.exe.config
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.rsp
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\VBCSCompiler.exe
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\VBCSCompiler.exe.config
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.csproj.AssemblyReference.cache
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.csproj.CoreCompileInputs.cache
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online F.32343377.Up2Date
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.pdb
