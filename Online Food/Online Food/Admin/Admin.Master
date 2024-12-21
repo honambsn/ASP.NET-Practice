@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Online_Food.Admin.Admin" %>
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Online_Food.Admin.Admin" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
-        <title>GURU Able - Free Lite Admin Template </title>
+        <title>Foodie - Admin Area</title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -894,6 +894,32 @@
                                     </div>
                                 </div>
                             </div>--%>
+                        <!-- Danger-color Breadcrumb card start -->
+                        <div class="card borderless-card">
+                            <div class="card-block danger-breadcrumb">
+                                <%--<div class="breadcrumb-header">
+                                    <h5>Danger Color Breadcrumb</h5>
+                                    <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                </div>--%>
+                                <div class="page-header-breadcrumb">
+                                    <ul class="breadcrumb-title">
+                                        <li class="breadcrumb-item">
+                                            <a href="#!">
+                                                <i class="icofont icofont-home"></i>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="#!">Breadcrumb</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="#!">Caption Breadcrumb</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Danger-color Breadcrumb card end -->
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                        </asp:ContentPlaceHolder>
                         </div>
                     </div>
                 </div>
@@ -902,8 +928,8 @@
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
                     </a>
                 </div>--%>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+                <%--<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>--%>
             </div>
         </div>
 
