@@ -1,10 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="Online_Food.Admin.Category" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        window.onload = function () {
+            var seconds = 5;
+            setTimeout(function () {
+                document.getElementById('<%=lblMsg.ClientID %>').style.display = 'none';
+            }, seconds * 1000);
+        };
+    </script>
+    <script>
+        function ImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#<%=imgCategory.ClientID %>').prop('src', e.target.result)
+                        .width(200)
+                        .height(200);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="pcoded-innter-content pt-0">
+        <div class="align-align-self-end">
+            <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
+        </div>
+
         <div class="main-body">
             <div class="page-wrapper">
                 <div class="page-body">
