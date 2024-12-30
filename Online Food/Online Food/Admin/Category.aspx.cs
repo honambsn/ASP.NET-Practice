@@ -49,7 +49,7 @@ namespace Online_Food.Admin
 						{
 							Guid obj = Guid.NewGuid();
 							fileExtension = Path.GetExtension(fuCategoryImage.FileName);
-							imagePath = "Images/Category/" + obj + fileExtension;
+							imagePath = "Images/Category/" + obj.ToString() + fileExtension;
 							fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + obj.ToString() + fileExtension);
 							cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
 							isValidToExcute = true;
@@ -73,9 +73,9 @@ namespace Online_Food.Admin
 						try
 						{
 							cmd.ExecuteNonQuery();
+							actionName = categoryId == 0 ? "inserted" : "updated";
 							lblMsg.Visible = true;
-							actionName = categoryId == 0 ? "added" : "updated";
-						//	lblMsg.Text = "Category " + (categoryId == 0 ? "added" : "updated") + " successfully";
+							//	lblMsg.Text = "Category " + (categoryId == 0 ? "added" : "updated") + " successfully";
 							lblMsg.Text = "Category " + actionName + " successfully";
 							lblMsg.CssClass = "alert alert-success";
 							//getCategories();
