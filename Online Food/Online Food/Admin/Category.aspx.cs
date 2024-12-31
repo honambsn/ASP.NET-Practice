@@ -21,84 +21,182 @@ namespace Online_Food.Admin
 
 		}
 
-        protected void btnAddOrUpdate_Click(object sender, EventArgs e)
-        {
+		//      protected void btnAddOrUpdate_Click(object sender, EventArgs e)
+		//      {
+		//	string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
+		//	bool isValidToExcute = false;
+		//	int categoryId = Convert.ToInt32(hdnId.Value);
+		//	cn = new SqlConnection(Connection.GetConnectionString());
+
+		//	if (cn.State == ConnectionState.Closed)
+		//	{
+		//		cn.Open();
+		//	}
+
+		//	try
+		//	{
+		//		using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+		//		{
+		//			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+		//			{
+		//				cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
+		//				cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+		//				cmd.Parameters.AddWithValue("Name", txtName.Text.Trim());
+		//				cmd.Parameters.AddWithValue("IsActive", cbIsActive.Checked);
+
+		//				if (fuCategoryImage.HasFile)
+		//				{
+		//					if (Utils.IsValidExtension(fuCategoryImage.FileName))
+		//					{
+		//						Guid obj = Guid.NewGuid();
+		//						fileExtension = Path.GetExtension(fuCategoryImage.FileName);
+		//						imagePath = "Images/Category/" + obj.ToString() + fileExtension;
+		//						fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + obj.ToString() + fileExtension);
+		//						cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
+		//						isValidToExcute = true;
+		//					}
+		//					else
+		//					{
+		//						lblMsg.Visible = true;
+		//						lblMsg.Text = "Please select .jpg, jpeg or .png image";
+		//						lblMsg.CssClass = "alert alert-danger";
+		//						isValidToExcute = false;
+		//					}
+		//				}
+		//				else
+		//				{
+		//					isValidToExcute = true;
+		//				}
+
+		//				if (isValidToExcute)
+		//				{
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					try
+		//					{
+		//						cmd.ExecuteNonQuery();
+		//						actionName = categoryId == 0 ? "inserted" : "updated";
+		//						lblMsg.Visible = true;
+		//						//	lblMsg.Text = "Category " + (categoryId == 0 ? "added" : "updated") + " successfully";
+		//						lblMsg.Text = "Category " + actionName + " successfully";
+		//						lblMsg.CssClass = "alert alert-success";
+		//						//getCategories();
+		//						clear();
+		//						//cbIsActive.Checked = false;
+		//						//hdnId.Value = "0";
+		//					}
+		//					catch (Exception ex)
+		//					{
+		//						lblMsg.Visible = true;
+		//						lblMsg.Text = "Error: " + ex.Message;
+		//						lblMsg.CssClass = "alert alert-danger";
+		//					}
+		//					finally
+		//					{
+		//						cn.Close();
+		//					}
+		//				}
+		//				//cmd.ExecuteNonQuery();
+		//			}
+		//			//cmd.ExecuteNonQuery();
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		lblMsg.Visible = true;
+		//		lblMsg.Text = "Error: " + ex.Message;
+		//		lblMsg.CssClass = "alert alert-danger";
+		//	}
+		//	finally
+		//	{
+		//		cn.Close();
+
+		//	}
+		//}
+
+		protected void btnAddOrUpdate_Click(object sender, EventArgs e)
+		{
 			string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
-			bool isValidToExcute = false;
+			bool isValidToExecute = false;
 			int categoryId = Convert.ToInt32(hdnId.Value);
-			cn = new SqlConnection(Connection.GetConnectionString());
 
-			if (cn.State == ConnectionState.Closed)
-			{
-				cn.Open();
-			}
-			
-
+			// Using only a single connection (no need for 'cn' outside of using block)
 			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
 			{
-				using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+				if (cm.State == ConnectionState.Closed)
 				{
-					cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
-					cmd.Parameters.AddWithValue("@CategoryId", categoryId);
-					cmd.Parameters.AddWithValue("Name", txtName.Text.Trim());
-					cmd.Parameters.AddWithValue("IsActive", cbIsActive.Checked);
+					cm.Open();
+				}
 
-					if (fuCategoryImage.HasFile)
+				try
+				{
+					using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
 					{
-						if (Utils.IsValidExtension(fuCategoryImage.FileName))
+						// Set command parameters
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
+						cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+						cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
+						cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
+
+						// Handle file upload
+						if (fuCategoryImage.HasFile)
 						{
-							Guid obj = Guid.NewGuid();
-							fileExtension = Path.GetExtension(fuCategoryImage.FileName);
-							imagePath = "Images/Category/" + obj.ToString() + fileExtension;
-							fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + obj.ToString() + fileExtension);
-							cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
-							isValidToExcute = true;
+							if (Utils.IsValidExtension(fuCategoryImage.FileName))
+							{
+								Guid obj = Guid.NewGuid();
+								fileExtension = Path.GetExtension(fuCategoryImage.FileName);
+								imagePath = "Images/Category/" + obj.ToString() + fileExtension;
+								fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + obj.ToString() + fileExtension);
+								cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
+								isValidToExecute = true;
+							}
+							else
+							{
+								lblMsg.Visible = true;
+								lblMsg.Text = "Please select .jpg, .jpeg, or .png image.";
+								lblMsg.CssClass = "alert alert-danger";
+								isValidToExecute = false;
+							}
 						}
 						else
 						{
-							lblMsg.Visible = true;
-							lblMsg.Text = "Please select .jpg, jpeg or .png image";
-							lblMsg.CssClass = "alert alert-danger";
-							isValidToExcute = false;
+							isValidToExecute = true;
 						}
-					}
-					else
-					{
-						isValidToExcute = true;
-					}
 
-					if (isValidToExcute)
-					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						try
+						if (isValidToExecute)
 						{
-							cmd.ExecuteNonQuery();
-							actionName = categoryId == 0 ? "inserted" : "updated";
-							lblMsg.Visible = true;
-							//	lblMsg.Text = "Category " + (categoryId == 0 ? "added" : "updated") + " successfully";
-							lblMsg.Text = "Category " + actionName + " successfully";
-							lblMsg.CssClass = "alert alert-success";
-							//getCategories();
-							clear();
-							//cbIsActive.Checked = false;
-							//hdnId.Value = "0";
-						}
-						catch (Exception ex)
-						{
-							lblMsg.Visible = true;
-							lblMsg.Text = "Error: " + ex.Message;
-							lblMsg.CssClass = "alert alert-danger";
-						}
-						finally
-						{
-							cn.Close();
+							try
+							{
+								// Execute the stored procedure
+								cmd.ExecuteNonQuery();
+								actionName = categoryId == 0 ? "inserted" : "updated";
+								lblMsg.Visible = true;
+								lblMsg.Text = "Category " + actionName + " successfully.";
+								lblMsg.CssClass = "alert alert-success";
+
+								// Clear form and reset state
+								clear();
+								//cbIsActive.Checked = false; // If necessary
+								//hdnId.Value = "0"; // If necessary
+							}
+							catch (Exception ex)
+							{
+								lblMsg.Visible = true;
+								lblMsg.Text = "Error: " + ex.Message;
+								lblMsg.CssClass = "alert alert-danger";
+							}
 						}
 					}
-					//cmd.ExecuteNonQuery();
 				}
-
-			}
+				catch (Exception ex)
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text = "Error: " + ex.Message;
+					lblMsg.CssClass = "alert alert-danger";
+				}
+			} // Connection 'cm' automatically closes here
 		}
+
 
 		private void clear()
 		{
