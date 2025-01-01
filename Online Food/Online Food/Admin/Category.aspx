@@ -75,13 +75,50 @@
                                                 <div class="pb-5">
                                                     <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="btnAddOrUpdate_Click"/>
                                                     &nbsp;
-                                                    <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesValidation="false" />
+                                                    <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesValidation="false" OnClick="btnClear_Click"/>
                                                 </div>
                                                 <div>
                                                     <asp:Image ID="imgCategory" runat="server" CssClass="img-thumbnail" />
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
+                                            <h4 class="sub-title">Category  List</h4>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <asp:Repeater ID="rptCategory" runat="server">
+                                                        <HeaderTemplate>
+                                                            <table>
+                                                                <tr>
+                                                                    <th>CategoryName</th>
+                                                                    <th>Image</th>
+                                                                    <th>IsActive</th>
+                                                                    <th>CreateDate</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </table>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                                <tr>
+                                                                    <td><%# Eval("CategoryName") %></td>
+                                                                    <%--<td><asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="img-thumbnail" /></td>--%>
+                                                                    <td><%# Eval("ImageUrl") %></td>
+                                                                    <td><%# Eval("IsActive") %></td>
+                                                                    <td><%# Eval("CreatedDate") %></td>
+                                                                    <%--<td>
+                                                                        <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="lnkEdit_Click"></asp:LinkButton>
+                                                                        &nbsp;
+                                                                        <asp:LinkButton ID="lnkDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Id") %>' OnClick="lnkDelete_Click"></asp:LinkButton>
+                                                                    </td>--%>
+                                                                </tr>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

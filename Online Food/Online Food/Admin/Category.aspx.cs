@@ -15,10 +15,17 @@ namespace Online_Food.Admin
 		SqlConnection cn;
 		SqlCommand cmd;
 		SqlDataReader dr;
+		SqlDataAdapter sda;
 		DataTable dt;
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (!IsPostBack)
+			{
+				//getCategories();
+				Session["breabCrumb"] = "Category";
+				getCategories();
+			}
+			lblMsg.Visible = false;
 		}
 
 		//      protected void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -175,6 +182,7 @@ namespace Online_Food.Admin
 								lblMsg.CssClass = "alert alert-success";
 
 								// Clear form and reset state
+								getCategories();
 								clear();
 								//cbIsActive.Checked = false; // If necessary
 								//hdnId.Value = "0"; // If necessary
@@ -197,6 +205,32 @@ namespace Online_Food.Admin
 			} // Connection 'cm' automatically closes here
 		}
 
+		private void getCategories()
+		{
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+				{
+					cmd.Parameters.AddWithValue("@Action", "SELECT");
+					cmd.CommandType = CommandType.StoredProcedure;
+					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					{
+						DataTable dt = new DataTable();
+						sda.Fill(dt);
+
+						// Bind the result to the rptCategory control
+						rptCategory.DataSource = dt;
+						rptCategory.DataBind();
+					}
+				}
+			}
+
+		}
 
 		private void clear()
 		{
@@ -204,6 +238,11 @@ namespace Online_Food.Admin
 			cbIsActive.Checked = false;
 			hdnId.Value = "0";
 			btnAddOrUpdate.Text = "Add";
+		}
+
+		protected void btnClear_Click(object sender, EventArgs e)
+		{
+			clear();
 		}
 	}
 }
