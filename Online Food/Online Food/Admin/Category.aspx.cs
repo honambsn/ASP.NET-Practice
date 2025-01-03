@@ -32,7 +32,7 @@ namespace Online_Food.Admin
 		//      {
 		//	string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
 		//	bool isValidToExcute = false;
-		//	int categoryId = Convert.ToInt32(hdnId.Value);
+		//	int CategoryID = Convert.ToInt32(hdnId.Value);
 		//	cn = new SqlConnection(Connection.GetConnectionString());
 
 		//	if (cn.State == ConnectionState.Closed)
@@ -46,8 +46,8 @@ namespace Online_Food.Admin
 		//		{
 		//			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
 		//			{
-		//				cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
-		//				cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+		//				cmd.Parameters.AddWithValue("@Action", CategoryID == 0 ? "INSERT" : "UPDATE");
+		//				cmd.Parameters.AddWithValue("@CategoryID", CategoryID);
 		//				cmd.Parameters.AddWithValue("Name", txtName.Text.Trim());
 		//				cmd.Parameters.AddWithValue("IsActive", cbIsActive.Checked);
 
@@ -81,9 +81,9 @@ namespace Online_Food.Admin
 		//					try
 		//					{
 		//						cmd.ExecuteNonQuery();
-		//						actionName = categoryId == 0 ? "inserted" : "updated";
+		//						actionName = CategoryID == 0 ? "inserted" : "updated";
 		//						lblMsg.Visible = true;
-		//						//	lblMsg.Text = "Category " + (categoryId == 0 ? "added" : "updated") + " successfully";
+		//						//	lblMsg.Text = "Category " + (CategoryID == 0 ? "added" : "updated") + " successfully";
 		//						lblMsg.Text = "Category " + actionName + " successfully";
 		//						lblMsg.CssClass = "alert alert-success";
 		//						//getCategories();
@@ -124,7 +124,7 @@ namespace Online_Food.Admin
 		{
 			string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
 			bool isValidToExecute = false;
-			int categoryId = Convert.ToInt32(hdnId.Value);
+			int CategoryID = Convert.ToInt32(hdnId.Value);
 
 			// Using only a single connection (no need for 'cn' outside of using block)
 			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
@@ -140,8 +140,8 @@ namespace Online_Food.Admin
 					{
 						// Set command parameters
 						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.AddWithValue("@Action", categoryId == 0 ? "INSERT" : "UPDATE");
-						cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+						cmd.Parameters.AddWithValue("@Action", CategoryID == 0 ? "INSERT" : "UPDATE");
+						cmd.Parameters.AddWithValue("@CategoryID", CategoryID);
 						cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
 						cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
 
@@ -176,7 +176,7 @@ namespace Online_Food.Admin
 							{
 								// Execute the stored procedure
 								cmd.ExecuteNonQuery();
-								actionName = categoryId == 0 ? "inserted" : "updated";
+								actionName = CategoryID == 0 ? "inserted" : "updated";
 								lblMsg.Visible = true;
 								lblMsg.Text = "Category " + actionName + " successfully.";
 								lblMsg.CssClass = "alert alert-success";
@@ -243,6 +243,191 @@ namespace Online_Food.Admin
 		protected void btnClear_Click(object sender, EventArgs e)
 		{
 			clear();
+		}
+
+		protected void rptCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
+		{
+			#region Old Code
+
+			//lblMsg.Visible = false;
+			//if (e.CommandName == "edit")
+			//{
+			//	using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			//	{
+			//		if (cm.State == ConnectionState.Closed)
+			//		{
+			//			cm.Open();
+			//		}
+
+			//		try
+			//		{
+			//			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+			//			{
+			//				cmd.Parameters.AddWithValue("@Action", "GETBYID");
+			//				cmd.Parameters.AddWithValue("@CategoryID", e.CommandArgument);
+			//				cmd.CommandType = CommandType.StoredProcedure;
+
+
+			//				using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+			//				{
+			//					DataTable dt = new DataTable();
+			//					sda.Fill(dt);
+
+			//					if (dt.Rows.Count > 0)
+			//					{
+			//						txtName.Text = dt.Rows[0]["Name"].ToString();
+			//						cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
+			//						imgCategory.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["IamgeUrl"].ToString()) ?
+			//							"../Images/Category/No_image.png" : "../" + dt.Rows[0]["IamgeUrl"].ToString();
+			//						imgCategory.Height = 200;
+			//						imgCategory.Width = 200;
+			//						hdnId.Value = dt.Rows[0]["CategoryID"].ToString();
+			//						btnAddOrUpdate.Text = "Update";
+			//						LinkButton btn = e.Item.FindControl("lnkEdit") as LinkButton;
+			//						btn.CssClass = "badge badge-warning";
+
+			//					}
+			//				}
+			//			}
+			//		}
+			//		catch (Exception ex)
+			//		{
+			//			lblMsg.Visible = true;
+			//			lblMsg.Text = "Error: " + ex.Message;
+			//			lblMsg.CssClass = "alert alert-danger";
+			//		}
+
+			//	}
+			//}
+
+			//else if (e.CommandName == "delete")
+			//{
+			//	using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			//	{
+			//		if (cm.State == ConnectionState.Closed)
+			//		{
+			//			cm.Open();
+			//		}
+
+			//		try
+			//		{
+			//			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+			//			{
+			//				cmd.Parameters.AddWithValue("@Action", "DELETE");
+			//				cmd.Parameters.AddWithValue("@CategoryID", e.CommandArgument);
+			//				cmd.CommandType = CommandType.StoredProcedure;
+			//				try
+			//				{
+			//					cmd.ExecuteNonQuery();
+			//					lblMsg.Visible = true;
+			//					lblMsg.Text = "Category deleted successfully";
+			//					lblMsg.CssClass = "alert alert-success";
+			//					getCategories();
+			//				}
+			//				catch (Exception ex)
+			//				{
+			//					lblMsg.Visible = true;
+			//					lblMsg.Text = "Error: " + ex.Message;
+			//					lblMsg.CssClass = "alert alert-danger";
+			//				}
+			//			}
+			//		}
+			//		catch (Exception ex)
+			//		{
+			//			lblMsg.Visible = true;
+			//			lblMsg.Text = "Error: " + ex.Message;
+			//			lblMsg.CssClass = "alert alert-danger";
+			//		}
+			//	}
+			//}
+
+
+			#endregion
+
+			lblMsg.Visible = false;
+
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				try
+				{
+					if (e.CommandName == "edit")
+					{
+						EditCategory(cm, e);
+					}
+					else if (e.CommandName == "delete")
+					{
+						DeleteCategory(cm, e);
+					}
+				}
+				catch (Exception ex)
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text = "Error: " + ex.Message;
+					lblMsg.CssClass = "alert alert-danger";
+				}
+			}
+
+		}
+
+		private void EditCategory(SqlConnection cm, RepeaterCommandEventArgs e)
+		{
+			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+			{
+				cmd.Parameters.AddWithValue("@Action", "GETBYID");
+				cmd.Parameters.AddWithValue("@CategoryID", e.CommandArgument);
+				cmd.CommandType = CommandType.StoredProcedure;
+
+				using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+				{
+					DataTable dt = new DataTable();
+					sda.Fill(dt);
+
+					if (dt.Rows.Count > 0)
+					{
+						txtName.Text = dt.Rows[0]["Name"].ToString();
+						cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
+						imgCategory.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["ImageUrl"].ToString()) ?
+							"../Images/Category/No_image.png" : "../" + dt.Rows[0]["ImageUrl"].ToString();
+						imgCategory.Height = 200;
+						imgCategory.Width = 200;
+						hdnId.Value = dt.Rows[0]["CategoryID"].ToString();
+						btnAddOrUpdate.Text = "Update";
+
+						// Change button class to show it's in 'edit' mode
+						LinkButton btn = e.Item.FindControl("lnkEdit") as LinkButton;
+						if (btn != null) btn.CssClass = "badge badge-warning";
+					}
+				}
+			}
+		}
+
+		private void DeleteCategory(SqlConnection cm, RepeaterCommandEventArgs e)
+		{
+			using (SqlCommand cmd = new SqlCommand("Category_Crud", cm))
+			{
+				cmd.Parameters.AddWithValue("@Action", "DELETE");
+				cmd.Parameters.AddWithValue("@CategoryID", e.CommandArgument);
+				cmd.CommandType = CommandType.StoredProcedure;
+
+				cmd.ExecuteNonQuery();
+
+				lblMsg.Visible = true;
+				lblMsg.Text = "Category deleted successfully";
+				lblMsg.CssClass = "alert alert-success";
+
+				// Refresh category list after deletion
+				getCategories();
+			}
+		}
+
+		protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
+		{
+
 		}
 	}
 }

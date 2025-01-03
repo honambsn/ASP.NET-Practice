@@ -89,7 +89,9 @@
                                             <h4 class="sub-title">Category  List</h4>
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
-                                                    <asp:Repeater ID="rptCategory" runat="server">
+
+                                                    <asp:Repeater ID="rptCategory" runat="server" OnItemCommand="rptCategory_ItemCommand"
+                                                        OnItemDataBound="rptCategory_ItemDataBound">
                                                         <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
@@ -101,8 +103,7 @@
                                                                         <th class="datatable-nosort">Action</th>
                                                                     </tr>
 
-                                                                </thead>
-                                                                <%--</table>--%>
+                                                                </thead>                        
                                                                 <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
@@ -110,15 +111,24 @@
                                                                 <td class="table-plus"><%# Eval("CategoryName") %></td>
                                                                 <%--<td><%# Eval("ImageUrl") %>--%>
                                                                 <td>
-                                                                    <img alt="" src="<%# Online_Food.Utils.GetImageUrl(Eval("ImageUrl")) %>" width="40" />
+                                                                    <img alt=""  width="40"  src="<%# Online_Food.Utils.GetImageUrl(Eval("ImageUrl")) %>"/>
                                                                 </td>
-                                                                <td><%# Eval("IsActive") %></td>
+                                                                <td>
+                                                                    <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
+                                                                </td>
                                                                 <td><%# Eval("CreatedDate") %></td>
-                                                                <%--<td>
-                                                                        <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="lnkEdit_Click"></asp:LinkButton>
-                                                                        &nbsp;
-                                                                        <asp:LinkButton ID="lnkDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Id") %>' OnClick="lnkDelete_Click"></asp:LinkButton>
-                                                                    </td>--%>
+                                                                <td>
+                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary"
+                                                                        CommandArgument='<%#Eval("CategoryID") %>' CommandName="edit">
+                                                                        <i class="ti-pencil"></i>
+                                                                    </asp:LinkButton>
+
+                                                                    <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CommandName="delete"
+                                                                        CssClass="badge bg-danger" CommandArgument='<%#Eval("CategoryID") %>'
+                                                                        OnClientClick="return confirm('Do you want to delete this category?');">
+                                                                        <i class="ti-trash"></i>
+                                                                    </asp:LinkButton>
+                                                                </td>                                                                
                                                             </tr>
                                                         </ItemTemplate>
                                                         <FooterTemplate>
