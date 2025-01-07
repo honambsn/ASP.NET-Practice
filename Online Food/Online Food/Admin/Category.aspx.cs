@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -154,7 +155,9 @@ namespace Online_Food.Admin
 								fileExtension = Path.GetExtension(fuCategoryImage.FileName);
 								imagePath = "Images/Category/" + obj.ToString() + fileExtension;
 								fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + obj.ToString() + fileExtension);
+								Console.WriteLine("Image path: " + imagePath);
 								cmd.Parameters.AddWithValue("@ImageUrl", imagePath);
+								Console.WriteLine("Image path added to command parameters");
 								isValidToExecute = true;
 							}
 							else
@@ -389,7 +392,7 @@ namespace Online_Food.Admin
 
 					if (dt.Rows.Count > 0)
 					{
-						txtName.Text = dt.Rows[0]["Name"].ToString();
+						txtName.Text = dt.Rows[0]["CategoryName"].ToString();
 						cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
 						imgCategory.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["ImageUrl"].ToString()) ?
 							"../Images/Category/No_image.png" : "../" + dt.Rows[0]["ImageUrl"].ToString();
