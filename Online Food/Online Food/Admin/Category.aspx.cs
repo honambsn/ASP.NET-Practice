@@ -241,6 +241,7 @@ namespace Online_Food.Admin
 			cbIsActive.Checked = false;
 			hdnId.Value = "0";
 			btnAddOrUpdate.Text = "Add";
+			imgCategory.ImageUrl = String.Empty;
 		}
 
 		protected void btnClear_Click(object sender, EventArgs e)
@@ -395,7 +396,7 @@ namespace Online_Food.Admin
 						txtName.Text = dt.Rows[0]["CategoryName"].ToString();
 						cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
 						imgCategory.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["ImageUrl"].ToString()) ?
-							"../Images/Category/No_image.png" : "../" + dt.Rows[0]["ImageUrl"].ToString();
+							"../Images/Category/No_image.webp" : "../" + dt.Rows[0]["ImageUrl"].ToString();
 						imgCategory.Height = 200;
 						imgCategory.Width = 200;
 						hdnId.Value = dt.Rows[0]["CategoryID"].ToString();
@@ -430,7 +431,19 @@ namespace Online_Food.Admin
 
 		protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
 		{
-
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+			{
+				Label lbl = e.Item.FindControl("lblIsActive") as Label;
+				if (lbl.Text == "True")
+				{
+					lbl.Text = "Active";
+					lbl.CssClass = "badge badge-success";
+				}
+				else {
+					lbl.Text = "In-Active";
+					lbl.CssClass = "badge badge-danger";
+				}
+			}
 		}
 	}
 }
