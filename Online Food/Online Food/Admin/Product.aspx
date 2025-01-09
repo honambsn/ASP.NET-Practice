@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="Online_Food.Admin.Product" %>
 
-<%@ Import Namespace="Foodie" %>
+<%@ Import Namespace="Online_Food" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         window.onload = function () {
@@ -127,16 +127,18 @@
                                                     <div>
                                                         <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"
                                                             placeholder="Enter Product Description" required="" TextMode="MultiLine"></asp:TextBox>--%>
-                                                        <asp:DropDownList ID="ddlCategories" runat="server" CssClass="form-control">
+                                                        <asp:DropDownList ID="ddlCategories" runat="server" CssClass="form-control"
+                                                            DataSourceID="SqlDataSource1" DataTextField="CategoryName" DataValueField="CategoryID"
+                                                            AppendDataBoundItems="true">
                                                             <asp:ListItem Value="0">Select Category</asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                                                             ErrorMessage="Category is required" ForeColor="Red" Display="Dynamic"
                                                             SetFocusOnError="true" ControlToValidate="ddlCategories" InitialValue="0">
-                                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>"></asp:SqlDataSource>
+                                                        </asp:RequiredFieldValidator>
+                                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>" SelectCommand="SELECT [CategoryID], [CategoryName] FROM [tblCategory]"></asp:SqlDataSource>
                                                             <%--SelectCommand="SELECT [CategoryID], [Name] FROM [Category]"></asp:SqlDataSource>--%>
 
-                                                        </asp:RequiredFieldValidator>
                                                         <%--<asp:HiddenField ID="HiddenField1" runat="server" Value="0" />--%>
                                                     </div>
                                                 </div>
@@ -172,7 +174,11 @@
                                                                     <tr>
                                                                         <th class="table-plus">CategoryName</th>
                                                                         <th>Image</th>
+                                                                        <th>Price($))</th>
+                                                                        <th>Qty</th>
+                                                                        <th>Category</th>
                                                                         <th>IsActive</th>
+                                                                        <th>Description</th>
                                                                         <th>CreateDate</th>
                                                                         <th class="datatable-nosort">Action</th>
                                                                     </tr>
