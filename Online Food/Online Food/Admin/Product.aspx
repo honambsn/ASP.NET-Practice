@@ -137,7 +137,7 @@
                                                             SetFocusOnError="true" ControlToValidate="ddlCategories" InitialValue="0">
                                                         </asp:RequiredFieldValidator>
                                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>" SelectCommand="SELECT [CategoryID], [CategoryName] FROM [tblCategory]"></asp:SqlDataSource>
-                                                            <%--SelectCommand="SELECT [CategoryID], [Name] FROM [Category]"></asp:SqlDataSource>--%>
+                                                        <%--SelectCommand="SELECT [CategoryID], [Name] FROM [Category]"></asp:SqlDataSource>--%>
 
                                                         <%--<asp:HiddenField ID="HiddenField1" runat="server" Value="0" />--%>
                                                     </div>
@@ -193,20 +193,32 @@
                                                                 <td>
                                                                     <img alt="" width="40" src="<%# Online_Food.Utils.GetImageUrl(Eval("ImageUrl")) %>" />
                                                                 </td>
+                                                                <td><%# Eval("Price") %></td>
+                                                                <td>
+                                                                    <asp:Label ID="lblQuantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
+                                                                </td>
+                                                                <td><%# Eval("CategoryName") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
                                                                 </td>
+                                                                <td><%# Eval("Description") %></td>
+
                                                                 <td><%# Eval("CreatedDate") %></td>
                                                                 <td>
-                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary"
-                                                                        CommandArgument='<%#Eval("CategoryID") %>' CommandName="edit">
+                                                                    <%--                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary" CausesValidation="false"
+                                                                        CommandArgument='<%#Eval("ProductID") %>' CommandName="edit">
                                                                     <i class="ti-pencil"></i>
+                                                                    </asp:LinkButton>--%>
+                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary" CausesValidation="false"
+                                                                        CommandArgument='<%#Eval("ProductID") %>' CommandName="edit">
+                                                                        <i class="ti-pencil"></i>
                                                                     </asp:LinkButton>
 
-                                                                    <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CommandName="delete"
-                                                                        CssClass="badge bg-danger" CommandArgument='<%#Eval("CategoryID") %>'
-                                                                        OnClientClick="return confirm('Do you want to delete this category?');">
-                                                                    <i class="ti-trash"></i>
+
+                                                                    <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CommandName="delete" CausesValidation="false"
+                                                                        CssClass="badge bg-danger" CommandArgument='<%#Eval("ProductID") %>'
+                                                                        OnClientClick="return confirm('Do you want to delete this product?');">
+                                                                        <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
                                                                 </td>
                                                             </tr>
