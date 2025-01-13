@@ -54,7 +54,7 @@ namespace Online_Food.Admin
 						cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
 						cmd.Parameters.AddWithValue("@Price", txtPrice.Text.Trim());
 						cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Text.Trim());
-						cmd.Parameters.AddWithValue("@ProductID", ddlCategories.SelectedValue);
+						cmd.Parameters.AddWithValue("@CategoryID", ddlCategories.SelectedValue);
 						cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
 
 						// Handle file upload
