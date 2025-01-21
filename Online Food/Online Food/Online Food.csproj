@@ -280,6 +280,7 @@
     <Content Include="assets\pages\widget\amchart\worldLow.js" />
     <Content Include="assets\pages\widget\amchart\worldLow.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Images\login.png" />
     <Content Include="mongocrypt.dll" />
     <Content Include="TemplateFiles\css\bootstrap.css" />
     <Content Include="TemplateFiles\css\font-awesome.min.css" />
@@ -307,6 +308,7 @@
     <Content Include="User\About.aspx" />
     <Content Include="User\Contact.aspx" />
     <Content Include="User\Default.aspx" />
+    <Content Include="User\Login.aspx" />
     <Content Include="User\Menu.aspx" />
     <Content Include="User\Registration.aspx" />
     <Content Include="User\SliderUserControl1.ascx" />
@@ -373,6 +375,13 @@
     </Compile>
     <Compile Include="User\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
