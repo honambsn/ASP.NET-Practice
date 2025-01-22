@@ -92,7 +92,7 @@
                                 </li>
                             </ul>
                             <div class="user_option">
-                                <a href="" class="user_link">
+                                <a href="/User/registration.aspx" class="user_link">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </a>
                                 <a class="cart_link" href="#">
@@ -154,8 +154,10 @@
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                                <a href="" class="order_online">Order Online
-              </a>
+                  <%--              <a href="" class="order_online">Order Online
+              </a>--%>
+                                <asp:LinkButton ID="lbLoginOrLogout" runat="server" CssClass="order_online" CausesValidation="false"
+                                    OnClick="lbLoginOrLogout_Click"></asp:LinkButton>
                             </div>
                         </div>
                     </nav>

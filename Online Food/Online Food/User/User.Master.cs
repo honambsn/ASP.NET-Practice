@@ -32,7 +32,28 @@ namespace Online_Food.User
 				pnlSliderUC.Controls.Add(sliderUserControl);
 			}
 
+			if (Session["UserID"] != null)
+			{
+				lbLoginOrLogout.Text = "Logout";
+			}
+			else
+			{
+				lbLoginOrLogout.Text = "Login";
+			}
 			
+		}
+
+		protected void lbLoginOrLogout_Click(object sender, EventArgs e)
+		{
+			if (Session["UserID"] == null)
+			{
+				Response.Redirect("Login.aspx");
+			}
+			else
+			{
+				Session.Abandon();
+				Response.Redirect("Login.aspx");
+			}
 		}
 	}
 }
