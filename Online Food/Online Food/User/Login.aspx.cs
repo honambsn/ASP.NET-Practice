@@ -18,7 +18,7 @@ namespace Online_Food.User
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (Session["userId"] != null)
+			if (Session["UserID"] != null)
 			{
 				Response.Redirect("Default.aspx");
 			}

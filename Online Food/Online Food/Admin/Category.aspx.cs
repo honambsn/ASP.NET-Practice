@@ -24,7 +24,14 @@ namespace Online_Food.Admin
 			{
 				//getCategories();
 				Session["breabCrumb"] = "Category";
-				getCategories();
+				if (Session["admin"] == null)
+				{
+					Response.Redirect("../User/Login.aspx");
+				}
+				else
+				{
+					getCategories();
+				}
 			}
 			lblMsg.Visible = false;
 		}

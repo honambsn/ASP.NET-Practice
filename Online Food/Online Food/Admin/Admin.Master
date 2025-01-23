@@ -178,7 +178,7 @@
                                 <li class="user-profile header-notification">
                                     <a href="#!">
                                         <img src="../assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span>John Doe</span>
+                                        <span>Admin</span>
                                         <i class="ti-angle-down"></i>
                                     </a>
                                     <ul class="show-notification profile-notification">
@@ -203,9 +203,12 @@
                                         </a>
                                     </li>--%>
                                         <li>
-                                            <a href="auth-normal-sign-in.html">
+                                            <%--<a href="auth-normal-sign-in.html">
                                                 <i class="ti-layout-sidebar-left"></i>Logout
-                                            </a>
+                                            </a>--%>
+                                            <asp:LinkButton ID="lblLogout" runat="server" CausesValidation="false" OnClick="lblLogout_Click">
+                                                <i class="ti-layout-sidebar-left"></i>Logout
+                                            </asp:LinkButton>
                                         </li>
                                     </ul>
                                 </li>
@@ -357,7 +360,7 @@
                                 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Product Crud</div>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li>
-                                        <a href="chart.html">
+                                        <a href="Product.aspx">
                                             <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                             <span class="pcoded-mtext" data-i18n="nav.form-components.main">Product</span>
                                             <span class="pcoded-mcaret"></span>
