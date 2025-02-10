@@ -75,13 +75,123 @@
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link active text-info" id="connectedServices-tab" data-toggle="tab" href="#basicInfo"
-                                                role="tab" aria-controls="basicInfo" aria-selected="true"><i class="fa fa-id-badge mr-2"></i>Information</a>
+                                            <a class="nav-link active text-info" id="connectedServices-tab" data-toggle="tab" href="#connectedServices"
+                                                role="tab" aria-controls="connectedServices" aria-selected="false"><i class="fa fa-clock-o mr-2"></i>Purchased History</a>
                                         </li>
                                     </ul>
+
+                                    <div class="tab-content ml-1" id="myTabContent">
+                                        <%--Basic User Information Starts--%>
+                                        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                            <asp:Repeater ID="rUserProfile" runat="server">
+                                                <ItemTemplate>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Full Name</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Name")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Username</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Username")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Mobile No.</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Mobile")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Email</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Email")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Post Code</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("PostCode")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Address</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Address")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                        <%--Basic User Information Ends--%>
+
+                                        <%--Order History Starts--%>
+                                        <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="connectedServices-tab">
+                                            <%--<asp:Repeater ID="rPurchasedHistory" runat="server">
+                                                <ItemTemplate>
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Order ID</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("OrderID")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Order Date</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("OrderDate")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Total Amount</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("TotalAmount")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <labal style="font-weight: bold;">Payment Status</labal>
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("PaymentStatus")  %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                </ItemTemplate>
+                                            </asp:Repeater>--%>
+                                        </div>
+                                        <%--Order History End--%>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                         <!-- Close card-body -->
                     </div>
