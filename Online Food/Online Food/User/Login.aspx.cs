@@ -37,12 +37,13 @@ namespace Online_Food.User
 				{
 					cn = new SqlConnection(Connection.GetConnectionString());
 					cmd = new SqlCommand("User_Crud", cn);
-					cmd.CommandType = CommandType.StoredProcedure;
+					
 
 					// Add parameters for action, username, and password
 					cmd.Parameters.AddWithValue("@Action", "SELECT4LOGIN");
 					cmd.Parameters.AddWithValue("@UserName", txtUsername.Text.Trim());
 					cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim()); // Use txtPassword for password
+					cmd.CommandType = CommandType.StoredProcedure;
 
 					sda = new SqlDataAdapter(cmd);
 					dt = new DataTable();
@@ -53,7 +54,7 @@ namespace Online_Food.User
 						Session["UserName"] = txtUsername.Text.Trim();
 						Session["UserID"] = dt.Rows[0]["UserID"];
 						//Response.Redirect("Default.aspx");
-						Response.Redirect("../Admin/Dashboard.aspx");
+						Response.Redirect("Default.aspx");
 					}
 					else
 					{
