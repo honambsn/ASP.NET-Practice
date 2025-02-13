@@ -55,5 +55,21 @@ namespace Online_Food.User
 				Response.Redirect("Login.aspx");
 			}
 		}
+
+		protected void lbRegisterOrProfile_Click(object sender, EventArgs e)
+		{
+			if (Session["UserID"] != null)
+			{
+				lbRegisterOrProfile.ToolTip = "Profile";
+				Response.Redirect("Profile.aspx");
+			}
+			else
+			{
+				//Session.Abandon();
+				lbRegisterOrProfile.ToolTip = "Resgistration";
+				Response.Redirect("Registration.aspx");
+			}
+
+		}
 	}
 }

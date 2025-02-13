@@ -146,47 +146,8 @@
                                         <%--Basic User Information Ends--%>
 
                                         <%--Order History Starts--%>
-                                        <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="connectedServices-tab">
-                                            <%--<asp:Repeater ID="rPurchasedHistory" runat="server">
-                                                <ItemTemplate>
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Order ID</labal>
-                                                        </div>
-                                                        <div class="col-md-8 col-6">
-                                                            <%# Eval("OrderID")  %>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Order Date</labal>
-                                                        </div>
-                                                        <div class="col-md-8 col-6">
-                                                            <%# Eval("OrderDate")  %>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Total Amount</labal>
-                                                        </div>
-                                                        <div class="col-md-8 col-6">
-                                                            <%# Eval("TotalAmount")  %>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Payment Status</labal>
-                                                        </div>
-                                                        <div class="col-md-8 col-6">
-                                                            <%# Eval("PaymentStatus")  %>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                </ItemTemplate>
-                                            </asp:Repeater>--%>
+                                        <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                            <h3>Order History</h3>
                                         </div>
                                         <%--Order History End--%>
                                     </div>

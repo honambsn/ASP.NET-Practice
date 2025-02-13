@@ -42,6 +42,8 @@ namespace Online_Food.User
 			sda = new SqlDataAdapter(cmd);
 			dt = new DataTable();
 			sda.Fill(dt);
+			rUserProfile.DataSource = dt;
+			rUserProfile.DataBind();
 			if (dt.Rows.Count == 1)
 			{
 				Session["name"] = dt.Rows[0]["Name"].ToString();
@@ -49,6 +51,7 @@ namespace Online_Food.User
 				Session["imageUrl"] = dt.Rows[0]["ImageUrl"].ToString();
 				Session["createdDate"] = dt.Rows[0]["CreatedDate"].ToString();
 			}
+
 		}
 
 	}
