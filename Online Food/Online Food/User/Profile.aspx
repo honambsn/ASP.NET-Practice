@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card" style="margin-bottom: 20px">
                         <div class="card-body">
                             <div class="card-title mb-4">
                                 <div class="d-flex justify-content-start">
@@ -41,7 +41,7 @@
                                         <h6 class="d-block">
                                             <a href="javascript:void(0)">
                                                 <asp:Label ID="lblUsername" runat="server" ToolTip="Unique Username">
-                                                    @<%Response.Write(Session["username"]); %>
+                                                    <%Response.Write(Session["username"]); %>
                                                 </asp:Label>
                                             </a>
                                         </h6>
@@ -49,7 +49,7 @@
                                         <h6 class="d-block">
                                             <a href="javascript:void(0)">
                                                 <asp:Label ID="lblEmail" runat="server" ToolTip="User Email">
-                                                    @<%Response.Write(Session["email"]); %>
+                                                    <%Response.Write(Session["email"]); %>
                                                 </asp:Label>
                                             </a>
                                         </h6>
@@ -57,7 +57,7 @@
                                         <h6 class="d-block">
                                             <a href="javascript:void(0)">
                                                 <asp:Label ID="lblCreatedDate" runat="server" ToolTip="Account Created On">
-                                                    @<%Response.Write(Session["createdDate"]); %>
+                                                    <%Response.Write(Session["createdDate"]); %>
                                                 </asp:Label>
                                             </a>
                                         </h6>
@@ -75,81 +75,97 @@
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link active text-info" id="connectedServices-tab" data-toggle="tab" href="#connectedServices"
+                                            <a class="nav-link text-info" id="connectedServices-tab" data-toggle="tab" href="#connectedServices"
                                                 role="tab" aria-controls="connectedServices" aria-selected="false"><i class="fa fa-clock-o mr-2"></i>Purchased History</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content ml-1" id="myTabContent">
-                                        <%--Basic User Information Starts--%>
-                                        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        <!-- Basic User Information Starts -->
+                                        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab"  style="margin: 10px;">
                                             <asp:Repeater ID="rUserProfile" runat="server">
                                                 <ItemTemplate>
+                                                    <!-- Full Name -->
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-2 col-5">
+                                                            <label style="font-weight: bold;">Full Name</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
+                                                        </div>
+                                                        <div class="col-md-8 col-6">
+                                                            <%# Eval("Name") %>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
 
+                                                    <!-- Username -->
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Full Name</labal>
+                                                            <label style="font-weight: bold;">Username</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
                                                         </div>
                                                         <div class="col-md-8 col-6">
-                                                            <%# Eval("Name")  %>
+                                                            <%# Eval("Username") %>
                                                         </div>
                                                     </div>
                                                     <hr />
+
+                                                    <!-- Mobile No. -->
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Username</labal>
+                                                            <label style="font-weight: bold;">Mobile No.</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
                                                         </div>
                                                         <div class="col-md-8 col-6">
-                                                            <%# Eval("Username")  %>
+                                                            <%# Eval("Mobile") %>
                                                         </div>
                                                     </div>
                                                     <hr />
+
+                                                    <!-- Email -->
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Mobile No.</labal>
+                                                            <label style="font-weight: bold;">Email</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
                                                         </div>
                                                         <div class="col-md-8 col-6">
-                                                            <%# Eval("Mobile")  %>
+                                                            <%# Eval("Email") %>
                                                         </div>
                                                     </div>
                                                     <hr />
+
+                                                    <!-- Post Code -->
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Email</labal>
+                                                            <label style="font-weight: bold;">Post Code</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
                                                         </div>
                                                         <div class="col-md-8 col-6">
-                                                            <%# Eval("Email")  %>
+                                                            <%# Eval("PostCode") %>
                                                         </div>
                                                     </div>
                                                     <hr />
+
+                                                    <!-- Address -->
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Post Code</labal>
+                                                            <label style="font-weight: bold;">Address</label>
+                                                            <!-- Fixed 'labal' to 'label' -->
                                                         </div>
                                                         <div class="col-md-8 col-6">
-                                                            <%# Eval("PostCode")  %>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-2 col-5">
-                                                            <labal style="font-weight: bold;">Address</labal>
-                                                        </div>
-                                                        <div class="col-md-8 col-6">
-                                                            <%# Eval("Address")  %>
+                                                            <%# Eval("Address") %>
                                                         </div>
                                                     </div>
                                                     <hr />
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <%--Basic User Information Ends--%>
+                                        <!-- Basic User Information Ends -->
 
-                                        <%--Order History Starts--%>
-                                        <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                        <!-- Order History Starts -->
+                                        <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="connectedServices-tab">
                                             <h3>Order History</h3>
                                         </div>
-                                        <%--Order History End--%>
+                                        <!-- Order History End -->
                                     </div>
                                 </div>
                             </div>

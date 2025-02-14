@@ -32,27 +32,43 @@ namespace Online_Food.User
 		}
 
 
-		void getUserDetails()
+		private void getUserDetails()
 		{
-			con = new SqlConnection(Connection.GetConnectionString());
-			cmd = new SqlCommand("User_Crud", con);
-			cmd.Parameters.AddWithValue("@Action", "SELECT4PROFILE");
-			cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
-			cmd.CommandType = CommandType.StoredProcedure;
-			sda = new SqlDataAdapter(cmd);
-			dt = new DataTable();
-			sda.Fill(dt);
-			rUserProfile.DataSource = dt;
-			rUserProfile.DataBind();
-			if (dt.Rows.Count == 1)
+			try
 			{
-				Session["name"] = dt.Rows[0]["Name"].ToString();
-				Session["email"] = dt.Rows[0]["Email"].ToString();
-				Session["imageUrl"] = dt.Rows[0]["ImageUrl"].ToString();
-				Session["createdDate"] = dt.Rows[0]["CreatedDate"].ToString();
-			}
+				using (con = new SqlConnection(Connection.GetConnectionString()))
+				{
+					cmd = new SqlCommand("User_Crud", con);
+					cmd.Parameters.Add("@Action", SqlDbType.VarChar).Value = "SELECT4PROFILE";
+					cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = Session["UserID"];
+					cmd.CommandType = CommandType.StoredProcedure;
 
+					sda = new SqlDataAdapter(cmd);
+					dt = new DataTable();
+					sda.Fill(dt);
+
+					if (dt.Rows.Count > 0)
+					{
+						rUserProfile.DataSource = dt;
+						rUserProfile.DataBind();
+
+						// Update session values if data is available
+						if (dt.Rows.Count == 1)
+						{
+							Session["name"] = dt.Rows[0]["Name"].ToString();
+							Session["email"] = dt.Rows[0]["Email"].ToString();
+							Session["imageUrl"] = dt.Rows[0]["ImageUrl"].ToString();
+							Session["createdDate"] = dt.Rows[0]["CreatedDate"].ToString();
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Response.Write("Err: " + ex.Message);
+			}
 		}
+
 
 	}
 }

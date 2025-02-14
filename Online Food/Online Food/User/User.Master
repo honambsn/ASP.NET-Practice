@@ -157,7 +157,7 @@
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                  <%--              <a href="" class="order_online">Order Online
+                                <%--              <a href="" class="order_online">Order Online
               </a>--%>
                                 <asp:LinkButton ID="lbLoginOrLogout" runat="server" CssClass="order_online" CausesValidation="false"
                                     OnClick="lbLoginOrLogout_Click"></asp:LinkButton>

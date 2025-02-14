@@ -135,7 +135,8 @@
                     </div>
                 </div>
 
-                <div class="row p-5">
+                <%--<div class="row pl-3" style="visibility:hidden">--%>
+                <div class="row pl-3" style="margin-top: 50px; margin-left: 50px">
                     <div style="align-items: center">
                         <asp:Image ID="imgUser" runat="server" CssClass="img-thumbnail" />
                     </div>
