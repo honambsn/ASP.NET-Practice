@@ -85,5 +85,42 @@ namespace Online_Food.User
 			return obj.ToString().ToLower();
 		}
 
+		protected void rProducts_ItemCommand(object source, RepeaterCommandEventArgs e)
+		{
+			if (Session["UserID"] != null)
+			{
+
+			}
+			else
+			{
+				Response.Redirect("Login.aspx");
+			}
+		}
+
+		int isItemExistInCart(int productID)
+		{
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("Cart_Crud", cm))
+				{
+					cmd.Parameters.AddWithValue("@Action", "ACTIVEPROD");
+					cmd.CommandType = CommandType.StoredProcedure;
+					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					{
+						DataTable dt = new DataTable();
+						sda.Fill(dt);
+
+						// Bind the result to the rProduct control
+						rProducts.DataSource = dt;
+						rProducts.DataBind();
+					}
+				}
+			}
+		}
 	}
 }
