@@ -1,0 +1,2 @@
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.csproj.AssemblyReference.cache
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\obj\Debug\Online Food.csproj.CoreCompileInputs.cache

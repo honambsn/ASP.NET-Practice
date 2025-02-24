@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\menu.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online food\\online food\\user\\menu.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\menu.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\menu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online food\\online food\\user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -149,12 +149,11 @@
               "Title": "Menu.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Menu.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx*",
-              "RelativeToolTip": "Online Food\\User\\Menu.aspx*",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx",
+              "RelativeToolTip": "Online Food\\User\\Menu.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-02-17T14:11:24.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T14:11:24.397Z"
             },
             {
               "$type": "Document",
@@ -190,8 +189,7 @@
               "RelativeToolTip": "Online Food\\User\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-12-16T14:46:32.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T14:46:32.191Z"
             },
             {
               "$type": "Document",
@@ -225,7 +223,7 @@
               "RelativeDocumentMoniker": "Online Food\\User\\Menu.aspx.cs",
               "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx.cs",
               "RelativeToolTip": "Online Food\\User\\Menu.aspx.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAG8AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAqwHUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T14:31:00.481Z",
               "EditorCaption": ""
@@ -336,8 +334,7 @@
               "RelativeToolTip": "Online Food\\User\\User.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-12-16T14:32:43.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T14:32:43.616Z"
             },
             {
               "$type": "Document",
