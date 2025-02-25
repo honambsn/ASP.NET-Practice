@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Online_Food
 {
@@ -16,19 +18,24 @@ namespace Online_Food
 
 	public class Utils
 	{
+
+		SqlConnection con;
+		SqlCommand cmd;
+		SqlDataAdapter sda;
+		DataTable dt;
 		public static bool IsValidExtension(string fileName)
 		{
 			bool isValid = false;
 			string[] fileExtension = { ".jpg", ".jpeg", ".png", ".gif" };
-            for (int i = 0; i <= fileExtension.Length - 1; i++)
-            {
-                if (fileName.Contains(fileExtension[i]))
+			for (int i = 0; i <= fileExtension.Length - 1; i++)
+			{
+				if (fileName.Contains(fileExtension[i]))
 				{
 					isValid = true;
 					break;
 				}
-            }
-            return isValid;
+			}
+			return isValid;
 		}
 
 		public static string GetImageUrl(Object url)
@@ -45,6 +52,41 @@ namespace Online_Food
 
 			//return ResolveUrl(url1);
 			return url1;
+		}
+
+		public bool updateCartQuantity(int quantity, int productID, int userID)
+		{
+			bool isUpdated = false;
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+				try
+				{
+					using (SqlCommand cmd = new SqlCommand("Cart_Crud", cm))
+					{
+						cmd.Parameters.AddWithValue("@Action", "UPDATE");
+						cmd.Parameters.AddWithValue("@ProductID", productID);
+						cmd.Parameters.AddWithValue("@Quantity", quantity);
+						cmd.Parameters.AddWithValue("@UserID", userID);
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.ExecuteNonQuery();
+						isUpdated = true;
+					}
+				}
+				catch (Exception ex)
+				{
+					isUpdated = false;
+					System.Web.HttpContext.Current.Response.Write("<script>alert('Error - " + ex.Message + "');<script>");
+				}
+				finally
+				{
+					cm.Close();
+				}
+				return isUpdated;
+			}
 		}
 	}
 }
