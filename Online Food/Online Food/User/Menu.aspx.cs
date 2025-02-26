@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Online_Food.Admin;
+using System.ComponentModel;
 
 namespace Online_Food.User
 {
@@ -90,7 +91,7 @@ namespace Online_Food.User
 			if (Session["UserID"] != null)
 			{
 				bool isCartItemUpdated = false;
-				int i = isItemExistInCart(Convert.ToInt32(e.CommandArgument.ToString())); 
+				int i = isItemExistInCart(Convert.ToInt32(e.CommandArgument)); 
 				if (i == 0)
 				{
 					//adding new item in cart
@@ -163,12 +164,12 @@ namespace Online_Food.User
 						int quantity = 0;
 						if (dt.Rows.Count > 0)
 						{
-							quantity = Convert.ToInt32(dt.Rows[0]["Quantity"].ToString());
+							quantity = Convert.ToInt32(dt.Rows[0]["Quantity"]);
 						}
 						
 						// Bind the result to the rProduct control
-						rProducts.DataSource = dt;
-						rProducts.DataBind();
+						//rProducts.DataSource = dt;
+						//rProducts.DataBind();
 
 						return quantity;
 					}
