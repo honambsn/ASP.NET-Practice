@@ -12,7 +12,7 @@ body {
     overflow: hidden;
 }
 
-.product__details__option .about_section{
+.product__details__option .quantity{
     overflow: hidden;
     margin-right: 20px;
 }
