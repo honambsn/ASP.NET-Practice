@@ -51,7 +51,7 @@ namespace Online_Food.User
 						DataTable dt = new DataTable();
 						sda.Fill(dt);
 						rCartItem.DataSource = dt;
-						if (dt.Rows.Count > 0)
+						if (dt.Rows.Count == 0)
 						{
 							rCartItem.FooterTemplate = null;
 							rCartItem.FooterTemplate = new CustomTemplate(ListItemType.Footer);
@@ -70,7 +70,17 @@ namespace Online_Food.User
 
 		protected void rCartItem_ItemDataBound(object sender, RepeaterItemEventArgs e)
 		{
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+			{
+				Label totalPrice = e.Item.FindControl("lblTotalPrice") as Label;
+				Label productPrice = e.Item.FindControl("lblPrice") as Label;
+				TextBox quantity = e.Item.FindControl("txtQuantity") as TextBox;
+				decimal calTotalPrice = Convert.ToDecimal(productPrice.Text) * Convert.ToDecimal(quantity.Text);
+				totalPrice.Text = calTotalPrice.ToString();
+				grandTotal += calTotalPrice;
+			}
 
+			Session["grandTotalPrice"] = grandTotal;
 		}
 
 		private sealed class CustomTemplate : ITemplate
@@ -84,16 +94,11 @@ namespace Online_Food.User
 
 			public void InstantiateIn(Control container)
 			{
-				if (ListItemType == ListItemType.Footer)
-				{
-					if (ListItemType == ListItemType.Footer)
-					{
-						var footer = new LiteralControl("<tr><td colspan='5'><b>Your Cart is empty.</b><a href='Menu.aspx' class=badge badge-info ml=2'>Continue Shopping</a></td></tr></tbody><table>");
-						container.Controls.Add(footer);
-					}
+				if (ListItemType == ListItemType.Footer) { 
+					var footer = new LiteralControl("<tr><td colspan='5'><b>Your Cart is empty.</b><a href='Menu.aspx' class='badge badge-info ml-2'>Continue Shopping</a></td></tr></tbody><table>");
+					container.Controls.Add(footer);
 				}
 			}
-
 		}
 	}
 }

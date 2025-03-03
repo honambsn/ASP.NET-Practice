@@ -19,7 +19,7 @@
         <div class="container">
             <asp:Repeater ID="rCartItem" runat="server" OnItemCommand="rCartItem_ItemCommand" OnItemDataBound="rCartItem_ItemDataBound">
                 <HeaderTemplate>
-                    <table>
+                    <table class ="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -38,7 +38,7 @@
                             <asp:Label ID="lblProductName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
                         </td>
                         <td>
-                            <img width="60" src="<%# Utils.GetImageUrl("ImageUrl") %>" alt="" />
+                            <img width="60" src="<%# Utils.GetImageUrl(Eval("ImageUrl")) %>" alt="" />
                         </td>
                         <td>$<asp:Label ID="lblPrice" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
                             <asp:HiddenField ID="hdnProductID" runat="server" Value='<%# Eval("ProductID") %>' />
@@ -72,18 +72,18 @@
                     <tr>
                         <td colspan="3"></td>
                         <td class="pl-lg-5">
-                            <b>Grand Total: -</b>
+                            <b>Grand Total: </b>
                         </td>
                         <td>$<%Response.Write(Session["grandTotalPrice"]); %></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="continue__btn">
-                            <a href="Menu.aspx" class="btn btn-info"><i class="fa fa-arrow-circle-left mr-2">Continue Shopping</i></a>
+                            <a href="Menu.aspx" class="btn btn-info"><i class="fa fa-arrow-circle-left mr-2"></i>Continue Shopping</a>
                         </td>
                         <td>
                             <asp:LinkButton ID="lbUpdateCart" runat="server" CommandName="updateCart" CssClass="btn btn-warning">
-                                <i class="fa fa-refresh mr-2">Update Cart</i>
+                                <i class="fa fa-refresh mr-2"></i>Update Cart
                                 
                             </asp:LinkButton>
                         </td>

@@ -103,27 +103,60 @@ $(".client_owl-carousel").owlCarousel({
 });
 
 
+//(function ($) {
+//    var proQty = $('.pro-qty');
+//    proQty.prepend('<span class="dec qtybtn">-</span>');
+//    proQty.append('<span class="inc qtybtn">+</span>');
+//    proQty.on('click', '.qtybtn', function () {
+//        var $button = $(this);
+//        var oldValue = $button.parent().find('input').val();
+//        if ($button.hasClass('inc')) {
+//            if (oldValue >= 10) {
+//                var newVal = parseFloat(oldValue);
+//            }
+//            else {
+//                newVal = parseFloat(oldValue) + 1;
+//            }
+//        } else {
+//            if (oldValue > 1) {
+//                var newVal = parseFloat(oldValue) - 1;
+//            } else {
+//                newVal = 0;
+//            }
+//        }
+//        $button.parent().find('input').val(newVal);
+//    });
+//});
+
 (function ($) {
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
+
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this);
-        var oldValue = $button.parent().find('input').val();
+        var $input = $button.parent().find('input');
+        var oldValue = parseInt($input.val(), 10); // Parse the current value as an integer
+
+        // Check the button clicked and adjust the value accordingly
+        var newVal;
         if ($button.hasClass('inc')) {
-            if (oldValue >= 10) {
-                var newVal = parseFloat(oldValue);
-            }
-            else {
-                newVal = parseFloat(oldValue) + 1;
+            // Increase the value
+            if (oldValue < 10) {
+                newVal = oldValue + 1;  // Increment by 1
+            } else {
+                newVal = oldValue;  // Keep the value at 10 (or the limit you set)
             }
         } else {
+            // Decrease the value
             if (oldValue > 1) {
-                var newVal = parseFloat(oldValue) - 1;
+                newVal = oldValue - 1;  // Decrement by 1
             } else {
-                newVal = 0;
+                newVal = 1;  // Prevent it from going below 1
             }
         }
-        $button.parent().find('input').val(newVal);
+
+        // Update the input field with the new value
+        $input.val(newVal);
     });
-});
+})(jQuery);
