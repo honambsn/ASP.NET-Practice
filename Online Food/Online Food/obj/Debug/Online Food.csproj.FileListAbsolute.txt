@@ -1,7 +1,3 @@
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Numerics.Vectors.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Reflection.Metadata.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\VBCSCompiler.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\mongocrypt.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll
@@ -27,11 +23,15 @@ D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\r
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Buffers.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Collections.Immutable.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Memory.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Numerics.Vectors.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Reflection.Metadata.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\System.Threading.Tasks.Extensions.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.exe.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\vbc.rsp
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\VBCSCompiler.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\roslyn\VBCSCompiler.exe.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\AWSSDK.Core.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\AWSSDK.SecurityToken.dll

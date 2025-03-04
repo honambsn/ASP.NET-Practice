@@ -79,7 +79,7 @@ namespace Online_Food
 				catch (Exception ex)
 				{
 					isUpdated = false;
-					System.Web.HttpContext.Current.Response.Write("<script>alert('Error - " + ex.Message + "');<script>");
+					System.Web.HttpContext.Current.Response.Write("<script>alert('Error - " + ex.Message + "');</script>");
 				}
 				finally
 				{
@@ -88,5 +88,45 @@ namespace Online_Food
 				return isUpdated;
 			}
 		}
+
+		public int cartCount(int userID)
+		{
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+				using (SqlCommand cmd = new SqlCommand("Cart_Crud", cm))
+				{
+					cmd.Parameters.AddWithValue("@Action", "SELECT");
+					cmd.Parameters.AddWithValue("@UserID", userID);
+					cmd.CommandType = CommandType.StoredProcedure;
+					sda = new SqlDataAdapter(cmd);
+					DataTable dt = new DataTable();
+					sda.Fill(dt);
+					return dt.Rows.Count;
+				}
+			}
+		}
+
+
+		//public int cartCount(int userID)
+		//{
+		//	using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+		//	{
+		//		cm.Open();
+
+		//		using (SqlCommand cmd = new SqlCommand("Cart_Crud", cm))
+		//		{
+		//			cmd.Parameters.AddWithValue("@Action", "SELECT");
+		//			cmd.Parameters.AddWithValue("@UserID", userID);
+		//			cmd.CommandType = CommandType.StoredProcedure;
+
+		//			object result = cmd.ExecuteScalar();
+		//			return result == DBNull.Value ? 0 : Convert.ToInt32(result);
+		//		}
+		//	}
+		//}
 	}
 }
