@@ -17,7 +17,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="../TemplateFiles/favicon.png" type="">
+    <link rel="shortcut icon" href="../TemplateFiles/images/favicon.png" type="">
 
     <title>Feane </title>
 
@@ -151,6 +151,9 @@
                                         <g>
                                         </g>
                                     </svg>
+                                    <span class="badge rounded-pill bg-warning mb-4">
+                                        <% Response.Write(Session["cartCount"]); %>
+                                    </span>
                                 </a>
                                 <div class="form-inline">
                                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">

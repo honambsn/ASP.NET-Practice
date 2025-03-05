@@ -34,6 +34,7 @@ namespace Online_Food.User
 
 		void getCartItem()
 		{
+			Utils utils = new Utils();
 			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
 			{
 				if (cm.State == ConnectionState.Closed)
@@ -56,7 +57,7 @@ namespace Online_Food.User
 							rCartItem.FooterTemplate = null;
 							rCartItem.FooterTemplate = new CustomTemplate(ListItemType.Footer);
 						}
-
+						Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
 						rCartItem.DataBind();
 					}
 				}
@@ -66,6 +67,7 @@ namespace Online_Food.User
 		protected void rCartItem_ItemCommand(object source, RepeaterCommandEventArgs e)
 		{
 			Utils utils = new Utils();
+			// watch out the command name spelling
 			if (e.CommandName == "Remove")
 			{
 				int productID = Convert.ToInt32(e.CommandArgument);
@@ -89,7 +91,7 @@ namespace Online_Food.User
 							Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
 							getCartItem();
 						}
-						
+
 
 					}
 					catch (Exception ex)
@@ -101,6 +103,46 @@ namespace Online_Food.User
 						cm.Close();
 					}
 				}
+			}
+			else if (e.CommandName == "updateCart")
+			{
+				bool isCartUpdated = false;
+				for (int item = 0; item < rCartItem.Items.Count; item++)
+				{
+					if (rCartItem.Items[item].ItemType == ListItemType.Item || rCartItem.Items[item].ItemType == ListItemType.AlternatingItem)
+					{
+						TextBox quantity = rCartItem.Items[item].FindControl("txtQuantity") as TextBox;
+						HiddenField _productID = rCartItem.Items[item].FindControl("hdnProductID") as HiddenField;
+						HiddenField _quantity = rCartItem.Items[item].FindControl("hdnQuantity") as HiddenField;
+
+
+						int quantityFromCart = Convert.ToInt32(quantity.Text);
+						int productID = Convert.ToInt32(_productID.Value);
+						int quantityFromDB = Convert.ToInt32(_quantity.Value);
+
+						bool isTrue = false;
+						int updatedQuantity = 1;
+
+						if (quantityFromCart > quantityFromDB)
+						{
+							updatedQuantity = quantityFromCart;
+							isTrue = true;
+						}
+						else if (quantityFromCart < quantityFromDB)
+						{
+							updatedQuantity = quantityFromCart;
+							isTrue = true;
+						}
+
+						if (isTrue)
+						{
+							//update cart item quantity in DB
+							isCartUpdated = utils.updateCartQuantity(updatedQuantity, productID, Convert.ToInt32(Session["UserID"]));
+						}
+
+					}
+				}
+				getCartItem();
 			}
 		}
 
