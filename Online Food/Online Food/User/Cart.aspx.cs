@@ -89,6 +89,11 @@ namespace Online_Food.User
 							//Response.Write("<script>alert('Item removed from cart.');</script>");
 							//cart count
 							Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
+
+							lblMsg.Visible = true;
+							lblMsg.Text = "Remove Successfully";
+							lblMsg.CssClass = "alert alert-warning";
+
 							getCartItem();
 						}
 
@@ -142,7 +147,50 @@ namespace Online_Food.User
 
 					}
 				}
+				lblMsg.Visible = true;
+				lblMsg.Text = "Updated Successfully";
+				lblMsg.CssClass = "alert alert-success";
 				getCartItem();
+			}
+
+			if (e.CommandName == "checkout")
+			{
+				bool isTrue = true;
+				string pName = string.Empty;
+				for (int item = 0; item < rCartItem.Items.Count; item++)
+				{
+					//check item quantity before get
+					if (rCartItem.Items[item].ItemType == ListItemType.Item || rCartItem.Items[item].ItemType == ListItemType.AlternatingItem)
+					{
+						HiddenField _productID = rCartItem.Items[item].FindControl("hdnProductID") as HiddenField;
+						HiddenField _cartQuantity = rCartItem.Items[item].FindControl("hdnQuantity") as HiddenField;
+						HiddenField _productQuantity = rCartItem.Items[item].FindControl("hdnProdQuantity") as HiddenField;
+						Label productName = rCartItem.Items[item].FindControl("lblProductName") as Label;
+
+
+						int productID = Convert.ToInt32(_productID.Value);
+						int cartQuantity = Convert.ToInt32(_cartQuantity.Value);
+						int productQuantity = Convert.ToInt32(_productQuantity.Value);
+
+						if (productQuantity < cartQuantity || productQuantity <= 2)
+						{
+							isTrue = false;
+							pName = productName.Text;
+							break;
+						}
+					}
+				}
+
+				if (isTrue)
+				{
+					Response.Redirect("Payment.aspx");
+				}
+				else
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text ="Item <b>'" + pName + "' is out of stock.";
+					lblMsg.CssClass = "alert alert-warning";
+				}
 			}
 		}
 

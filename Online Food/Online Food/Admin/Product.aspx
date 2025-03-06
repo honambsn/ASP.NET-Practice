@@ -102,8 +102,10 @@
                                                 <div class="form-group">
                                                     <label>Product Quantity</label>
                                                     <div>
+                                                        <span style="color: red;">>5 to be in stock</span>
                                                         <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"
                                                             placeholder="Enter Product Quantity" required=""></asp:TextBox>
+                                                        
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                                             ErrorMessage="Price is required" ForeColor="Red" Display="Dynamic"
                                                             SetFocusOnError="true" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>

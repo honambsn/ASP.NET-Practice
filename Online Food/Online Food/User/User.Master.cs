@@ -35,10 +35,13 @@ namespace Online_Food.User
 			if (Session["UserID"] != null)
 			{
 				lbLoginOrLogout.Text = "Logout";
+				Utils utils = new Utils();
+				Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"])).ToString();
 			}
 			else
 			{
 				lbLoginOrLogout.Text = "Login";
+				Session["cartCount"] = "0";
 			}
 			
 		}
