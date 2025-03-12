@@ -110,23 +110,11 @@ namespace Online_Food
 			}
 		}
 
-
-		//public int cartCount(int userID)
-		//{
-		//	using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
-		//	{
-		//		cm.Open();
-
-		//		using (SqlCommand cmd = new SqlCommand("Cart_Crud", cm))
-		//		{
-		//			cmd.Parameters.AddWithValue("@Action", "SELECT");
-		//			cmd.Parameters.AddWithValue("@UserID", userID);
-		//			cmd.CommandType = CommandType.StoredProcedure;
-
-		//			object result = cmd.ExecuteScalar();
-		//			return result == DBNull.Value ? 0 : Convert.ToInt32(result);
-		//		}
-		//	}
-		//}
+		public static string GetUniqueID()
+		{
+			Guid guid = Guid.NewGuid();
+			String uniqueID = guid.ToString();
+			return uniqueID;
+		}
 	}
 }
