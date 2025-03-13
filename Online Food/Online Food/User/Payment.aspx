@@ -202,7 +202,7 @@
                                     </p>
                                     <p class="text-muted">
                                         Note: At the of recieving your order, you need to do full payment. 
-                                    After completing the payment process, you can check your updated order status.
+                                    After completing the payment process, you can your updated order status.
                                     </p>
                                 </div>
                                 <!-- End -->

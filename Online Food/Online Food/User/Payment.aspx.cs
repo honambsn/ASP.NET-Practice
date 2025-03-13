@@ -45,7 +45,7 @@ namespace Online_Food.User
 			_address = txtAddress.Text.Trim();
 			_paymentMode = "card";
 			_paymentMode = _paymentMode.ToLower();
-			if (Session["UserID"] == null)
+			if (Session["UserID"] != null)
 			{
 				OrderPayment(_name, _cardNo, _expDate, _cvv, _address, _paymentMode);
 			}
@@ -60,7 +60,7 @@ namespace Online_Food.User
 			_address = txtCODAddress.Text.Trim();
 			_paymentMode = "cod";
 			_paymentMode = _paymentMode.ToLower();
-			if (Session["UserID"] == null)
+			if (Session["UserID"] != null)
 			{
 				OrderPayment(_name, _cardNo, _expDate, _cvv, _address, _paymentMode);
 			}
@@ -85,87 +85,76 @@ namespace Online_Food.User
 				new DataColumn("OrderDate", typeof(DateTime)),
 			});
 
-			con = new SqlConnection(Connection.GetConnectionString());
-			con.Open();
-
-			#region SqlTransaction
-			transaction = con.BeginTransaction();
-
-			con = new SqlConnection(Connection.GetConnectionString());
-			cmd = new SqlCommand("Save_Payment", con, transaction);
-			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.Parameters.AddWithValue("@Name", name);
-			cmd.Parameters.AddWithValue("@CardNo", cardNo);
-			cmd.Parameters.AddWithValue("@ExpDate", expDate);
-			cmd.Parameters.AddWithValue("@Cvv", cvv);
-			cmd.Parameters.AddWithValue("@Address", address);
-			cmd.Parameters.AddWithValue("@PaymentMode", paymentMode);
-			cmd.Parameters.Add("@InsertedID", SqlDbType.Int);
-			cmd.Parameters["@InsertedID"].Direction = ParameterDirection.Output;
-			try
+			using (con = new SqlConnection(Connection.GetConnectionString()))
 			{
-				cmd.ExecuteNonQuery();
-				paymentID = Convert.ToInt32(cmd.Parameters["@InsertedID"].Value);
+				con.Open();
+				SqlTransaction transaction = con.BeginTransaction();
 
-				#region Getting Cart Item's
-				cmd = new SqlCommand("Cart_Crud", con, transaction);
-				cmd.Parameters.AddWithValue("@Action", "SELECT");
-				cmd.Parameters.AddWithValue("UserID", Session["UserID"]);
-				cmd.CommandType = CommandType.StoredProcedure;
-				dr = cmd.ExecuteReader();
-				
-				while (dr.Read())
-				{
-					productID = Convert.ToInt32(dr["ProductID"]);
-					quantity = Convert.ToInt32(dr["Quantity"]);
-
-					// update product quantity
-					UpdateQuantity(productID, quantity, transaction, con);
-					// update product quantity end
-
-					// delete cart item
-					DeleteCartItem(productID, transaction, con);
-					// delete cart item end
-
-					dt.Rows.Add(Utils.GetUniqueID(), productID, quantity, (int)Session["userID"], "Pending",
-						paymentID, Convert.ToDateTime(DateTime.Now));
-				}
-				dr.Close();
-				#endregion Getting Cart Item's
-
-				#region order details
-				if (dt.Rows.Count > 0)
-				{
-					cmd = new SqlCommand("Save_Orders", con, transaction);
-					cmd.Parameters.AddWithValue("@tblOrders", dt);
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.ExecuteNonQuery();
-				}
-				#endregion order details
-
-				transaction.Commit();
-				lblMsg.Visible = true;
-				lblMsg.Text = "Your item ordered successfully. Thank you for shopping with us.";
-				lblMsg.CssClass = "alert alert-success";
-				Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id" + paymentID);
-			}
-			catch (Exception ex)
-			{
 				try
 				{
-					transaction.Rollback();
+					// Save Payment
+					cmd = new SqlCommand("Save_Payment", con, transaction);
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.AddWithValue("@Name", name);
+					cmd.Parameters.AddWithValue("@CardNo", cardNo);
+					cmd.Parameters.AddWithValue("@ExpiryDate", expDate);
+					cmd.Parameters.AddWithValue("@CvvNo", cvv);
+					cmd.Parameters.AddWithValue("@Address", address);
+					cmd.Parameters.AddWithValue("@PaymentMode", paymentMode);
+					cmd.Parameters.Add("@InsertedID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+					cmd.ExecuteNonQuery();
+					paymentID = Convert.ToInt32(cmd.Parameters["@InsertedID"].Value);
+
+					// Get Cart Items
+					cmd = new SqlCommand("Cart_Crud", con, transaction);
+					cmd.Parameters.AddWithValue("@Action", "SELECT");
+					cmd.Parameters.AddWithValue("UserID", Session["UserID"]);
+					cmd.CommandType = CommandType.StoredProcedure;
+					SqlDataReader dr = cmd.ExecuteReader();
+
+					while (dr.Read())
+					{
+						productID = Convert.ToInt32(dr["ProductID"]);
+						quantity = Convert.ToInt32(dr["Quantity"]);
+
+						// Update product quantity
+						UpdateQuantity(productID, quantity, transaction, con);
+						// Delete cart item
+						DeleteCartItem(productID, transaction, con);
+
+						dt.Rows.Add(Utils.GetUniqueID(), productID, quantity, (int)Session["UserID"], "Pending", paymentID, Convert.ToDateTime(DateTime.Now));
+					}
+					dr.Close();
+
+					// Save Orders
+					if (dt.Rows.Count > 0)
+					{
+						cmd = new SqlCommand("Save_Orders", con, transaction);
+						cmd.Parameters.AddWithValue("@tblOrders", dt);
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.ExecuteNonQuery();
+					}
+
+					transaction.Commit();
+
+					lblMsg.Visible = true;
+					lblMsg.Text = "Your item ordered successfully. Thank you for shopping with us.";
+					lblMsg.CssClass = "alert alert-success";
+					Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id=" + paymentID);
 				}
-				catch (Exception ex2)
+				catch (Exception ex)
 				{
-					Response.Write("<script>alert('"+ ex2.Message +"');</script>");
-				}
-			}
-			#endregion SqlTransaction
-			finally
-			{
-				if (con.State == ConnectionState.Open)
-				{
-					con.Close();
+					try
+					{
+						transaction.Rollback();
+					}
+					catch (Exception ex2)
+					{
+						Response.Write("<script>alert('Rollback Error: " + ex2.Message + "');</script>");
+					}
+
+					Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
 				}
 			}
 		}
@@ -202,10 +191,6 @@ namespace Online_Food.User
 			{
 				Response.Write("<script>alert('" + ex.Message + "');</script>");
 			}
-			finally
-			{
-				dr1.Close();
-			}
 		}
 
 		void DeleteCartItem(int _productID, SqlTransaction sqlTransaction, SqlConnection sqlConnection)
@@ -223,10 +208,6 @@ namespace Online_Food.User
 			catch (Exception ex)
 			{
 				Response.Write("<script>alert('" + ex.Message + "');</script>");
-			}
-			finally
-			{
-				dr1.Close();
 			}
 		}
 
