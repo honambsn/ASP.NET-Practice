@@ -81,7 +81,7 @@ namespace Online_Food.User
 				new DataColumn("ProductID", typeof(int)),
 				new DataColumn("Quantity", typeof(int)),
 				new DataColumn("UserID", typeof(int)),
-				new DataColumn("Status", typeof(int)),
+				new DataColumn("Status", typeof(string)),
 				new DataColumn("PaymentID", typeof(int)),
 				new DataColumn("OrderDate", typeof(DateTime)),
 			});
@@ -163,6 +163,10 @@ namespace Online_Food.User
 			#endregion old code
 
 			con = new SqlConnection(Connection.GetConnectionString());
+			con.Open();
+
+			#region sql transaction
+			transaction = con.BeginTransaction();
 			cmd = new SqlCommand("Save_Payment", con);
 			cmd.CommandType = CommandType.StoredProcedure;
 			cmd.Parameters.AddWithValue("@Name", name);
@@ -172,13 +176,14 @@ namespace Online_Food.User
 			cmd.Parameters.AddWithValue("@Address", address);
 			cmd.Parameters.AddWithValue("@PaymentMode", paymentMode);
 			cmd.Parameters.Add("@InsertedID", SqlDbType.Int);
-			cmd.Parameters["InsertedID"].Direction = ParameterDirection.Output;
+			cmd.Parameters["@InsertedID"].Direction = ParameterDirection.Output;
 
 			try
 			{
 				cmd.ExecuteNonQuery();
 				paymentID = Convert.ToInt32(cmd.Parameters["@InsertedID"].Value);
 
+				#region Getting Cart Item's
 				cmd = new SqlCommand("Cart_Crud", con);
 				cmd.Parameters.AddWithValue("@Action", "SELECT");
 				cmd.Parameters.AddWithValue("UserID", Session["UserID"]);
@@ -189,19 +194,52 @@ namespace Online_Food.User
 					productID = Convert.ToInt32(dr["ProductID"]);
 					quantity = Convert.ToInt32(dr["Quantity"]);
 
+					// Update product quantity
 					UpdateQuantity(productID, quantity, transaction, con);
+					// update product quantity end
+
+					//delete cart item
 					DeleteCartItem(productID, transaction, con);
-					dt.Rows.Add(Utils.GetUniqueID(), productID, quantity, (int)Session["UserID"], "Pending", paymentID, Convert.ToDateTime(DateTime.Now));
+					//delete cart item end
+
+					dt.Rows.Add(Utils.GetUniqueID(), productID, quantity, (int)Session["UserID"], "Pending", 
+						paymentID, Convert.ToDateTime(DateTime.Now));
 				}
+				dr.Close();
+				#endregion Getting Cart Item's
+
+				#region Order Details
+				if (dt.Rows.Count > 0)
+				{
+					cmd = new SqlCommand("Save_Orders", con, transaction);
+					cmd.Parameters.AddWithValue("@tblOrders", dt);
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.ExecuteNonQuery();
+				}
+				#endregion Order Details
+
+				transaction.Commit();
+				lblMsg.Visible = true;
+				lblMsg.Text = "Your item ordered successfully. Thank you for shopping with us.";
+				lblMsg.CssClass = "alert alert-success";
+				Response.AddHeader("REFRESH", "1;URL=Invoice.aspx?id=" + paymentID);
 			}
 			catch (Exception ex)
 			{
-				Response.Write("<script>alert('" + ex.Message + "');</script>");
+				try
+				{
+					transaction.Rollback();
+				}
+				catch (Exception ex2)
+				{
+					//Response.Write("<script>alert('Rollback Error: " + ex2.Message + "');</script>");
+					Response.Write("<script>alert('" + ex.Message + "');</script>");
+				}
 			}
+			#endregion sql transaction
 			finally
 			{
-				if (dr != null && !dr.IsClosed)
-					dr.Close();
+				con.Close();
 			}
 		}
 
@@ -210,6 +248,7 @@ namespace Online_Food.User
 		{
 			int dbQuantity = 0;
 			dr1 = null;
+			//cmd = new SqlCommand("Product_Crud", sqlConnection, sqlTransaction);
 			cmd = new SqlCommand("Product_Crud", sqlConnection, sqlTransaction);
 			cmd.Parameters.AddWithValue("@Action", "GETBYID");
 			cmd.Parameters.AddWithValue("@ProductID", _productID);
@@ -217,31 +256,23 @@ namespace Online_Food.User
 			try
 			{
 				dr1 = cmd.ExecuteReader();
-				if (dr1.HasRows) 
+				while (dr1.Read())
 				{
-					while (dr1.Read())
+					dbQuantity = Convert.ToInt32(dr1["Quantity"]);
+
+					if (dbQuantity > _quantity && dbQuantity > 2)
 					{
-						dbQuantity = Convert.ToInt32(dr1["Quantity"]);
+						dbQuantity = dbQuantity - _quantity;
 
-						if (dbQuantity > _quantity && dbQuantity > 2)
-						{
-							dbQuantity = dbQuantity - _quantity;
-
-							if (dr1 != null && !dr1.IsClosed)
-							{
-								dr1.Close();
-							}
-
-							cmd = new SqlCommand("Product_Crud", sqlConnection, sqlTransaction);
-							cmd.Parameters.AddWithValue("@Action", "QTYUPDATE");
-							cmd.Parameters.AddWithValue("@Quantity", dbQuantity);
-							cmd.Parameters.AddWithValue("@ProductID", _productID);
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.ExecuteNonQuery();
-						}
+						cmd = new SqlCommand("Product_Crud", sqlConnection, sqlTransaction);
+						cmd.Parameters.AddWithValue("@Action", "QTYUPDATE");
+						cmd.Parameters.AddWithValue("@Quantity", dbQuantity);
+						cmd.Parameters.AddWithValue("@ProductID", _productID);
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.ExecuteNonQuery();
 					}
-
 				}
+				dr1.Close();
 			}
 			catch (Exception ex)
 			{
@@ -262,7 +293,6 @@ namespace Online_Food.User
 			cmd.Parameters.AddWithValue("@ProductID", _productID);
 			cmd.Parameters.AddWithValue("UserID", Session["UserID"]);
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.ExecuteNonQuery();
 			try
 			{
 				cmd.ExecuteNonQuery();
