@@ -72,6 +72,8 @@ namespace Online_Food.User
 
 		void OrderPayment(string name, string cardNo, string expDate, string cvv, string address, string paymentMode)
 		{
+			if (dr1 != null && !dr1.IsClosed)
+				dr1.Close();
 			int paymentID;
 			int productID;
 			int quantity;
@@ -246,6 +248,8 @@ namespace Online_Food.User
 
 		void UpdateQuantity(int _productID, int _quantity, SqlTransaction sqlTransaction, SqlConnection sqlConnection)
 		{
+			if (dr1 != null && !dr1.IsClosed)
+				dr1.Close();
 			int dbQuantity = 0;
 			dr1 = null;
 			//cmd = new SqlCommand("Product_Crud", sqlConnection, sqlTransaction);

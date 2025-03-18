@@ -26,29 +26,37 @@
         }
     </style>
     <script>
-         /*For disappearing alert message*/
+        /*For disappearing alert message*/
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
                 document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
-            }, seconds * 1000);
+        }, seconds * 1000);
+
+            DisableBackButton();
         };
+
         /*For tooltip*/
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        /*Function for preventing back button*/
+        function DisableBackButton() {
+            window.history.forward();
+        }
+
+        DisableBackButton();
+        window.onpageshow = function (evt) {
+            if (evt.persisted) DisableBackButton();
+        };
+        window.onunload = function () {
+            void (0);
+        };
     </script>
 
-    <%--Function for preventing back button--%>
-    <script type="text/javascript">
-      function DisableBackButton() {
-       window.history.forward()
-      }
-      DisableBackButton();
-       window.onload = DisableBackButton;
-       window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
-        window.onunload = function() { void (0) }
-    </script>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
