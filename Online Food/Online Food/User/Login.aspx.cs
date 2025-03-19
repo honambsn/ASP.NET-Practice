@@ -66,7 +66,7 @@ namespace Online_Food.User
 				catch (Exception ex)
 				{
 					// Handle any exceptions that may occur
-					lblMsg.Visible = true;
+					lblMsg.Visible = true;	
 					lblMsg.Text = "An error occurred: " + ex.Message;
 					lblMsg.CssClass = "alert alert-danger";
 				}

@@ -183,7 +183,7 @@ namespace Online_Food.User
 
 				if (isTrue)
 				{
-					Response.Redirect("Payment.aspx");
+					Response.Redirect("Payment.aspx", false);
 				}
 				else
 				{
