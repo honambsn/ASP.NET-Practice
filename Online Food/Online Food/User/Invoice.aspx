@@ -1,14 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" CodeBehind="Invoice.aspx.cs" Inherits="Online_Food.User.Invoice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
+    <%--<script>
     window.onload = function () {
         var seconds = 5;
         setTimeout(function () {
             document.getElementById('<%=lblMsg.ClientID %>').style.display = 'none';
         }, seconds * 1000);
     };
+    </script>--%>
+    <script>
+        window.addEventListener('load', function () {
+            var seconds = 5;
+            setTimeout(function () {
+                var lblMsgElement = document.getElementById('<%= lblMsg.ClientID %>');
+                if (lblMsgElement) {
+                    lblMsgElement.style.display = 'none';
+                }
+            }, seconds * 1000);
+        });
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="book_section layout_padding">
@@ -39,13 +51,13 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td> <%# Eval("Srno") %></td>
-                        <td> <%# Eval("OrderNo") %></td>
-                        <td> <%# Eval("Name") %></td>
-                        <td> <%# string.IsNullOrEmpty( Eval("Price").ToString() ) ? "" : "$" + Eval("Price") %></td>
-                        <td> <%# Eval("Quantity") %></td>
-                        <td> <%# Eval("TotalPrice") %></td>
-                        
+                        <td><%# Eval("SrNo") %></td>
+                        <td><%# Eval("OrderNo") %></td>
+                        <td><%# Eval("ProductName") %></td>
+                        <td><%# string.IsNullOrEmpty( Eval("Price").ToString() ) ? "" : "$" + Eval("Price") %></td>
+                        <td><%# Eval("Quantity") %></td>
+                        <td><%# Eval("TotalPrice") %></td>
+
                     </tr>
                 </ItemTemplate>
                 <FooterTemplate>

@@ -174,14 +174,15 @@
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th class="table-plus">CategoryName</th>
+                                                                        <th class="table-plus">Category Name</th>
                                                                         <th>Image</th>
                                                                         <th>Price($))</th>
                                                                         <th>Qty</th>
-                                                                        <th>Category</th>
+                                                                        <th>Qty Status</th>
+                                                                        <th>Product Name</th>
                                                                         <th>IsActive</th>
                                                                         <th>Description</th>
-                                                                        <th>CreateDate</th>
+                                                                        <%--<th>CreateDate</th>--%>
                                                                         <th class="datatable-nosort">Action</th>
                                                                     </tr>
 
@@ -196,16 +197,17 @@
                                                                     <img alt="" width="40" src="<%# Online_Food.Utils.GetImageUrl(Eval("ImageUrl")) %>" />
                                                                 </td>
                                                                 <td><%# Eval("Price") %></td>
+                                                                <td><%# Eval("Quantity") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblQuantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
                                                                 </td>
-                                                                <td><%# Eval("CategoryName") %></td>
+                                                                <td><%# Eval("ProductName") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblIsActive" runat="server" Text='<%# Eval("IsActive") %>'></asp:Label>
                                                                 </td>
                                                                 <td><%# Eval("Description") %></td>
 
-                                                                <td><%# Eval("CreatedDate") %></td>
+                                                                <%--<td><%# Eval("CreatedDate") %></td>--%>
                                                                 <td>
                                                                     <%--                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary" CausesValidation="false"
                                                                         CommandArgument='<%#Eval("ProductID") %>' CommandName="edit">
