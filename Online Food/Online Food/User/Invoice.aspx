@@ -47,7 +47,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                    </table>
+                    
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
@@ -56,7 +56,7 @@
                         <td><%# Eval("ProductName") %></td>
                         <td><%# string.IsNullOrEmpty( Eval("Price").ToString() ) ? "" : "$" + Eval("Price") %></td>
                         <td><%# Eval("Quantity") %></td>
-                        <td><%# Eval("TotalPrice") %></td>
+                        <td>$ <%# Eval("TotalPrice") %></td>
 
                     </tr>
                 </ItemTemplate>
@@ -67,7 +67,7 @@
             </asp:Repeater>
 
             <div class="text-center">
-                <asp:LinkButton ID="lbDownloadInvoice" runat="server" CssClass="btn btn-info">
+                <asp:LinkButton ID="lbDownloadInvoice" runat="server" CssClass="btn btn-info" OnClick="lbDownloadInvoice_Click">
                     <i class="fa fa-file-pdf-o mr-2"></i> Download Invoice
                 </asp:LinkButton>
             </div>
