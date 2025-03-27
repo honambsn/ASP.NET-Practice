@@ -1,3 +1,11 @@
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.barcodes.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.bouncy-castle-connector.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.commons.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.forms.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.io.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.kernel.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.layout.xml
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.styledxmlparser.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\mongocrypt.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Online Food.dll
@@ -36,12 +44,6 @@ D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\r
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\AWSSDK.Core.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\AWSSDK.SecurityToken.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\DnsClient.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.barcodes.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.bouncy-castle-connector.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.commons.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.forms.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.io.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.kernel.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.layout.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.pdfa.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.pdfua.dll
@@ -85,11 +87,9 @@ D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\i
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.forms.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.io.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.kernel.xml
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.layout.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.pdfa.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.pdfua.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.sign.xml
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.styledxmlparser.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\itext.svg.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Food\Online Food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

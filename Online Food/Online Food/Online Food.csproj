@@ -538,6 +538,7 @@
     <Folder Include="Images\Category\" />
     <Folder Include="Images\Product\" />
     <Folder Include="Images\User\" />
+    <Folder Include="Invoice\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
