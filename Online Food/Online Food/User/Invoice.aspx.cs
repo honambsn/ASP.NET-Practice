@@ -1,35 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using iText;
-using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout.Element;
 using iText.Layout;
 using iText.IO.Font.Constants;
-using iText.IO.Font;
 using iText.Kernel.Colors;
 using iText.Layout.Properties;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf.Canvas.Draw;
+
 using Document = iText.Layout.Document;
 using Table = iText.Layout.Element.Table;
-using System.Net;
+using System.Linq;
+using System.ComponentModel.Composition.Primitives;
+using System.Threading;
 
 namespace Online_Food.User
 {
 	public partial class Invoice : System.Web.UI.Page
 	{
-		SqlConnection con;
-		SqlCommand cmd;
-		SqlDataAdapter sda;
-		DataTable dt;
+		private SqlConnection con;
+		private SqlCommand cmd;
+		private SqlDataAdapter sda;
+		private DataTable dt;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -55,199 +53,166 @@ namespace Online_Food.User
 			}
 		}
 
-		DataTable GetOrderDetails()
+		private DataTable GetOrderDetails()
 		{
-			double grandTotal = 0;
-			con = new SqlConnection(Connection.GetConnectionString());
-			cmd = new SqlCommand("Invoice", con);
-			cmd.Parameters.AddWithValue("@Action", "INVOICBYID");
-			cmd.Parameters.AddWithValue("@PaymentID", Convert.ToInt32(Request.QueryString["id"]));
-			cmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(Session["UserID"]));
-			cmd.CommandType = CommandType.StoredProcedure;
-			sda = new SqlDataAdapter(cmd);
-			dt = new DataTable();
-			sda.Fill(dt);
-			if (dt.Rows.Count > 0)
+			DataTable dt = new DataTable();
+
+			try
 			{
-				foreach (DataRow drow in dt.Rows)
+				using (SqlConnection con = new SqlConnection(Connection.GetConnectionString()))
 				{
-					grandTotal += Convert.ToDouble(drow["TotalPrice"]);
+					using (SqlCommand cmd = new SqlCommand("Invoice", con))
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.AddWithValue("@Action", "INVOICBYID");
+						cmd.Parameters.AddWithValue("@PaymentID", Convert.ToInt32(Request.QueryString["id"] ?? "0"));
+						cmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(Session["UserID"] ?? "0"));
+
+						using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+						{
+							sda.Fill(dt);
+						}
+					}
 				}
+
+				// Nếu không có dữ liệu, trả về DataTable rỗng
+				if (dt.Rows.Count == 0)
+				{
+					return dt;
+				}
+
+				// 🔹 Sửa lỗi InvalidCastException khi tính tổng
+				double grandTotal = dt.AsEnumerable()
+					.Sum(row => row["TotalPrice"] != DBNull.Value ? Convert.ToDouble(row["TotalPrice"]) : 0);
+
+				// Thêm hàng tổng cộng vào cuối bảng
+				DataRow totalRow = dt.NewRow();
+				totalRow["TotalPrice"] = grandTotal;
+				dt.Rows.Add(totalRow);
 			}
-			DataRow dr = dt.NewRow();
-			dr["TotalPrice"] = grandTotal;
-			dt.Rows.Add(dr);
+			catch (Exception ex)
+			{
+				lblMsg.Visible = true;
+				lblMsg.Text = "Lỗi khi lấy dữ liệu: " + ex.Message;
+			}
+
 			return dt;
 		}
+
 
 		protected void lbDownloadInvoice_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string downloadPath = @"D:/Ba Nam/Own project/Practice/c#/ASP.Net Practice/Online Food/Online Food/Invoice/Invoice_" + Request.QueryString["id"] + ".pdf";
-
-				// Ensure directory exists
-				string directoryPath = System.IO.Path.GetDirectoryName(downloadPath);
-				if (!Directory.Exists(directoryPath))
+				// Lấy dữ liệu từ Database
+				DataTable dtbl = GetOrderDetails();
+				if (dtbl == null || dtbl.Rows.Count == 0)
 				{
-					Directory.CreateDirectory(directoryPath); // Create folder if it doesn't exist
+					lblMsg.Text = "Không có dữ liệu để xuất hóa đơn.";
+					lblMsg.Visible = true;
+					return;
 				}
 
-				// Generate the order details
-				DataTable dtbl = GetOrderDetails();
-				ExportToPdf(dtbl, downloadPath, "Order Invoice");
+				// Xác định đường dẫn lưu file PDF
+				string fileName = "Invoice_" + Request.QueryString["id"] + ".pdf";
+				string filePath = Server.MapPath("~/Invoices/" + fileName);
 
-				// Check if file exists after generation
-				if (File.Exists(downloadPath))
+				// Đảm bảo thư mục tồn tại
+				string directoryPath = Path.GetDirectoryName(filePath);
+				if (!Directory.Exists(directoryPath))
 				{
-					WebClient client = new WebClient();
-					byte[] buffer = client.DownloadData(downloadPath);
+					Directory.CreateDirectory(directoryPath);
+				}
 
-					if (buffer != null)
-					{
-						Response.ContentType = "application/pdf";
-						Response.AddHeader("content-length", buffer.Length.ToString());
-						Response.BinaryWrite(buffer);
-						Response.Flush(); // Use Flush() instead of End() to prevent ThreadAbortException
-					}
+				// Xuất PDF
+				ExportToPdf(dtbl, filePath, "HÓA ĐƠN ĐẶT HÀNG");
+
+				// Kiểm tra nếu file đã được tạo thành công
+				if (File.Exists(filePath))
+				{
+					Response.ContentType = "application/pdf";
+					Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+					Response.TransmitFile(filePath);
+					Response.Flush();
+					Response.End();
 				}
 				else
 				{
 					lblMsg.Visible = true;
-					lblMsg.Text = "Error: PDF file not found.";
+					lblMsg.Text = "Lỗi: Không tìm thấy file PDF.";
 				}
+			}
+			catch (ThreadAbortException)
+			{
+				// Lỗi này xảy ra khi Response.End(), bỏ qua
 			}
 			catch (Exception ex)
 			{
 				lblMsg.Visible = true;
-				lblMsg.Text = "Error Message: " + ex.Message.ToString();
+				lblMsg.Text = "Lỗi: " + ex.Message;
 			}
 		}
 
-		void ExportToPdf(DataTable dtblTable, string strPdfPath, string strHeader)
+		private void ExportToPdf(DataTable dtbl, string pdfPath, string title)
 		{
 			try
 			{
-				// Check if the provided file path is valid
-				if (string.IsNullOrEmpty(strPdfPath) || !Directory.Exists(System.IO.Path.GetDirectoryName(strPdfPath)))
+				using (FileStream fs = new FileStream(pdfPath, FileMode.Create, FileAccess.Write, FileShare.None))
+				using (PdfWriter writer = new PdfWriter(fs))
+				using (PdfDocument pdf = new PdfDocument(writer))
+				using (Document document = new Document(pdf))
 				{
-					Console.WriteLine("Invalid or missing directory for PDF path.");
-					return;
-				}
+					pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
 
-				// Check if DataTable is valid
-				if (dtblTable == null || dtblTable.Rows.Count == 0 || dtblTable.Columns.Count < 2)
-				{
-					Console.WriteLine("DataTable must have at least two columns and some rows.");
-					return;
-				}
+					// Tiêu đề hóa đơn
+					PdfFont titleFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+					document.Add(new Paragraph(title)
+						.SetFont(titleFont)
+						.SetFontSize(18)
+						.SetTextAlignment(TextAlignment.CENTER));
 
-				// Create PdfWriter and PdfDocument
-				using (FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None))
-				{
-					using (PdfWriter writer = new PdfWriter(fs))
-					using (PdfDocument pdfDoc = new PdfDocument(writer))
-					using (Document document = new Document(pdfDoc))
+					document.Add(new Paragraph("\n")); // Thêm khoảng trắng
+
+					// Định dạng bảng
+					int columnCount = dtbl.Columns.Count;
+					Table table = new Table(columnCount).UseAllAvailableWidth();
+
+					// Thêm tiêu đề cột
+					PdfFont headerFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+					foreach (DataColumn col in dtbl.Columns)
 					{
-						// Set page size to A4
-						pdfDoc.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
-
-						// Report Header with bold font
-						PdfFont headerFont;
-						try
-						{
-							headerFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-						}
-						catch (Exception ex)
-						{
-							Console.WriteLine("Font creation error: " + ex.Message);
-							return;
-						}
-
-						Paragraph prgHeading = new Paragraph(strHeader.ToUpper())
+						table.AddHeaderCell(new Cell()
+							.SetBackgroundColor(ColorConstants.LIGHT_GRAY)
 							.SetFont(headerFont)
-							.SetFontSize(16)
-							.SetTextAlignment(TextAlignment.CENTER);
-						document.Add(prgHeading);
+							.SetFontSize(10)
+							.SetTextAlignment(TextAlignment.CENTER)
+							.Add(new Paragraph(col.ColumnName.ToUpper())));
+					}
 
-						// Author information
-						PdfFont authorFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
-						Paragraph prgAuthor = new Paragraph()
-							.SetFont(authorFont)
-							.SetFontSize(8)
-							.SetTextAlignment(TextAlignment.RIGHT)
-							.Add("Order From: Foodie Food")
-							.Add("\nOrder Date: " + dtblTable.Rows[0]["OrderDate"].ToString());
-						document.Add(prgAuthor);
-
-						// Add line separation
-						document.Add(new LineSeparator(new SolidLine()));
-
-						// Add a line break
-						document.Add(new Paragraph("\n"));
-
-						// Create the table (excluding the last 2 columns if needed)
-						int numberOfColumns = dtblTable.Columns.Count - 2;  // Exclude last 2 columns
-						if (numberOfColumns <= 0)
+					// Thêm dữ liệu vào bảng
+					PdfFont dataFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+					foreach (DataRow row in dtbl.Rows)
+					{
+						foreach (var item in row.ItemArray)
 						{
-							Console.WriteLine("DataTable must have at least two columns.");
-							return;
-						}
-
-						Table table;
-						try
-						{
-							table = new Table(numberOfColumns).UseAllAvailableWidth();
-						}
-						catch (Exception ex)
-						{
-							Console.WriteLine("Table creation error: " + ex.Message);
-							return;
-						}
-
-						// Table header
-						PdfFont columnHeaderFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
-						for (int i = 0; i < numberOfColumns; i++)
-						{
-							table.AddHeaderCell(new Cell()
-								.SetBackgroundColor(ColorConstants.GRAY)
-								.SetFont(columnHeaderFont)
+							table.AddCell(new Cell()
+								.SetFont(dataFont)
 								.SetFontSize(9)
 								.SetTextAlignment(TextAlignment.CENTER)
-								.Add(new Paragraph(dtblTable.Columns[i].ColumnName.ToUpper())));
+								.Add(new Paragraph(item.ToString())));
 						}
-
-						// Table data
-						PdfFont columnDataFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
-						for (int i = 0; i < dtblTable.Rows.Count; i++) // Loop through rows
-						{
-							for (int j = 0; j < numberOfColumns; j++) // Loop through columns (excluding last 2 columns)
-							{
-								table.AddCell(new Cell()
-									.SetFont(columnDataFont)
-									.SetFontSize(8)
-									.SetTextAlignment(TextAlignment.CENTER)
-									.Add(new Paragraph(dtblTable.Rows[i][j].ToString())));
-							}
-						}
-
-						// Add the table to the document
-						document.Add(table);
 					}
+
+					document.Add(table);
 				}
-			}
-			catch (iText.Kernel.Exceptions.PdfException ex)
-			{
-				// Handle specific PdfException
-				Console.WriteLine("PDF Error: " + ex.Message);
-				throw;
+
+				Console.WriteLine("PDF đã được tạo thành công: " + pdfPath);
 			}
 			catch (Exception ex)
 			{
-				// Handle other exceptions
-				Console.WriteLine("General Error: " + ex.Message);
-				throw;
+				Console.WriteLine("Lỗi khi tạo PDF: " + ex.Message);
 			}
 		}
+
 	}
 }
