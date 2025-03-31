@@ -21,12 +21,13 @@ namespace Online_Food.User
 			if (!IsPostBack)
 			{
 				if (Session["UserID"] == null)
-				{
+					{
 					Response.Redirect("Login.aspx");
 				}
 				else
 				{
 					getUserDetails();
+					getPurchaseHistory();
 				}
 			}
 		}
@@ -70,5 +71,110 @@ namespace Online_Food.User
 		}
 
 
+		void getPurchaseHistory()
+		{
+			int sr = 1;
+			Utils utils = new Utils();
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("Invoice", cm))
+				{
+					cmd.Parameters.AddWithValue("@Action", "ODRHISTORY");
+					cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
+					cmd.CommandType = CommandType.StoredProcedure;
+					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					{
+						DataTable dt = new DataTable();
+						sda.Fill(dt);
+						rPurchaseHistory.DataSource = dt;
+						dt.Columns.Add("SrNo", typeof(Int32));
+						if (dt.Rows.Count > 0)
+						{
+							foreach (DataRow dataRow in dt.Rows)
+							{
+								dataRow["SrNo"] = sr;
+								sr++;
+							}
+						}
+						if (dt.Rows.Count == 0)
+						{
+							rPurchaseHistory.FooterTemplate = null;
+							rPurchaseHistory.FooterTemplate = new CustomTemplate(ListItemType.Footer);
+						}
+						Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
+						rPurchaseHistory.DataBind();
+					}
+				}
+			}
+		}
+
+		private sealed class CustomTemplate : ITemplate
+		{
+			private ListItemType ListItemType { get; set; }
+
+			public CustomTemplate(ListItemType type)
+			{
+				ListItemType = type;
+			}
+
+			public void InstantiateIn(Control container)
+			{
+				if (ListItemType == ListItemType.Footer)
+				{
+					var footer = new LiteralControl("<tr><td><b>Hungry!!! Why not order food for you.</b><a href='Menu.aspx' class='badge badge-info ml-2'>Click to Order</a></td></tr></tbody><table>");
+					container.Controls.Add(footer);
+				}
+			}
+		}
+
+		protected void rPurchaseHistory_ItemDataBound(object sender, RepeaterItemEventArgs e)
+		{
+			double grandTotal = 0;
+			HiddenField paymentID = e.Item.FindControl("hdnPaymentID") as HiddenField;
+			Repeater repOrders = e.Item.FindControl("rOrders") as Repeater;
+			Utils utils = new Utils();
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("Invoice", cm))
+				{
+					cmd.Parameters.AddWithValue("@Action", "INVOICEBYID");
+					cmd.Parameters.AddWithValue("@PaymentID", Convert.ToInt32(paymentID.Value));
+					cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
+					cmd.CommandType = CommandType.StoredProcedure;
+					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					{
+						DataTable dt = new DataTable();
+						sda.Fill(dt);
+						//rPurchaseHistory.DataSource = dt;
+						//dt.Columns.Add("SrNo", typeof(Int32));
+						if (dt.Rows.Count > 0)
+						{
+							foreach (DataRow dataRow in dt.Rows)
+							{
+								grandTotal += Convert.ToDouble(dataRow["TotalPrice"]);
+							}
+						}
+						if (dt.Rows.Count == 0)
+						{
+							rPurchaseHistory.FooterTemplate = null;
+							rPurchaseHistory.FooterTemplate = new CustomTemplate(ListItemType.Footer);
+						}
+						//Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
+						rPurchaseHistory.DataSource = dt;
+						rPurchaseHistory.DataBind();
+					}
+				}
+			}
+		}
 	}
 }

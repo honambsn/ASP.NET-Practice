@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online food\\online food\\user\\invoice.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\invoice.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\admin\\product.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\admin\\product.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\admin\\category.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,20 +102,12 @@
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\registration.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\admin\\users.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\admin\\users.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\admin\\users.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\admin\\users.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\user\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|solutionrelative:online food\\user\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{01C3A56D-8476-42EB-8DC6-7DC3A467FC58}|Online Food\\Online Food.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\online food\\admin\\dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -168,62 +168,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Invoice.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Invoice.aspx.cs",
-              "RelativeDocumentMoniker": "Online Food\\User\\Invoice.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Invoice.aspx.cs",
-              "RelativeToolTip": "Online Food\\User\\Invoice.aspx.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAUwGkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T14:16:22.098Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "Payment.aspx",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx",
-              "RelativeDocumentMoniker": "Online Food\\User\\Payment.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx",
-              "RelativeToolTip": "Online Food\\User\\Payment.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-07T14:40:29.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Cart.aspx",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Cart.aspx",
-              "RelativeDocumentMoniker": "Online Food\\User\\Cart.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Cart.aspx",
-              "RelativeToolTip": "Online Food\\User\\Cart.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-02-25T15:00:50.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Payment.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx.cs",
-              "RelativeDocumentMoniker": "Online Food\\User\\Payment.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx.cs",
-              "RelativeToolTip": "Online Food\\User\\Payment.aspx.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAIwJUAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:54:12.364Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "Login.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Login.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Login.aspx",
@@ -242,13 +195,91 @@
               "RelativeDocumentMoniker": "Online Food\\User\\Cart.aspx.cs",
               "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Cart.aspx.cs",
               "RelativeToolTip": "Online Food\\User\\Cart.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMsAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwC8AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T15:25:14.904Z"
+              "WhenOpened": "2025-02-26T15:25:14.904Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Profile.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx",
+              "RelativeDocumentMoniker": "Online Food\\User\\Profile.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx",
+              "RelativeToolTip": "Online Food\\User\\Profile.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-01-24T14:06:16.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Cart.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Cart.aspx",
+              "RelativeDocumentMoniker": "Online Food\\User\\Cart.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Cart.aspx",
+              "RelativeToolTip": "Online Food\\User\\Cart.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-02-25T15:00:50.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Profile.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx.cs",
+              "RelativeDocumentMoniker": "Online Food\\User\\Profile.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx.cs*",
+              "RelativeToolTip": "Online Food\\User\\Profile.aspx.cs*",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAwwIkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T15:21:01.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Invoice.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Invoice.aspx.cs",
+              "RelativeDocumentMoniker": "Online Food\\User\\Invoice.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Invoice.aspx.cs",
+              "RelativeToolTip": "Online Food\\User\\Invoice.aspx.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwE0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T14:16:22.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Payment.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx",
+              "RelativeDocumentMoniker": "Online Food\\User\\Payment.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx",
+              "RelativeToolTip": "Online Food\\User\\Payment.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-03-07T14:40:29.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Payment.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx.cs",
+              "RelativeDocumentMoniker": "Online Food\\User\\Payment.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Payment.aspx.cs",
+              "RelativeToolTip": "Online Food\\User\\Payment.aspx.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAIwJUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T14:54:12.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Category.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Category.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Category.aspx.cs",
@@ -260,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Product.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Product.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Product.aspx.cs",
@@ -272,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "User.Master.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\User.Master.cs",
               "RelativeDocumentMoniker": "Online Food\\User\\User.Master.cs",
@@ -284,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Invoice.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Invoice.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Invoice.aspx",
@@ -297,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "WaitHandle.cs",
               "DocumentMoniker": "C:\\Users\\honam\\AppData\\Local\\Temp\\.vsdbgsrc\\9e82895df13676107ab295508eac98bd8b84fec4d4f958562d7760a2812ea97d\\WaitHandle.cs",
               "ToolTip": "C:\\Users\\honam\\AppData\\Local\\Temp\\.vsdbgsrc\\9e82895df13676107ab295508eac98bd8b84fec4d4f958562d7760a2812ea97d\\WaitHandle.cs [Read Only]",
@@ -308,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Category.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Category.aspx",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Category.aspx",
@@ -320,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Login.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Login.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\User\\Login.aspx.cs",
@@ -328,12 +359,11 @@
               "RelativeToolTip": "Online Food\\User\\Login.aspx.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T14:47:40.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T14:47:40.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Default.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Default.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\User\\Default.aspx.cs",
@@ -345,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Product.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Product.aspx",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Product.aspx",
@@ -357,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Connection.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Connection.cs",
               "RelativeDocumentMoniker": "Online Food\\Connection.cs",
@@ -369,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Menu.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\User\\Menu.aspx.cs",
@@ -381,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "User.Master",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\User.Master",
               "RelativeDocumentMoniker": "Online Food\\User\\User.Master",
@@ -394,7 +424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Default.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Default.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Default.aspx",
@@ -407,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "custom.js",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\TemplateFiles\\js\\custom.js",
               "RelativeDocumentMoniker": "Online Food\\TemplateFiles\\js\\custom.js",
@@ -419,19 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Profile.aspx",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx",
-              "RelativeDocumentMoniker": "Online Food\\User\\Profile.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx",
-              "RelativeToolTip": "Online Food\\User\\Profile.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-01-24T14:06:16.601Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "style.css",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\TemplateFiles\\css\\style.css",
               "RelativeDocumentMoniker": "Online Food\\TemplateFiles\\css\\style.css",
@@ -443,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Registration.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Registration.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Registration.aspx",
@@ -455,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "Menu.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Menu.aspx",
               "RelativeDocumentMoniker": "Online Food\\User\\Menu.aspx",
@@ -465,18 +483,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2025-02-17T14:11:24.397Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Profile.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx.cs",
-              "RelativeDocumentMoniker": "Online Food\\User\\Profile.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\User\\Profile.aspx.cs",
-              "RelativeToolTip": "Online Food\\User\\Profile.aspx.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAswCQAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T15:21:01.369Z"
             },
             {
               "$type": "Document",
@@ -492,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Users.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Users.aspx.cs",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Users.aspx.cs",
@@ -504,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Users.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Food\\Online Food\\Admin\\Users.aspx",
               "RelativeDocumentMoniker": "Online Food\\Admin\\Users.aspx",

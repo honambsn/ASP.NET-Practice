@@ -75,17 +75,17 @@ namespace Online_Food.User
 					}
 				}
 
-				// Nếu không có dữ liệu, trả về DataTable rỗng
+				
 				if (dt.Rows.Count == 0)
 				{
 					return dt;
 				}
 
-				// 🔹 Sửa lỗi InvalidCastException khi tính tổng
+				
 				double grandTotal = dt.AsEnumerable()
 					.Sum(row => row["TotalPrice"] != DBNull.Value ? Convert.ToDouble(row["TotalPrice"]) : 0);
 
-				// Thêm hàng tổng cộng vào cuối bảng
+				
 				DataRow totalRow = dt.NewRow();
 				totalRow["TotalPrice"] = grandTotal;
 				dt.Rows.Add(totalRow);
