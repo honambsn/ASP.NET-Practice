@@ -201,22 +201,22 @@
                                                             <ItemTemplate>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Label ID="lblName" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblName" runat="server" Text='<%#Eval("ProductName") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblName1" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblName2" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblQty" runat="server" Text='<%#Eval("Quantity") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblName3" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblTotalPrice" runat="server" Text='<%#Eval("TotalPrice") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblName4" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblOrderID" runat="server" Text='<%#Eval("OrderNo") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblName5" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                             </ItemTemplate>
