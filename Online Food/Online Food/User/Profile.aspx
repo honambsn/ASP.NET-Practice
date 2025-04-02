@@ -24,7 +24,7 @@
                                     <!-- Image container for user image -->
                                     <div class="image-container">
                                         <!-- Example: Image tag, replace with dynamic source -->
-                                        <img src="<%=Utils.GetImageUrl(imageUrl) %>" id="imgProfile" style="width: 150px; height: 150px;"
+                                        <img src="<%=Utils.GetImageUrl(imageUrl) %>" id="imgProfile" style="width: 100px; height: auto;"
                                             class="img-thumbnail" />
                                         <div class="middle pt-2">
                                             <a href="Registration.aspx?id=<%Response.Write(Session["UserID"]); %>"
@@ -176,8 +176,8 @@
                                                             <div class="col-6">
                                                                 <%# string.IsNullOrEmpty( Eval("CardNo").ToString()) ? "" : "Card No: " + Eval("CardNo") %>
                                                             </div>
-                                                            <div class="col-2">
-                                                                <a href="#"><i class="fa fa-download mr-2"></i>Invoice</a>
+                                                            <div class="col-2" style="text-align:end">
+                                                                <a href="Invoice.aspx?id=<%# Eval("PaymentID") %>" class="btn btn-info btn-sm"><i class="fa fa-download mr-2"></i>Invoice</a>
                                                             </div>
                                                         </div>
 
@@ -185,14 +185,14 @@
 
                                                         <asp:Repeater ID="rOrders" runat="server">
                                                             <HeaderTemplate>
-                                                                <table>
-                                                                    <thead>
+                                                                <table class="table data-table-export table-responsive-sm table-bordered table-hover">
+                                                                    <thead class="bg-dark text-white">
                                                                         <tr>
                                                                             <th>Product Name</th>
                                                                             <th>Unit Price</th>
                                                                             <th>Qty</th>
                                                                             <th>Total Price</th>
-                                                                            <th>OrderID</th>
+                                                                            <th>Order ID</th>
                                                                             <th>Status</th>
                                                                         </tr>
                                                                     </thead>
@@ -204,19 +204,21 @@
                                                                         <asp:Label ID="lblName" runat="server" Text='<%#Eval("ProductName") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>
+                                                                        <asp:Label ID="lblPrice" runat="server" Text='<%# string.IsNullOrEmpty(Eval("Price").ToString())  ? "" : "$" + Eval("Price")%>'></asp:Label>
                                                                     </td>
                                                                     <td>
                                                                         <asp:Label ID="lblQty" runat="server" Text='<%#Eval("Quantity") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblTotalPrice" runat="server" Text='<%#Eval("TotalPrice") %>'></asp:Label>
+                                                                        <%--$<asp:Label ID="lblTotalPrice" runat="server" Text='<%# string.IsNullOrEmpty(Eval("TotalPrice").ToString()) ? "" : "$" + Eval("TotalPrice") %>'></asp:Label>--%>
+                                                                        $<asp:Label ID="lblTotalPrice" runat="server" Text='<%# Eval("TotalPrice")%>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblOrderID" runat="server" Text='<%#Eval("OrderNo") %>'></asp:Label>
+                                                                        <asp:Label ID="lblOrderID" runat="server" Text='<%# Eval("OrderNo") %>'></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' 
+                                                                            CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                             </ItemTemplate>

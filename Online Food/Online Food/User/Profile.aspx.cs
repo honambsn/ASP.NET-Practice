@@ -134,57 +134,60 @@ namespace Online_Food.User
 
 		protected void rPurchaseHistory_ItemDataBound(object sender, RepeaterItemEventArgs e)
 		{
-			double grandTotal = 0;
-			HiddenField paymentID = e.Item.FindControl("hdnPaymentID") as HiddenField;
-			Repeater repOrders = e.Item.FindControl("rOrders") as Repeater;
-			Utils utils = new Utils();
-			if (paymentID != null)
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType == ListItemType.AlternatingItem)
 			{
-				using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+				double grandTotal = 0;
+				HiddenField paymentID = e.Item.FindControl("hdnPaymentID") as HiddenField;
+				Repeater repOrders = e.Item.FindControl("rOrders") as Repeater;
+				Utils utils = new Utils();
+				if (paymentID != null)
 				{
-					if (cm.State == ConnectionState.Closed)
+					using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
 					{
-						cm.Open();
-					}
-
-					using (SqlCommand cmd = new SqlCommand("Invoice", cm))
-					{
-						cmd.Parameters.AddWithValue("@Action", "INVOICBYID");
-						cmd.Parameters.AddWithValue("@PaymentID", Convert.ToInt32(paymentID.Value));
-						cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
-						cmd.CommandType = CommandType.StoredProcedure;
-						using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+						if (cm.State == ConnectionState.Closed)
 						{
-							DataTable dt = new DataTable();
-							sda.Fill(dt);
-							//rPurchaseHistory.DataSource = dt;
-							//dt.Columns.Add("SrNo", typeof(Int32));
-							if (dt.Rows.Count > 0)
+							cm.Open();
+						}
+
+						using (SqlCommand cmd = new SqlCommand("Invoice", cm))
+						{
+							cmd.Parameters.AddWithValue("@Action", "INVOICBYID");
+							cmd.Parameters.AddWithValue("@PaymentID", Convert.ToInt32(paymentID.Value));
+							cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
+							cmd.CommandType = CommandType.StoredProcedure;
+							using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
 							{
-								foreach (DataRow dataRow in dt.Rows)
+								DataTable dt = new DataTable();
+								sda.Fill(dt);
+								//rPurchaseHistory.DataSource = dt;
+								//dt.Columns.Add("SrNo", typeof(Int32));
+								if (dt.Rows.Count > 0)
 								{
-									grandTotal += Convert.ToDouble(dataRow["TotalPrice"]);
+									foreach (DataRow dataRow in dt.Rows)
+									{
+										grandTotal += Convert.ToDouble(dataRow["TotalPrice"]);
+									}
 								}
+								if (dt.Rows.Count == 0)
+								{
+									rPurchaseHistory.FooterTemplate = null;
+									rPurchaseHistory.FooterTemplate = new CustomTemplate(ListItemType.Footer);
+								}
+								//Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
+								DataRow dr = dt.NewRow();
+								dr["TotalPrice"] = grandTotal;
+								dt.Rows.Add(dr);
+								repOrders.DataSource = dt;
+								repOrders.DataBind();
 							}
-							if (dt.Rows.Count == 0)
-							{
-								rPurchaseHistory.FooterTemplate = null;
-								rPurchaseHistory.FooterTemplate = new CustomTemplate(ListItemType.Footer);
-							}
-							//Session["cartCount"] = utils.cartCount(Convert.ToInt32(Session["UserID"]));
-							DataRow dr = dt.NewRow();
-							dr["TotalPrice"] = grandTotal;
-							dt.Rows.Add(dr);
-							repOrders.DataSource = dt;
-							repOrders.DataBind();
 						}
 					}
 				}
-			}
-			else if (paymentID == null)
-			{
-				Console.WriteLine("No payment ID found");
-				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz");
+				else if (paymentID == null)
+				{
+					Console.WriteLine("No payment ID found");
+					Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz");
+				}
 			}
 		}
 	}
