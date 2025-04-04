@@ -134,7 +134,7 @@ namespace Online_Food.User
 
 		protected void rPurchaseHistory_ItemDataBound(object sender, RepeaterItemEventArgs e)
 		{
-			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType == ListItemType.AlternatingItem)
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
 			{
 				double grandTotal = 0;
 				HiddenField paymentID = e.Item.FindControl("hdnPaymentID") as HiddenField;
