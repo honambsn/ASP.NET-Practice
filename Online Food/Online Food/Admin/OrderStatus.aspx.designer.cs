@@ -69,48 +69,21 @@ namespace Online_Food.Admin
 		protected global::System.Web.UI.WebControls.HiddenField hdnId;
 
 		/// <summary>
-		/// fuCategoryImage control.
+		/// btnUpdate control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.FileUpload fuCategoryImage;
+		protected global::System.Web.UI.WebControls.Button btnUpdate;
 
 		/// <summary>
-		/// cbIsActive control.
+		/// btnCancel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox cbIsActive;
-
-		/// <summary>
-		/// btnAddOrUpdate control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnAddOrUpdate;
-
-		/// <summary>
-		/// btnClear control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClear;
-
-		/// <summary>
-		/// imgCategory control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Image imgCategory;
+		protected global::System.Web.UI.WebControls.Button btnCancel;
 	}
 }

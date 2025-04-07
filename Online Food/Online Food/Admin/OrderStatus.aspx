@@ -71,7 +71,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
-                                                                        CssClass='<%# Eval("Status").ToString() == "Delievered" ? "badge badge-success" : "badge badge-warning" %>'></asp:Label>
+                                                                        CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'></asp:Label>
                                                                 </td>
                                                                 <td><%# Eval("Name") %></td>
                                                                 <td><%# Eval("TotalPrice") %></td>
@@ -108,27 +108,15 @@
                                                                 <asp:ListItem>Dispatched</asp:ListItem>
                                                                 <asp:ListItem>Delivered</asp:ListItem>
                                                             </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ControlToValidate="ddlOrderStatus"
+                                                            <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ForeColor="Red" ControlToValidate="ddlOrderStatus"
                                                                 ErrorMessage="Order status is required" SetFocusOnError="true" Dislay="Dynamic" InitialValue="0"></asp:RequiredFieldValidator>
                                                             <asp:HiddenField ID="hdnId" runat="server" Value="0" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Category Image</label>
-                                                        <div>
-                                                            <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control" onchange="Image Preview(this);" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-check pl-4">
-                                                        <asp:CheckBox ID="cbIsActive" runat="server" Text="&nbsp; IsActive" CssClass="form-check-input" />
-                                                    </div>
                                                     <div class="pb-5">
-                                                        <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="btnAddOrUpdate_Click" />
+                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"/>
                                                         &nbsp;
-                                                        <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesValidation="false" OnClick="btnClear_Click" />
-                                                    </div>
-                                                    <div>
-                                                        <asp:Image ID="imgCategory" runat="server" CssClass="img-thumbnail" />
+                                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" />
                                                     </div>
                                                 </div>
                                             </asp:Panel>
