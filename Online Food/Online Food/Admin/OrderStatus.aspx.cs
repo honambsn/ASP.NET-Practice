@@ -17,7 +17,6 @@ namespace Online_Food.Admin
 		DataTable dt;
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			Console.WriteLine("order status page load");
 			if (!IsPostBack)
 			{
 				Session["breadCrum"] = "Order Status";
@@ -27,7 +26,6 @@ namespace Online_Food.Admin
 				}
 				else
 				{
-					Console.WriteLine("order status");
 					getOrderStatus();
 				}
 			}
@@ -71,17 +69,17 @@ namespace Online_Food.Admin
 			}
 		}
 
-		protected void rOrderStatus_ItemCommand(object source, RepeaterCommandEventArgs e)
-		{
-
-		}
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
+		protected void btnUpdate_Click(object sender, EventArgs e)
         {
 
         }
 
 		protected void btnCancel_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void rOrderStatus_ItemCommand(object source, RepeaterCommandEventArgs e)
 		{
 
 		}

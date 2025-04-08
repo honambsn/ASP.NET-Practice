@@ -5,7 +5,7 @@
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
-                document.getElementById('<%=lblMsg.ClientID %>').style.display = 'none';
+                document.getElementById("<%=lblMsg.ClientID %>").style.display = 'none';
             }, seconds * 1000);
         };
     </script>
@@ -25,36 +25,24 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <%--<h5>Statestics</h5>
-                                    <div class="card-header-left ">
-                                    </div>
-                                    <div class="card-header-right">
-                                        <ul class="list-unstyled card-option">
-                                            <li><i class="icofont icofont-simple-left "></i></li>
-                                            <li><i class="icofont icofont-maximize full-card"></i></li>
-                                            <li><i class="icofont icofont-minus minimize-card"></i></li>
-                                            <li><i class="icofont icofont-refresh reload-card"></i></li>
-                                            <li><i class="icofont icofont-error close-card"></i></li>
-                                        </ul>
-                                    </div>--%>
                                 </div>
                                 <div class="card-block">
                                     <div class="row">
+
                                         <div class="col-sm-6 col-md-8 col-lg-8">
-                                            <h4 class="sub-title">Order List</h4>
+                                            <h4 class="sub-title">Order Lists</h4>
 
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
 
                                                     <asp:Repeater ID="rOrderStatus" runat="server" OnItemCommand="rOrderStatus_ItemCommand">
-                                                        <headertemplate>
+                                                        <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
                                                                     <tr>
                                                                         <th class="table-plus">Order No.</th>
                                                                         <th>Order Date</th>
                                                                         <th>Status</th>
-                                                                        <th>Product Name</th>
                                                                         <th>Total Price</th>
                                                                         <th>Payment Mode</th>
                                                                         <th class="datatable-nosort">Edit</th>
@@ -62,18 +50,17 @@
 
                                                                 </thead>
                                                                 <tbody>
-                                                        </headertemplate>
-                                                        <itemtemplate>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
                                                             <tr>
                                                                 <td class="table-plus"><%# Eval("OrderNo") %></td>
-                                                                <td>
-                                                                    <%# Eval("OrderDate") %>
-                                                                </td>
+                                                                <td><%#Eval("OrderDate") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
-                                                                        CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'></asp:Label>
+                                                                        CssClass='<%#Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'>
+                                                                    </asp:Label>
                                                                 </td>
-                                                                <td><%# Eval("Name") %></td>
+                                                                <td><%# Eval("ProductName") %></td>
                                                                 <td><%# Eval("TotalPrice") %></td>
                                                                 <td><%# Eval("PaymentMode") %></td>
                                                                 <td>
@@ -83,22 +70,21 @@
                                                                     </asp:LinkButton>
                                                                 </td>
                                                             </tr>
-                                                        </itemtemplate>
-                                                        <footertemplate>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
                                                             </tbody>
                                                             </table>
-                                                        </footertemplate>
+                                                        </FooterTemplate>
                                                     </asp:Repeater>
                                                 </div>
                                             </div>
-
                                         </div>
 
 
                                         <div class="col-sm-6 col-md-4 col-lg-4 mobile-inputs">
                                             <asp:Panel ID="pUpdateOrderStatus" runat="server">
-                                                <h4 class="sub-title">Update Status</h4>
-                                                <div>
+                                            <h4 class="sub-title">Update Status</h4>
+                                            <div>
                                                     <div class="form-group">
                                                         <label>Order Status</label>
                                                         <div>
@@ -108,13 +94,14 @@
                                                                 <asp:ListItem>Dispatched</asp:ListItem>
                                                                 <asp:ListItem>Delivered</asp:ListItem>
                                                             </asp:DropDownList>
+                                                            
                                                             <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ForeColor="Red" ControlToValidate="ddlOrderStatus"
-                                                                ErrorMessage="Order status is required" SetFocusOnError="true" Dislay="Dynamic" InitialValue="0"></asp:RequiredFieldValidator>
+                                                                ErrorMessage="Order status is required" SetFocusOnError="true" Display="Dynamic" InitialValue="0"></asp:RequiredFieldValidator>
                                                             <asp:HiddenField ID="hdnId" runat="server" Value="0" />
                                                         </div>
                                                     </div>
                                                     <div class="pb-5">
-                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"/>
+                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click" />
                                                         &nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" />
                                                     </div>
@@ -127,7 +114,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
