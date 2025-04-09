@@ -190,7 +190,7 @@
                                                                 <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <tr>
+                                                            <tr>    
                                                                 <td class="table-plus"><%# Eval("CategoryName") %></td>
                                                                 <%--<td><%# Eval("ImageUrl") %>--%>
                                                                 <td>

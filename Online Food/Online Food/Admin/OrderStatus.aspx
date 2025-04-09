@@ -83,8 +83,8 @@
 
                                         <div class="col-sm-6 col-md-4 col-lg-4 mobile-inputs">
                                             <asp:Panel ID="pUpdateOrderStatus" runat="server">
-                                            <h4 class="sub-title">Update Status</h4>
-                                            <div>
+                                                <h4 class="sub-title">Update Status</h4>
+                                                <div class="table-responsive">
                                                     <div class="form-group">
                                                         <label>Order Status</label>
                                                         <div>
@@ -94,7 +94,7 @@
                                                                 <asp:ListItem>Dispatched</asp:ListItem>
                                                                 <asp:ListItem>Delivered</asp:ListItem>
                                                             </asp:DropDownList>
-                                                            
+
                                                             <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ForeColor="Red" ControlToValidate="ddlOrderStatus"
                                                                 ErrorMessage="Order status is required" SetFocusOnError="true" Display="Dynamic" InitialValue="0"></asp:RequiredFieldValidator>
                                                             <asp:HiddenField ID="hdnId" runat="server" Value="0" />
