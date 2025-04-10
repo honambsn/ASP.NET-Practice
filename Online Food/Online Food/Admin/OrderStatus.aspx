@@ -21,7 +21,6 @@
             <div class="page-wrapper">
                 <div class="page-body">
                     <div class="row">
-
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
@@ -30,7 +29,8 @@
                                     <div class="row">
 
                                         <div class="col-sm-6 col-md-8 col-lg-8">
-                                            <h4 class="sub-title">Order Lists</h4>
+                                            <h4 class="sub-title">Order List</h4>
+
 
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
@@ -43,21 +43,21 @@
                                                                         <th class="table-plus">Order No.</th>
                                                                         <th>Order Date</th>
                                                                         <th>Status</th>
+                                                                        <th>Product Name</th>
                                                                         <th>Total Price</th>
                                                                         <th>Payment Mode</th>
                                                                         <th class="datatable-nosort">Edit</th>
                                                                     </tr>
-
                                                                 </thead>
                                                                 <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
                                                             <tr>
                                                                 <td class="table-plus"><%# Eval("OrderNo") %></td>
-                                                                <td><%#Eval("OrderDate") %></td>
+                                                                <td><%# Eval("OrderDate") %></td>
                                                                 <td>
                                                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
-                                                                        CssClass='<%#Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'>
+                                                                        CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'>
                                                                     </asp:Label>
                                                                 </td>
                                                                 <td><%# Eval("ProductName") %></td>
@@ -78,42 +78,43 @@
                                                     </asp:Repeater>
                                                 </div>
                                             </div>
+
                                         </div>
 
 
                                         <div class="col-sm-6 col-md-4 col-lg-4 mobile-inputs">
                                             <asp:Panel ID="pUpdateOrderStatus" runat="server">
-                                                <h4 class="sub-title">Update Status</h4>
-                                                <div class="table-responsive">
-                                                    <div class="form-group">
-                                                        <label>Order Status</label>
-                                                        <div>
-                                                            <asp:DropDownList ID="ddlOrderStatus" runat="server" CssClass="form-control">
-                                                                <asp:ListItem Value="0">Select Status</asp:ListItem>
-                                                                <asp:ListItem>Pending</asp:ListItem>
-                                                                <asp:ListItem>Dispatched</asp:ListItem>
-                                                                <asp:ListItem>Delivered</asp:ListItem>
-                                                            </asp:DropDownList>
-
-                                                            <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ForeColor="Red" ControlToValidate="ddlOrderStatus"
-                                                                ErrorMessage="Order status is required" SetFocusOnError="true" Display="Dynamic" InitialValue="0"></asp:RequiredFieldValidator>
-                                                            <asp:HiddenField ID="hdnId" runat="server" Value="0" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="pb-5">
-                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click" />
-                                                        &nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" />
+                                            <h4 class="sub-title">Update Status</h4>
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>Order Status</label>
+                                                    <div>
+                                                        <asp:DropDownList ID="ddlOrderStatus" runat="server" CssClass="form-control">
+                                                            <asp:ListItem Value="0">Select Status</asp:ListItem>
+                                                            <asp:ListItem>Pending</asp:ListItem>
+                                                            <asp:ListItem>Dispatched</asp:ListItem>
+                                                            <asp:ListItem>Delivered</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="rfvDdlOrderStatus" runat="server" ErrorMessage="Select Order Status" ControlToValidate="ddlOrderStatus"
+                                                            ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" Font-Bold="true" InitialValue="0"></asp:RequiredFieldValidator>
+                                                        <asp:HiddenField ID="hdnId" runat="server" Value="0" />
                                                     </div>
                                                 </div>
+                                                    
+                                                <div class="pb-5">
+                                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click" />
+                                                    &nbsp;
+                                                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" />
+                                                </div>
+                                            </div>
                                             </asp:Panel>
-
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -121,3 +122,4 @@
 
     </div>
 </asp:Content>
+<%--//--%>
