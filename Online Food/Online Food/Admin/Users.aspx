@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Online_Food.Admin.Users" %>
-<%@ Import Namespace ="Online_Food" %>
+
+<%@ Import Namespace="Online_Food" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+
     <script>
         window.onload = function () {
             var seconds = 5;
@@ -12,7 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <div class="pcoded-innter-content pt-0">
         <div class="align-align-self-end">
             <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
@@ -73,11 +74,11 @@
 
 
                                         <div class="col-12 mobile-inputs">
-                                            <h4 class="sub-title">Category  List</h4>
+                                            <h4 class="sub-title">Users Lists</h4>
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
 
-                                                    <asp:Repeater ID="rUsers" runat="server" OnItemCommand="rUsers_ItemCommand" >
+                                                    <asp:Repeater ID="rUsers" runat="server" OnItemCommand="rUsers_ItemCommand">
                                                         <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
                                                                 <thead>
@@ -90,16 +91,16 @@
                                                                         <th class="datatable-nosort">Delete</th>
                                                                     </tr>
 
-                                                                </thead>                        
+                                                                </thead>
                                                                 <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
                                                             <tr>
                                                                 <td class="table-plus"><%# Eval("SrNo") %></td>
                                                                 <%--<td><%# Eval("ImageUrl") %>--%>
-                                                                <td> <%# Eval("Name") %> </td>
-                                                                <td> <%# Eval("Username") %> </td>
-                                                                <td> <%# Eval("Email") %> </td>
+                                                                <td><%# Eval("Name") %> </td>
+                                                                <td><%# Eval("Username") %> </td>
+                                                                <td><%# Eval("Email") %> </td>
                                                                 <td><%# Eval("CreatedDate") %></td>
                                                                 <td>
                                                                     <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" CommandName="delete"
@@ -107,7 +108,7 @@
                                                                         OnClientClick="return confirm('Do you want to delete this User?');">
                                                                         <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
-                                                                </td>                                                                
+                                                                </td>
                                                             </tr>
                                                         </ItemTemplate>
                                                         <FooterTemplate>

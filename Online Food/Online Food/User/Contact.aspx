@@ -47,7 +47,7 @@
               </div>
               
               <div class="btn_box">
-                <aspButton ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-warning rounded-pill pl-4 pr-4 text-white" OnClick="btnSubmit_Click"/>
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-warning rounded-pill pl-4 pr-4 text-white" OnClick="btnSubmit_Click"/>
               </div>
           </div>
         </div>
