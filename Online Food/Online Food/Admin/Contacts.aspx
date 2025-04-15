@@ -107,11 +107,22 @@
                                                                         <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
 
-                                                                    <asp:LinkButton ID="lnkEdit" Text="Edit" runat="server" CommandName="reply"
+                                                                    <asp:LinkButton ID="lnkReply" Text="Reply" runat="server" CommandName="reply"
                                                                         CssClass="badge bg-warning" CommandArgument='<%#Eval("ContactID") %>'
                                                                         OnClientClick="return confirm('Do you want to reply this feedback?');">
                                                                         <i class="ti-comment-alt"></i>
                                                                     </asp:LinkButton>
+
+                                                                    <!-- Panel for reply form, initially hidden -->
+                                                                    <asp:Panel ID="pnlReplyForm" runat="server" Visible="false">
+                                                                        <asp:TextBox ID="txtReplyMessage" runat="server" TextMode="MultiLine" Rows="4" Columns="50" 
+                                                                            Placeholder="Write your reply here..."></asp:TextBox>
+                                                                        <asp:Button ID="btnSendReply" runat="server" Text="Send Reply" OnClick="SendReply" />
+                                                                    </asp:Panel>
+
+                                                                    <!-- Label to display success or error messages -->
+                                                                    <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
+
                                                                 </td>
                                                             </tr>
                                                         </ItemTemplate>
