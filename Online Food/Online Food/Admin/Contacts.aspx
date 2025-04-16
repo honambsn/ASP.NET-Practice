@@ -115,7 +115,7 @@
 
                                                                     <!-- Panel for reply form, initially hidden -->
                                                                     <asp:Panel ID="pnlReplyForm" runat="server" Visible="false">
-                                                                        <asp:TextBox ID="txtReplyMessage" runat="server" TextMode="MultiLine" Rows="4" Columns="50" 
+                                                                        <asp:TextBox ID="txtReplyMessage" runat="server" TextMode="MultiLine" Rows="4" Columns="50"
                                                                             Placeholder="Write your reply here..."></asp:TextBox>
                                                                         <asp:Button ID="btnSendReply" runat="server" Text="Send Reply" OnClick="SendReply" />
                                                                     </asp:Panel>
