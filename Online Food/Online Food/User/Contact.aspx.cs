@@ -29,6 +29,8 @@ namespace Online_Food.User
 				cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
 				cmd.Parameters.AddWithValue("@Subject", txtSubject.Text.Trim());
 				cmd.Parameters.AddWithValue("@Message", txtMessage.Text.Trim());
+				cmd.Parameters.AddWithValue("@Status", "0");
+				cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				if (con.State == System.Data.ConnectionState.Closed)
