@@ -413,7 +413,7 @@
                                         <%--<a href="javascript:void(0)">--%>
                                         <a href="OrderStatus.aspx">
                                             <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Update Status</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Order Status</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <%--<ul class="pcoded-submenu">
@@ -460,7 +460,7 @@
                                         <%--<a href="javascript:void(0)">--%>
                                         <a href="Users.aspx">
                                             <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">User's List</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">User List</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <%--<ul class="pcoded-submenu">
