@@ -43,6 +43,11 @@
             }
         }
 
+        function hidePanel() {
+            var panel = document.getElementById('<%= pReply.ClientID %>');
+            panel.style.display = 'none';
+        }
+
     </script>
 
 </asp:Content>
@@ -65,8 +70,59 @@
                                 <div class="card-block">
                                     <div class="row">
 
-                                        <div class="col-12 mobile-inputs">
+                                        <div class="col-sm-6 col-md-8 col-lg-8">
+
+
+                                            <%--<div class="card-block table-border-style">
+                                                <div class="table-responsive">
+
+                                                    <asp:Repeater ID="rOrderStatus" runat="server" OnItemCommand="rOrderStatus_ItemCommand">
+                                                        <HeaderTemplate>
+                                                            <table class="table data-table-export table-hover nowrap">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="table-plus">Order No.</th>
+                                                                        <th>Order Date</th>
+                                                                        <th>Status</th>
+                                                                        <th>Product Name</th>
+                                                                        <th>Total Price</th>
+                                                                        <th>Payment Mode</th>
+                                                                        <th class="datatable-nosort">Edit</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <tr>
+                                                                <td class="table-plus"><%# Eval("OrderNo") %></td>
+                                                                <td><%# Eval("OrderDate") %></td>
+                                                                <td>
+                                                                    <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'
+                                                                        CssClass='<%# Eval("Status").ToString() == "Delivered" ? "badge badge-success" : "badge badge-warning" %>'>
+                                                                    </asp:Label>
+                                                                </td>
+                                                                <td><%# Eval("ProductName") %></td>
+                                                                <td><%# Eval("TotalPrice") %></td>
+                                                                <td><%# Eval("PaymentMode") %></td>
+                                                                <td>
+                                                                    <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit" CssClass="badge badge-primary"
+                                                                        CommandArgument='<%#Eval("OrderDetailsID") %>' CommandName="edit">
+                                                                        <i class="ti-pencil"></i>
+                                                                    </asp:LinkButton>
+                                                                </td>
+                                                            </tr>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </tbody>
+                                                            </table>
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>--%>
+
                                             <h4 class="sub-title">Contact List</h4>
+
+
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
 
@@ -101,28 +157,12 @@
                                                                         OnClientClick="return confirm('Do you want to delete this record?');">
                                                                         <i class="ti-trash"></i>
                                                                     </asp:LinkButton>
-                                                                    
+
                                                                     <asp:LinkButton ID="lnlReply" Text="Reply" runat="server" CommandName="reply"
                                                                         CssClass="badge bg-info" CommandArgument='<%#Eval("ContactID") %>'
                                                                         OnClientClick="return confirm('Do you want to reply this record?');">
                                                                         <i class="ti-comment-alt"></i>
                                                                     </asp:LinkButton>
-
-                                                                    <%--<asp:LinkButton ID="lnkReply" Text="Reply" runat="server" CommandName="reply"
-                                                                        CssClass="badge bg-warning" CommandArgument='<%#Eval("ContactID") %>'
-                                                                        OnClientClick='<%# "showReplyForm(\"" + ((RepeaterItem)Container).ClientID + "\"); return false;" %>'>
-                                                                        <i class="ti-comment-alt"></i>
-                                                                    </asp:LinkButton>
-
-                                                                    <!-- Panel for reply form, initially hidden -->
-                                                                    <asp:Panel ID="pnlReplyForm" runat="server" Style="display: none;" CssClass="reply-form">
-                                                                        <asp:TextBox ID="txtReplyMessage" runat="server" TextMode="MultiLine" Rows="4" Columns="50"
-                                                                            Placeholder="Write your reply here..."></asp:TextBox>
-                                                                        <asp:Button ID="btnSendReply" runat="server" Text="Send Reply" OnClick="SendReply" />
-                                                                    </asp:Panel>--%>
-
-                                                                    <!-- Label to display success or error messages -->
-                                                                    <asp:Label ID="lblMsg" runat="server" Visible="false" CssClass="badge badge-success"></asp:Label>
 
                                                                 </td>
                                                             </tr>
@@ -135,6 +175,39 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg-4 mobile-inputs">
+                                            <asp:Panel ID="pReply" runat="server" Visible="false">
+                                                <h4 class="sub-title">Reply</h4>
+                                                <div>
+                                                    <div class="form-group">
+                                                        <label for="txtReplyMsg">Reply Message</label>
+                                                        <div>
+                                                            <asp:TextBox ID="txtReplyMsg" runat="server" CssClass="form-control"
+                                                                placeholder="Enter Reply Message" required="" TextMode="MultiLine" Style="height: 200px;"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ID="rfvReplyMsg" runat="server"
+                                                                ErrorMessage="Message is required" ForeColor="Red" Display="Dynamic"
+                                                                SetFocusOnError="true" ControlToValidate="txtReplyMsg" Font-Bold="true" InitialValue="">
+
+                                                            </asp:RequiredFieldValidator>
+                                                            <asp:HiddenField ID="hdnId" runat="server" Value="0" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="pb-5">
+                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click" CausesValidation="true" />
+                                                        &nbsp;
+                                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" CausesValidation="false"  OnClientClick="hidePanel(); return false;" />
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </asp:Panel>
+                                        </div>
+
 
                                     </div>
                                 </div>

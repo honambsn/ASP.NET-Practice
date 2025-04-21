@@ -30,7 +30,11 @@ namespace Online_Food.Admin
 				{
 					getContacts();
 				}
+				pReply.Visible = false;
+
 			}
+			lblMsg.Visible = false;
+			pReply.Visible = false;
 		}
 
 		private void getContacts()
@@ -53,105 +57,6 @@ namespace Online_Food.Admin
 			}
 		}
 
-		//LinkButton "Reply"
-		//protected void lnkReply_Command(object sender, CommandEventArgs e)
-		//{
-		//	if (e.CommandName == "reply")
-		//	{
-		//		//get contact id from command argument
-		//		int contactId = Convert.ToInt32(e.CommandArgument);
-
-		//		// get specific contact details
-		//		var contactDetails = GetContactDetails(contactId);
-
-		//		if (contactDetails != null)
-		//		{
-		//			// Điền sẵn email của contact vào một trường (nếu cần)
-		//			// txtReplyTo.Text = contactDetails.Email;  // Nếu có trường nhập email trả lời (tùy thuộc vào giao diện)
-
-		//			//show reply form
-		//			pnlReplyForm.Visible = true;
-
-					
-		//			lblMsg.Visible = true;
-		//			lblMsg.Text = "Bạn có thể viết phản hồi ngay bây giờ.";
-		//			lblMsg.CssClass = "alert alert-info";
-		//		}
-		//		else
-		//		{
-					
-		//			lblMsg.Visible = true;
-		//			lblMsg.Text = "Lỗi: Không thể lấy thông tin chi tiết của liên hệ.";
-		//			lblMsg.CssClass = "alert alert-danger";
-		//		}
-		//	}
-		//}
-
-		protected void SendReply(object sender, EventArgs e)
-		{
-			Console.WriteLine("!!! ALERT: Something happened !!!");
-			// Lấy nút vừa nhấn
-			Button btn = (Button)sender;
-
-			// Lấy RepeaterItem cha
-			RepeaterItem item = (RepeaterItem)btn.NamingContainer;
-
-			// Lấy các control cần thiết
-			TextBox txtReply = (TextBox)item.FindControl("txtReplyMessage");
-			Panel pnlReplyForm = (Panel)item.FindControl("pnlReplyForm");
-			Label lblMsg = (Label)item.FindControl("lblMsg");
-
-			// Lấy nội dung
-			string replyContent = txtReply.Text.Trim();
-
-			if (!string.IsNullOrEmpty(replyContent))
-			{
-				// TODO: Lưu vào DB tại đây
-
-				// Hiển thị thông báo
-				lblMsg.Text = "Reply sent successfully!";
-				lblMsg.Visible = true;
-
-				// Ẩn lại form
-				pnlReplyForm.Style["display"] = "none";
-
-				// Gọi hàm JS để ẩn message sau 5s
-				ScriptManager.RegisterStartupScript(this, GetType(), "hideMsg",
-					$"hideMsgAfterSeconds('{lblMsg.ClientID}');", true);
-			}
-			else
-			{
-				lblMsg.Text = "Please enter a reply message.";
-				lblMsg.Visible = true;
-			}
-		}
-
-
-		//protected void SendReplyMessage(string message)
-		//{
-		//	string replyMessage = txtReplyMessage.Text;
-
-		//	if (!string.IsNullOrEmpty(replyMessage))
-		//	{
-		//		// Logic for sending reply (e.g., send email or store the reply in DB)
-		//		SendReplyMessage(replyMessage);
-
-		//		// Hide the reply form after sending
-		//		pnlReplyForm.Visible = false;
-
-		//		// Display success message
-		//		lblMsg.Visible = true;
-		//		lblMsg.Text = "Phản hồi của bạn đã được gửi thành công.";
-		//		lblMsg.CssClass = "alert alert-success";
-		//	}
-		//	else
-		//	{
-		//		// If reply message is empty
-		//		lblMsg.Visible = true;
-		//		lblMsg.Text = "Vui lòng viết một phản hồi trước khi gửi.";
-		//		lblMsg.CssClass = "alert alert-warning";
-		//	}
-		//}
 		
 		protected void rContacts_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -187,13 +92,8 @@ namespace Online_Food.Admin
 					}
 					else if (e.CommandName == "reply")
 					{
-						Console.WriteLine("REFKDHJFJKSDHFLJSHDFSJKNKXMCN #)(@$");
-						Panel pnlReplyForm = (Panel)e.Item.FindControl("pnlReplyForm");
-
-						if (pnlReplyForm != null)
-						{
-							pnlReplyForm.Style["display"] = "block";
-						}
+						pReply.Visible = true;
+						txtReplyMsg.Text = string.Empty;
 					}
 
 				}
@@ -233,6 +133,22 @@ namespace Online_Food.Admin
 				// Refresh contacts after deletion
 				getContacts();
 			}
+		}
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+		protected void btnCancel_Click(object sender, EventArgs e)
+		{
+			lblMsg.Visible = true;
+			rfvReplyMsg.Enabled = false;
+			lblMsg.Text = "clocked";
+			lblMsg.CssClass = "alert alert-success";
+			txtReplyMsg.Text = "";
+			pReply.Visible = false;
+			hdnId.Value = "0";
 		}
 	}
 }

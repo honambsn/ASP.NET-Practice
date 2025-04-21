@@ -135,13 +135,14 @@ namespace Online_Food.Admin
 					{
 						EditOrderStatus(cm, e);
 					}
-					else if (e.CommandName == "delete")
-					{
-						//DeleteCategory(cm, e);
-						lblMsg.Visible = true;
-						lblMsg.Text = "Implementing";
-						lblMsg.CssClass = "alert alert-danger";
-					}
+					// no delete the order receipt
+					//else if (e.CommandName == "delete")
+					//{
+					//	//DeleteCategory(cm, e);
+					//	lblMsg.Visible = true;
+					//	lblMsg.Text = "Implementing";
+					//	lblMsg.CssClass = "alert alert-danger";
+					//}
 				}
 				catch (Exception ex)
 				{
