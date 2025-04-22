@@ -720,7 +720,9 @@ a.bg-danger:hover {
 .table-responsive {
   display: inline-block;
   width: 100%;
-  overflow-x: auto; }
+  overflow-x: auto;
+    margin-top: 0px;
+}
 
 .table.table-xl td,
 .table.table-xl th {
