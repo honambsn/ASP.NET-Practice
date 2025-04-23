@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Online_Food.Admin
 {
@@ -57,9 +58,9 @@ namespace Online_Food.Admin
 			}
 		}
 
-		
+
 		protected void rContacts_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
+		{
 			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
 			{
 				if (cm.State == ConnectionState.Closed)
@@ -94,7 +95,9 @@ namespace Online_Food.Admin
 					{
 						pReply.Visible = true;
 						txtReplyMsg.Text = string.Empty;
+						UpdateReply(cm, e);
 						//pConfirmUpdate.Visible = true;
+
 					}
 
 				}
@@ -136,8 +139,8 @@ namespace Online_Food.Admin
 			}
 		}
 
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
+		protected void btnUpdate_Click(object sender, EventArgs e)
+		{
 			lblMsg.Visible = true;
 			lblMsg.Text = "Reply updated";
 			lblMsg.CssClass = "alert alert-success";
@@ -174,16 +177,108 @@ namespace Online_Food.Admin
 			pReply.Visible = true;
 		}
 
-		private void EditReply(SqlConnection cm, RepeaterCommandEventArgs e)
+
+		private void clear()
+		{
+			txtReplyMsg.Text = string.Empty;
+			hdnId.Value = "0";
+			//btnAddOrUpdate.Text = "Add";
+		}
+
+		protected void btnClear_Click(object sender, EventArgs e)
+		{
+			clear();
+		}
+
+		private void UpdateReply(SqlConnection cm, RepeaterCommandEventArgs e)
 		{
 			using (SqlCommand cmd = new SqlCommand("ContactSp", cm))
 			{
 				cmd.Parameters.Clear();
 
 				cmd.Parameters.AddWithValue("@Action", "GETBYID");
-				//cmd.Parameters.AddWithValue
+				cmd.Parameters.AddWithValue("@ContactID", e.CommandArgument);
+				cmd.CommandType = CommandType.StoredProcedure;
+
+				try
+				{
+					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					{
+						DataTable dt = new DataTable();
+						sda.Fill(dt);
+
+						if (dt.Rows.Count > 0)
+						{
+							txtReplyMsg.Text = dt.Rows[0]["ReplyMsg"].ToString();
+
+							int feedbackID = Convert.ToInt32(dt.Rows[0]["FeedbackID"]);
+
+							bool hasReply = CheckIfReplyExists(cm, feedbackID);
+							
+
+							if (hasReply)
+							{
+								btnUpdate.Text = "Update";
+								btnUpdate.Visible = true;
+								btnCancel.Visible = true;
+							}
+							else
+							{
+								btnUpdate.Text = "Add";
+								btnUpdate.Visible = true;
+								btnCancel.Visible = false;
+							}
+						}
+					}
+				}
+				catch (SqlException ex)
+				{
+					Console.WriteLine("SQL Error: " + ex.Message);
+				}
+				catch (Exception ex)
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text = "Error: " + ex.Message;
+					lblMsg.CssClass = "alert alert-danger";
+				}
+				finally
+				{
+					if (con != null && con.State == ConnectionState.Open)
+					{
+						con.Close();
+					}
+				}
 			}
 		}
+
+		private bool CheckIfReplyExists(SqlConnection cm, int feedbackID)
+		{
+			bool hasReply = false;
+
+			using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tblReplies WHERE FeedbackID = @FeedbackID", cm))
+			{
+				cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
+
+				try
+				{
+					cm.Open();
+					int count = (int)cmd.ExecuteScalar();
+					hasReply = count > 0; // Nếu có ít nhất 1 phản hồi, trả về true
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("Lỗi kiểm tra phản hồi: " + ex.Message);
+				}
+				finally
+				{
+					if (cm.State == ConnectionState.Open)
+						cm.Close();
+				}
+			}
+
+			return hasReply;
+		}
+
 	}
 }
 
