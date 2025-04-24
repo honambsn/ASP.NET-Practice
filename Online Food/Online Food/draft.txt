@@ -1,0 +1,148 @@
+private void UpdateReply(SqlConnection cm, RepeaterCommandEventArgs e)
+{
+    using (SqlCommand cmd = new SqlCommand("ContactSp", cm))
+    {
+        cmd.Parameters.Clear();
+        cmd.Parameters.AddWithValue("@Action", "GETBYID");
+        cmd.Parameters.AddWithValue("@ContactID", e.CommandArgument);
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dtContact = new DataTable();
+                sda.Fill(dtContact);
+
+                if (dtContact.Rows.Count > 0)
+                {
+                    // Lấy thông tin từ bảng tblContact
+                    txtReplyMsg.Text = dtContact.Rows[0]["Message"].ToString();
+                    int feedbackID = Convert.ToInt32(dtContact.Rows[0]["FeedbackID"]);
+
+                    // Kiểm tra xem đã có phản hồi trong bảng tblReplies
+                    bool hasReply = CheckIfReplyExists(cm, feedbackID);
+
+                    // Cập nhật trạng thái cho các button
+                    hdnId.Value = dtContact.Rows[0]["ContactID"].ToString();
+
+                    // Nếu đã có phản hồi, hiển thị nút "Cập nhật", ngược lại hiển thị nút "Thêm"
+                    if (hasReply)
+                    {
+                        // Hiển thị nút "Cập nhật"
+                        btnUpdate.Text = "Update";
+                        btnUpdate.Visible = true;
+                        btnCancel.Visible = true;
+                    }
+                    else
+                    {
+                        // Hiển thị nút "Thêm" cho trường hợp không có phản hồi
+                        btnUpdate.Text = "Add";
+                        btnUpdate.Visible = true;
+                        btnCancel.Visible = false;
+                    }
+                    btnClose.Visible = true;
+                }
+            }
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine("Lỗi SQL: " + ex.Message);
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Visible = true;
+            lblMsg.Text = "Lỗi: " + ex.Message;
+            lblMsg.CssClass = "alert alert-danger";
+        }
+        finally
+        {
+            if (cm != null && cm.State == ConnectionState.Open)
+            {
+                cm.Close();
+            }
+        }
+    }
+}
+
+private bool CheckIfReplyExists(SqlConnection cm, int feedbackID)
+{
+    bool hasReply = false;
+
+    using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tblReplies WHERE FeedbackID = @FeedbackID", cm))
+    {
+        cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
+
+        try
+        {
+            cm.Open();
+            int count = (int)cmd.ExecuteScalar();
+            hasReply = count > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Lỗi kiểm tra phản hồi: " + ex.Message);
+        }
+        finally
+        {
+            if (cm.State == ConnectionState.Open)
+                cm.Close();
+        }
+    }
+
+    return hasReply;
+}
+
+private void AddOrUpdateReply(SqlConnection cm, int feedbackID, string replyMsg)
+{
+    using (SqlCommand cmd = new SqlCommand("Reply_Crud", cm))
+    {
+        cmd.Parameters.Clear();
+
+        if (string.IsNullOrEmpty(replyMsg))
+        {
+            lblMsg.Visible = true;
+            lblMsg.Text = "Phản hồi không được để trống!";
+            return;
+        }
+
+        if (btnUpdate.Text == "Add")
+        {
+            // Nếu là Thêm mới
+            cmd.Parameters.AddWithValue("@Action", "INSERT");
+            cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
+            cmd.Parameters.AddWithValue("@AdminName", "Admin"); // Tên Admin thực tế
+            cmd.Parameters.AddWithValue("@ReplyMsg", replyMsg);
+        }
+        else if (btnUpdate.Text == "Update")
+        {
+            // Nếu là Cập nhật
+            cmd.Parameters.AddWithValue("@Action", "UPDATE");
+            cmd.Parameters.AddWithValue("@ReplyID", hdnId.Value); // ID phản hồi từ hidden field
+            cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
+            cmd.Parameters.AddWithValue("@AdminName", "Admin"); // Tên Admin thực tế
+            cmd.Parameters.AddWithValue("@ReplyMsg", replyMsg);
+        }
+
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            cm.Open();
+            cmd.ExecuteNonQuery();
+            lblMsg.Visible = true;
+            lblMsg.Text = "Phản hồi đã được " + (btnUpdate.Text == "Add" ? "thêm" : "cập nhật") + " thành công!";
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Visible = true;
+            lblMsg.Text = "Lỗi: " + ex.Message;
+            lblMsg.CssClass = "alert alert-danger";
+        }
+        finally
+        {
+            if (cm.State == ConnectionState.Open)
+                cm.Close();
+        }
+    }
+}

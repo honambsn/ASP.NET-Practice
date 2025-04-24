@@ -69,13 +69,40 @@ namespace Online_Food.Admin
 		protected global::System.Web.UI.WebControls.HiddenField hdnId;
 
 		/// <summary>
+		/// txtFeedbackID control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtFeedbackID;
+
+		/// <summary>
+		/// txtAdminName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtAdminName;
+
+		/// <summary>
+		/// txtReplyDate control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtReplyDate;
+
+		/// <summary>
 		/// btnUpdate control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnUpdate;
+		protected global::System.Web.UI.WebControls.LinkButton btnUpdate;
 
 		/// <summary>
 		/// btnCancel control.
@@ -85,41 +112,5 @@ namespace Online_Food.Admin
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button btnCancel;
-
-		/// <summary>
-		/// btnClose control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClose;
-
-		/// <summary>
-		/// pConfirmUpdate control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pConfirmUpdate;
-
-		/// <summary>
-		/// btnConfirmUpdate control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnConfirmUpdate;
-
-		/// <summary>
-		/// btnCancelUpdate control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnCancelUpdate;
 	}
 }

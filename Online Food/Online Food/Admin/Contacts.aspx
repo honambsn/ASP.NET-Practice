@@ -126,7 +126,7 @@
                                                                     </asp:LinkButton>
 
                                                                     <asp:LinkButton ID="lnlReply" Text="Reply" runat="server" CommandName="reply"
-                                                                        CssClass="badge bg-info" CommandArgument='<%#Eval("ContactID") %>'
+                                                                        CssClass="badge bg-info" CommandArgument='<%#Eval("FeedbackID") %>'
                                                                         OnClientClick="return confirm('Do you want to reply this record?');">
                                                                         <i class="ti-comment-alt"></i>
                                                                     </asp:LinkButton>
@@ -163,8 +163,30 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group">
+                                                        <label for="txtFeedbackID">Feedback ID</label>
+                                                        <div>
+                                                            <asp:TextBox ID="txtFeedbackID" runat="server" CssClass="form-control" Enabled="false" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="txtAdminName">Admin Name</label>
+                                                        <div>
+                                                            <asp:TextBox ID="txtAdminName" runat="server" CssClass="form-control" ReadOnly="false" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="txtReplyDate">Reply Date</label>
+                                                        <div>
+                                                            <asp:TextBox ID="txtReplyDate" runat="server" CssClass="form-control" ReadOnly="true" />
+                                                        </div>
+                                                    </div>
+
                                                     <div class="pb-5">
-                                                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click" OnClientClick="return validateAndConfirm();" />
+                                                        <%--<asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
+                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>--%>
+                                                        <asp:LinkButton ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary"
+                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>
                                                         &nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" CausesValidation="false"
                                                             OnClientClick="return confirm('Do you want to cancel this reply?');" />
@@ -172,17 +194,6 @@
 
                                                 </div>
 
-                                                <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="closePanel();" CausesValidation="false" Visible="false" />
-                                                
-                                                
-                                                <!-- Confirmation Panel -->
-                                                <asp:Panel ID="pConfirmUpdate" runat="server" Visible="false">
-                                                    <div class="alert alert-warning" role="alert">
-                                                        Are you sure you want to update the reply?
-                                                        <asp:Button ID="btnConfirmUpdate" runat="server" Text="Yes" CssClass="btn btn-success" OnClick="btnConfirmUpdate_Click" />
-                                                        <asp:Button ID="btnCancelUpdate" runat="server" Text="No" CssClass="btn btn-danger" OnClick="btnCancelUpdate_Click" CausesValidation="false" />
-                                                    </div>
-                                                </asp:Panel>
                                             </asp:Panel>
                                         </div>
 

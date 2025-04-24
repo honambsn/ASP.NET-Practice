@@ -1,4 +1,5 @@
-﻿using Online_Food.User;
+﻿using MongoDB.Driver.Core.Configuration;
+using Online_Food.User;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -117,6 +118,7 @@ namespace Online_Food.Admin
 			}
 		}
 
+
 		private void DeleteContact(int contactId)
 		{
 			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
@@ -139,13 +141,6 @@ namespace Online_Food.Admin
 			}
 		}
 
-		protected void btnUpdate_Click(object sender, EventArgs e)
-		{
-			lblMsg.Visible = true;
-			lblMsg.Text = "Reply updated";
-			lblMsg.CssClass = "alert alert-success";
-		}
-
 		protected void btnCancel_Click(object sender, EventArgs e)
 		{
 			//pConfirmUpdate.Visible = true;
@@ -158,82 +153,47 @@ namespace Online_Food.Admin
 			hdnId.Value = "0";
 		}
 
-		protected void btnConfirmUpdate_Click(object sender, EventArgs e)
+		protected void btnUpdate_Click(object sender, EventArgs e)
 		{
-			// Perform the update operation after confirmation
-			lblMsg.Visible = true;
-			lblMsg.Text = "Reply updated";
-			lblMsg.CssClass = "alert alert-success";
-
-			// Hide the confirmation panel and show the original panel
-			pConfirmUpdate.Visible = false;
-			pReply.Visible = true;
-		}
-
-		protected void btnCancelUpdate_Click(object sender, EventArgs e)
-		{
-			// Cancel the update and hide the confirmation panel
-			pConfirmUpdate.Visible = false;
-			pReply.Visible = true;
+			
 		}
 
 
-		private void clear()
-		{
-			txtReplyMsg.Text = string.Empty;
-			hdnId.Value = "0";
-			//btnAddOrUpdate.Text = "Add";
-		}
-
-		protected void btnClear_Click(object sender, EventArgs e)
-		{
-			clear();
-		}
 
 		private void UpdateReply(SqlConnection cm, RepeaterCommandEventArgs e)
 		{
-			using (SqlCommand cmd = new SqlCommand("ContactSp", cm))
+			using (SqlCommand cmd = new SqlCommand("Reply_Crud", cm))
 			{
 				cmd.Parameters.Clear();
 
 				cmd.Parameters.AddWithValue("@Action", "GETBYID");
-				cmd.Parameters.AddWithValue("@ContactID", e.CommandArgument);
+				cmd.Parameters.AddWithValue("@FeedbackID", e.CommandArgument);
 				cmd.CommandType = CommandType.StoredProcedure;
-
+				
 				try
 				{
-					using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+					using(SqlDataAdapter sda = new SqlDataAdapter(cmd))
 					{
 						DataTable dt = new DataTable();
 						sda.Fill(dt);
 
 						if (dt.Rows.Count > 0)
 						{
+							txtAdminName.Text = dt.Rows[0]["AdminName"].ToString();
+							//txtFeedbackID.Text = dt.Rows[0]["FeedbackID"].ToString();
+							//txtReplyDate.Text = dt.Rows[0]["ReplyDate"].ToString();
 							txtReplyMsg.Text = dt.Rows[0]["ReplyMsg"].ToString();
 
-							int feedbackID = Convert.ToInt32(dt.Rows[0]["FeedbackID"]);
-
-							bool hasReply = CheckIfReplyExists(cm, feedbackID);
-							
-
-							if (hasReply)
-							{
-								btnUpdate.Text = "Update";
-								btnUpdate.Visible = true;
-								btnCancel.Visible = true;
-							}
-							else
-							{
-								btnUpdate.Text = "Add";
-								btnUpdate.Visible = true;
-								btnCancel.Visible = false;
-							}
+							LinkButton btn = e.Item.FindControl("btnUpdate") as LinkButton;
+						}
+						else
+						{
+							txtAdminName.Text = "NULL";
+							txtFeedbackID.Text = "NULL";
+							txtReplyDate.Text = "NULL";
+							txtReplyMsg.Text = "NULL";
 						}
 					}
-				}
-				catch (SqlException ex)
-				{
-					Console.WriteLine("SQL Error: " + ex.Message);
 				}
 				catch (Exception ex)
 				{
@@ -250,88 +210,6 @@ namespace Online_Food.Admin
 				}
 			}
 		}
-
-		private bool CheckIfReplyExists(SqlConnection cm, int feedbackID)
-		{
-			bool hasReply = false;
-
-			using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tblReplies WHERE FeedbackID = @FeedbackID", cm))
-			{
-				cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
-
-				try
-				{
-					cm.Open();
-					int count = (int)cmd.ExecuteScalar();
-					hasReply = count > 0; // Nếu có ít nhất 1 phản hồi, trả về true
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine("Lỗi kiểm tra phản hồi: " + ex.Message);
-				}
-				finally
-				{
-					if (cm.State == ConnectionState.Open)
-						cm.Close();
-				}
-			}
-
-			return hasReply;
-		}
-
 	}
 }
 
-
-
-//public void ReplyButton_Click(object sender, EventArgs e)
-//{
-//	// Lấy FeedbackID từ UI (ví dụ từ nút nhấn của người dùng)
-//	int feedbackID = GetSelectedFeedbackID();
-
-//	// Kiểm tra xem contact đã có phản hồi chưa
-//	bool replyExists = CheckIfReplyExists(feedbackID);
-
-//	if (replyExists)
-//	{
-//		// Nếu đã có phản hồi, thực hiện cập nhật
-//		UpdateReply(feedbackID, "Tên Admin", "Cập nhật tin nhắn phản hồi");
-//	}
-//	else
-//	{
-//		// Nếu chưa có phản hồi, thực hiện thêm mới
-//		InsertReply(feedbackID, "Tên Admin", "Tin nhắn phản hồi mới");
-//	}
-//}
-
-//// Kiểm tra xem phản hồi đã tồn tại cho FeedbackID chưa
-//private bool CheckIfReplyExists(int feedbackID)
-//{
-//	string query = "SELECT COUNT(*) FROM dbo.tblReplies WHERE FeedbackID = @FeedbackID";
-//	int count = ExecuteScalar(query, new SqlParameter("@FeedbackID", feedbackID));
-//	return count > 0;
-//}
-
-//// Cập nhật phản hồi nếu đã có
-//private void UpdateReply(int feedbackID, string adminName, string replyMsg)
-//{
-//	string procedureName = "Reply_Crud";
-//	ExecuteNonQuery(procedureName,
-//					new SqlParameter("@Action", "UPDATE"),
-//					new SqlParameter("@FeedbackID", feedbackID),
-//					new SqlParameter("@AdminName", adminName),
-//					new SqlParameter("@ReplyMsg", replyMsg));
-//}
-
-//// Thêm mới phản hồi nếu chưa có
-//private void InsertReply(int feedbackID, string adminName, string replyMsg)
-//{
-//	string newReplyID = Guid.NewGuid().ToString("N").Substring(0, 10);  // Tạo ReplyID mới
-//	string procedureName = "Reply_Crud";
-//	ExecuteNonQuery(procedureName,
-//					new SqlParameter("@Action", "INSERT"),
-//					new SqlParameter("@ReplyID", newReplyID),
-//					new SqlParameter("@FeedbackID", feedbackID),
-//					new SqlParameter("@AdminName", adminName),
-//					new SqlParameter("@ReplyMsg", replyMsg));
-//}
