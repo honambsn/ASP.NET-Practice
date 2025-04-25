@@ -1,15 +1,8 @@
-﻿using MongoDB.Driver.Core.Configuration;
-using Online_Food.User;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Web;
-using System.Web.UI;
+using System.Web.Services.Description;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace Online_Food.Admin
 {
@@ -153,12 +146,7 @@ namespace Online_Food.Admin
 			hdnId.Value = "0";
 		}
 
-		protected void btnUpdate_Click(object sender, EventArgs e)
-		{
-			
-		}
-
-
+		
 
 		private void UpdateReply(SqlConnection cm, RepeaterCommandEventArgs e)
 		{
@@ -180,11 +168,18 @@ namespace Online_Food.Admin
 						if (dt.Rows.Count > 0)
 						{
 							txtAdminName.Text = dt.Rows[0]["AdminName"].ToString();
+							string newReplyID = Guid.NewGuid().ToString().Substring(0, 10);
+							cmd.Parameters.AddWithValue("@ReplyID", newReplyID); // Ensure ReplyID is 10 characters long
+
 							//txtFeedbackID.Text = dt.Rows[0]["FeedbackID"].ToString();
 							//txtReplyDate.Text = dt.Rows[0]["ReplyDate"].ToString();
 							txtReplyMsg.Text = dt.Rows[0]["ReplyMsg"].ToString();
 
 							LinkButton btn = e.Item.FindControl("btnUpdate") as LinkButton;
+							if (btn != null)
+							{
+								btn.CssClass = "badge bdagege-warning";
+							}
 						}
 						else
 						{
@@ -207,6 +202,90 @@ namespace Online_Food.Admin
 					{
 						con.Close();
 					}
+				}
+			}
+		}
+
+		private void clear()
+		{
+			txtAdminName.Text = string.Empty;
+			txtFeedbackID.Text = string.Empty;
+			txtReplyMsg.Text = string.Empty;
+			hdnId.Value = "0";
+			btnUpdate.Text = "Add";
+		}
+
+		protected void btnUpdate_Click(object sender, EventArgs e)
+		{
+			using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+			{
+				string actionName = string.Empty;
+				int feedbackId;
+				if (!int.TryParse(hdnId.Value, out feedbackId))
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text = "Invalid Feedback ID.";
+					lblMsg.CssClass = "alert alert-danger";
+				}
+				if (cm.State == ConnectionState.Closed)
+				{
+					cm.Open();
+				}
+
+				try
+				{
+					using (SqlCommand cmd = new SqlCommand("Reply_Crud", cm))
+					{
+
+						cmd.Parameters.Clear();
+						clear();
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.AddWithValue("@Action", feedbackId == 0 ? "INSERT" : "UPDATE");
+						cmd.Parameters.AddWithValue("@ReplyID", Guid.NewGuid().ToString().Substring(0, 10)); // Ensure ReplyID is 10 characters long
+						cmd.Parameters.AddWithValue("@AdminName", txtAdminName.Text.Trim());
+						//cmd.Parameters.AddWithValue("@FeedbackID", int.Parse(txtFeedbackID.Text));
+						//{
+						//	lblMsg.Text = "Invalid Feedback ID.";
+						//	return;
+						//}
+						//cmd.Parameters.AddWithValue("@FeedbackID", feedbackId);
+						//cmd.Parameters.AddWithValue("@FeedbackID", int.Parse(txtFeedbackID.Text)); // Ensure txtFeedbackID has a valid value
+						//cmd.Parameters.AddWithValue("@ReplyDate", DateTime.Now);
+						cmd.Parameters.AddWithValue("@ReplyMsg", txtReplyMsg.Text.Trim());
+
+
+						cmd.ExecuteNonQuery();
+						actionName = feedbackId == 0 ? "INSERT" : "UPDATE";
+
+
+
+
+						lblMsg.Visible = true;
+						lblMsg.Text = "Product " + actionName + " successfully.";
+						lblMsg.CssClass = "alert alert-success";
+
+						// Refresh contacts after reply
+						getContacts();
+
+						clear();
+					}
+				}
+				catch (Exception ex)
+				{
+					lblMsg.Visible = true;
+					lblMsg.Text = "Error: " + ex.Message;
+					lblMsg.CssClass = "alert alert-danger";
+				}
+				finally
+				{
+					pReply.Visible = false;
+					txtReplyMsg.Text = "";
+					if (con != null && con.State == ConnectionState.Open)
+					{
+						con.Close();
+					}
+
+
 				}
 			}
 		}

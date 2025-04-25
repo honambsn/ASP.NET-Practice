@@ -185,7 +185,7 @@
                                                     <div class="pb-5">
                                                         <%--<asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
                                                             OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>--%>
-                                                        <asp:LinkButton ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary"
+                                                        <asp:LinkButton ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
                                                             OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>
                                                         &nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" CausesValidation="false"
