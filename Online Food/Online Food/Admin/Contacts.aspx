@@ -153,40 +153,38 @@
                                                         <div>
                                                             <asp:TextBox ID="txtReplyMsg" runat="server" CssClass="form-control"
                                                                 placeholder="Enter Reply Message" TextMode="MultiLine" Style="height: 200px;"></asp:TextBox>
-                                                            <%--<asp:RequiredFieldValidator ID="rfvReplyMsg" runat="server"
-                                                                ErrorMessage="Message is required" ForeColor="Red" Display="Dynamic"
-                                                                SetFocusOnError="true" ControlToValidate="txtReplyMsg" Font-Bold="true" InitialValue=""></asp:RequiredFieldValidator>--%>
                                                             <asp:RequiredFieldValidator ID="rfvReplyMsg" runat="server"
                                                                 ErrorMessage="Message is required" ForeColor="Red" Display="Dynamic"
                                                                 SetFocusOnError="true" ControlToValidate="txtReplyMsg" Font-Bold="true" InitialValue="" />
-                                                            <asp:HiddenField ID="hdnId" runat="server" Value="0" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="txtFeedbackID">Feedback ID</label>
                                                         <div>
-                                                            <asp:TextBox ID="txtFeedbackID" runat="server" CssClass="form-control" Enabled="false" />
+                                                            <asp:TextBox ID="txtFeedbackID" runat="server" CssClass="form-control" ReadOnly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="txtAdminName">Admin Name</label>
                                                         <div>
-                                                            <asp:TextBox ID="txtAdminName" runat="server" CssClass="form-control" ReadOnly="false" />
+                                                            <asp:TextBox ID="txtAdminName" runat="server" CssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="txtReplyDate">Reply Date</label>
                                                         <div>
-                                                            <asp:TextBox ID="txtReplyDate" runat="server" CssClass="form-control" ReadOnly="true" />
+                                                            <asp:TextBox ID="txtReplyDate" runat="server" CssClass="form-control" ReadOnly="true"/>
                                                         </div>
                                                     </div>
 
                                                     <div class="pb-5">
-                                                        <%--<asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
-                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>--%>
+                                                        <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="btnAdd_Click"
+                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="add" Visible="true"/>
+                                                        &nbsp;
+
                                                         <asp:LinkButton ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
-                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update"/>
+                                                            OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update" Visible="false"/>
                                                         &nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" CausesValidation="false"
                                                             OnClientClick="return confirm('Do you want to cancel this reply?');" />

@@ -60,15 +60,6 @@ namespace Online_Food.Admin
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReplyMsg;
 
 		/// <summary>
-		/// hdnId control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.HiddenField hdnId;
-
-		/// <summary>
 		/// txtFeedbackID control.
 		/// </summary>
 		/// <remarks>
@@ -94,6 +85,15 @@ namespace Online_Food.Admin
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtReplyDate;
+
+		/// <summary>
+		/// btnAdd control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnAdd;
 
 		/// <summary>
 		/// btnUpdate control.
