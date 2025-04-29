@@ -91,12 +91,6 @@ namespace Online_Food.Admin
 						//pConfirmUpdate.Visible = true;
 
 					}
-					else if (e.CommandName == "add")
-					{
-						pReply.Visible = true;
-						txtReplyMsg.Text = string.Empty;
-						UpdateReply(cm, e);
-					}
 
 				}
 				catch (Exception ex)
@@ -337,8 +331,8 @@ namespace Online_Food.Admin
 				else
 				{
 					// Nếu chưa có phản hồi, chuẩn bị cho việc thêm mới
-					txtReplyMsg.Text = string.Empty;
-					txtAdminName.Text = string.Empty;
+					txtReplyMsg.Text = "null";
+					txtAdminName.Text = "null";
 					txtReplyDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 					btnAdd.Visible = true;
 					btnUpdate.Visible = false;

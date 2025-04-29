@@ -179,14 +179,14 @@
                                                     </div>
 
                                                     <div class="pb-5">
-                                                        <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="btnAdd_Click"
+                                                        <asp:LinkButton ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click"
                                                             OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="add" Visible="true"/>
                                                         &nbsp;
 
                                                         <asp:LinkButton ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="btnUpdate_Click"
                                                             OnClientClick="return validateAndConfirm();" CommandArgument='<%#Eval("FeedbackID") %>' CommandName="update" Visible="false"/>
                                                         &nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="btnCancel_Click" CausesValidation="false"
+                                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger" OnClick="btnCancel_Click" CausesValidation="false"
                                                             OnClientClick="return confirm('Do you want to cancel this reply?');" />
                                                     </div>
 
