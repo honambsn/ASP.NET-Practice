@@ -553,7 +553,7 @@
                                     <%--<li class="pcoded-hasmenu ">--%>
                                     <li>
                                         <%--<a href="javascript:void(0)">--%>
-                                        <a href="#">
+                                        <a href="Report.aspx">
                                             <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
                                             <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Selling Report</span>
                                             <span class="pcoded-mcaret"></span>
