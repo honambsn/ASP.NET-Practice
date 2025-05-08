@@ -143,7 +143,7 @@
                                                                         <th>Total Cost</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                    <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
                                                             <tr>
@@ -152,6 +152,7 @@
                                                                 <td><%# Eval("Email") %> </td>
                                                                 <td><%# Eval("TotalOrders") %> </td>
                                                                 <td><%# Eval("TotalPrice") %> </td>
+                                                                </td>
                                                             </tr>
                                                         </ItemTemplate>
                                                         <FooterTemplate>
@@ -159,6 +160,7 @@
                                                             </table>
                                                         </FooterTemplate>
                                                     </asp:Repeater>
+
                                                 </div>
                                             </div>
                                         </div>
