@@ -104,24 +104,24 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="container">
-                                        <div class="form-group col-md-4">
-                                            <label>From Date</label>
-                                            <asp:RequiredFieldValidator ID="rfvFromDate" runat="server" ForeColor="Red" ErrorMessage="*"
-                                                SetFocusOnError="true" Display="Dynamic" ControlToValidate="txtFromDate"></asp:RequiredFieldValidator>
-                                            <asp:TextBox ID="txtFromDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                                        </div>
+                                            <div class="form-group col-md-4">
+                                                <label>From Date</label>
+                                                <asp:RequiredFieldValidator ID="rfvFromDate" runat="server" ForeColor="Red" ErrorMessage="*"
+                                                    SetFocusOnError="true" Display="Dynamic" ControlToValidate="txtFromDate"></asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="txtFromDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                            </div>
 
-                                        <div class="form-group col-md-4">
-                                            <label>To Date</label>
-                                            <asp:RequiredFieldValidator ID="rfvToDate" runat="server" ForeColor="Red" ErrorMessage="*"
-                                                SetFocusOnError="true" Display="Dynamic" ControlToValidate="txtToDate"></asp:RequiredFieldValidator>
-                                            <asp:TextBox ID="txtToDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                                        </div>
+                                            <div class="form-group col-md-4">
+                                                <label>To Date</label>
+                                                <asp:RequiredFieldValidator ID="rfvToDate" runat="server" ForeColor="Red" ErrorMessage="*"
+                                                    SetFocusOnError="true" Display="Dynamic" ControlToValidate="txtToDate"></asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="txtToDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                            </div>
 
-                                        <div class="form-group col-md-4">
-                                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary mt-md-4" OnClick="btnSearch_Click" />
+                                            <div class="form-group col-md-4">
+                                                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary mt-md-4" OnClick="btnSearch_Click" />
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                                 <div class="card-block">
                                     <div class="row">
@@ -129,8 +129,8 @@
                                         <div class="col-12 mobile-inputs">
                                             <h4 class="sub-title">Selling Report</h4>
                                             <div class="card-block table-border-style">
-                                                <div class="table-responsive"> 
-                                                    
+                                                <div class="table-responsive">
+
                                                     <asp:Repeater ID="rReport" runat="server">
                                                         <HeaderTemplate>
                                                             <table class="table data-table-export table-hover nowrap">
@@ -143,7 +143,7 @@
                                                                         <th>Total Cost</th>
                                                                     </tr>
                                                                 </thead>
-                                                                    <tbody>
+                                                                <tbody>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
                                                             <tr>
