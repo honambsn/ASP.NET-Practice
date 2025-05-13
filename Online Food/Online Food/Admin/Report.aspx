@@ -95,7 +95,8 @@
     </div>--%>
 
 
-    <div class="pcoded-innter-content pt-0">
+    <div class="pcoded-inner-content pt-0">
+
         <div class="main-body">
             <div class="page-wrapper">
                 <div class="page-body">
@@ -104,6 +105,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="container">
+                                        <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label>From Date</label>
                                                 <asp:RequiredFieldValidator ID="rfvFromDate" runat="server" ForeColor="Red" ErrorMessage="*"
@@ -122,6 +124,8 @@
                                                 <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary mt-md-4" OnClick="btnSearch_Click" />
                                             </div>
                                         </div>
+
+                                    </div>
                                 </div>
                                 <div class="card-block">
                                     <div class="row">
@@ -152,7 +156,6 @@
                                                                 <td><%# Eval("Email") %> </td>
                                                                 <td><%# Eval("TotalOrders") %> </td>
                                                                 <td><%# Eval("TotalPrice") %> </td>
-                                                                </td>
                                                             </tr>
                                                         </ItemTemplate>
                                                         <FooterTemplate>

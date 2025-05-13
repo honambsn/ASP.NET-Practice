@@ -11,7 +11,7 @@ namespace Online_Food.Admin
 {
 	public partial class Report : System.Web.UI.Page
 	{
-		SqlConnection con;
+		SqlConnection con; 
 		SqlCommand cmd;
 		SqlDataAdapter sda;
 		DataTable dt;
