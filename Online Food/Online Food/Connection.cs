@@ -124,12 +124,12 @@ namespace Online_Food
 		SqlCommand cmd;
 		SqlDataReader sdr;
 
-		public int Count(string name)
+		public int Count(string tableName)
 		{
 			int count = 0;
 			con = new SqlConnection(Connection.GetConnectionString());
 			cmd = new SqlCommand("Dashboard", con);
-			cmd.Parameters.AddWithValue("@Action", name);
+			cmd.Parameters.AddWithValue("@Action", tableName);
 			cmd.CommandType = CommandType.StoredProcedure;
 
 			con.Open();

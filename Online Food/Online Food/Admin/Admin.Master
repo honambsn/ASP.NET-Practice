@@ -110,10 +110,11 @@
                                 <i class="ti-menu"></i>
                             </a>
                             <%--<a class="mobile-search morphsearch-search" href="#">
-                            <i class="ti-search"></i>
-                        </a>--%>
+                                <i class="ti-search"></i>
+                            </a>--%>
                             <a href="index.html">
-                                <img class="img-fluid" src="../assets/images/logo.png" alt="Theme-Logo" />
+                                <%--<img class="img-fluid" src="../assets/images/logo.png" alt="Theme-Logo" />--%>
+                                <h3 class="pl-2">Admin Area</h3>
                             </a>
                             <a class="mobile-options">
                                 <i class="ti-more"></i>
@@ -998,7 +999,7 @@
     <script src="../assets/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="../assets/datatables/js/dataTables.responsive.min.js"></script>
     <script src="../assets/datatables/js/responsive.bootstrap4.min.js"></script>
-    
+
 
     <%--btn for export datatable--%>
     <script src="../assets/datatables/js/dataTables.buttons.min.js"></script>
