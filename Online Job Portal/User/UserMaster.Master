@@ -64,7 +64,7 @@
                                             <ul id="navigation">
                                                 <li><a href="index.html">Home</a></li>
                                                 <li><a href="job_listing.html">Find a Jobs </a></li>
-                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="About.aspx">About</a></li>
                                                 <li><a href="#">Page</a>
                                                     <ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
@@ -73,7 +73,7 @@
                                                         <li><a href="job_details.html">job Details</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="Contact.aspx">Contact</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -159,8 +159,9 @@
                                     <!-- Form -->
                                     <div class="footer-form">
                                         <div id="mc_embed_signup">
-                                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                                method="get" class="subscribe_form relative mail_part">
+                                            <%--<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                                method="get" class="subscribe_form relative mail_part">--%>
+                                            <div class="subscribe_form relative mail_part">
                                                 <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
                                                     class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
                                                     onblur="this.placeholder = ' Email Address '">
@@ -170,7 +171,8 @@
                                                         <img src="../assets/img/icon/form.png" alt=""></button>
                                                 </div>
                                                 <div class="mt-10 info"></div>
-                                            </form>
+                                            </div>
+                                            <%--</form>--%>
                                         </div>
                                     </div>
                                 </div>
