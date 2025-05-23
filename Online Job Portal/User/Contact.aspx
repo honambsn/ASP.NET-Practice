@@ -310,7 +310,8 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <%--<button type="submit" class="button button-contactForm boxed-btn">Send</button>--%>
+                            <asp:Button ID="btnSend" runat="server" Text="Send" CssClass="button button-contactForm boxed-btn" OnClick="btnSend_Click" />
                         </div>
                     </div>
                     <%--</form>--%>
