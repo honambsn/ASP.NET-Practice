@@ -79,13 +79,20 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <asp:DropDownList ID="ddlCountry" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-contact w-100"
+                                         AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
+                                        <asp:ListItem Value="0">Select Country</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please select a country."
+                                        ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlCountry"
+                                         InitialValue="0"></asp:RequiredFieldValidator>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>" SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group mt-3">
-                            <asp:Button ID="btnSend" runat="server" Text="Send" CssClass="button button-contactForm boxed-btn" OnClick="btnSend_Click" />
+                            <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn" OnClick="btnRegister_Click" />
                         </div>
                     </div>
                 </div>
