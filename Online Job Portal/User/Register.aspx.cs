@@ -16,23 +16,49 @@ namespace Online_Job_Portal.User
         {
             if (!IsPostBack)
             {
-                using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM JobCategory", cm);
-                    
-                    if (cm.State == System.Data.ConnectionState.Closed)
-                    {
-                        cm.Open();
-                    }
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    ddlCountry.DataSource = reader;
-                    ddlCountry.DataTextField = "CountryName";
-                    ddlCountry.DataBind();
-
-                }
+                LoadCountries();
             }
         }
+
+        private void LoadCountries()
+        {
+            try
+            {
+                using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                {
+                    if (cm.State == System.Data.ConnectionState.Closed)
+                        cm.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("CountrySP", cm))
+                    {
+                        cmd.Parameters.AddWithValue("@Action", "SELECT");
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            ddlCountry.Items.Clear();
+                            ddlCountry.Items.Add(new ListItem("Select country", "0"));
+
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    string country = reader["CountryName"].ToString();
+                                    ddlCountry.Items.Add(new ListItem(country, country));
+                                }
+                            }
+                            ddlCountry.SelectedValue = "0"; // Mặc định chọn item đầu tiên
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading countries: " + ex.Message);
+            }
+        }
+
+
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
