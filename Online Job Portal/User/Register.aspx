@@ -90,7 +90,8 @@
 
                         </div>
                         <div class="form-group mt-3">
-                            <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn" OnClick="btnRegister_Click" />
+                            <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn mr-4"
+                                 OnClick="btnRegister_Click" />
                             <span class="clickLink"><a href="Login.aspx">Already Register? Click to login</a></span>
                         </div>
                     </div>
