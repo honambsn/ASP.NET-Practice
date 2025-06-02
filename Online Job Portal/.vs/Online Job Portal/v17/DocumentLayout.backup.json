@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\contact.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -23,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\usermaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\assets\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\assets\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:assets\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
@@ -77,8 +77,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 13,
@@ -99,8 +103,7 @@
               "RelativeToolTip": "User\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-20T14:19:41.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T14:19:41.635Z"
             },
             {
               "$type": "Document",
@@ -108,9 +111,9 @@
               "Title": "Register.aspx.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
               "RelativeDocumentMoniker": "User\\Register.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
-              "RelativeToolTip": "User\\Register.aspx.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAuwI4AAAAgAAAAAAAAAA==",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs*",
+              "RelativeToolTip": "User\\Register.aspx.cs*",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAJUAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T14:17:27.635Z",
               "EditorCaption": ""
@@ -125,8 +128,7 @@
               "RelativeToolTip": "User\\Register.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-27T14:20:10.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T14:20:10.61Z"
             },
             {
               "$type": "Document",
@@ -150,8 +152,7 @@
               "RelativeToolTip": "User\\Contact.aspx.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T14:30:46.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T14:30:46.211Z"
             },
             {
               "$type": "Document",
@@ -163,8 +164,7 @@
               "RelativeToolTip": "User\\UserMaster.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-20T13:51:32.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T13:51:32.803Z"
             },
             {
               "$type": "Document",
@@ -188,8 +188,7 @@
               "RelativeToolTip": "assets\\css\\style.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-30T13:50:24.321Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T13:50:24.321Z"
             },
             {
               "$type": "Document",

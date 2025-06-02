@@ -88,22 +88,49 @@ namespace Online_Job_Portal.User
                             cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                             cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
 
-                            // Ghi lại tham số và kiểm tra
-                            Console.WriteLine($"Inserting user: {txtUserName.Text.Trim()}");
+                            SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+                            {
+                                Direction = ParameterDirection.Output
+                            };
 
-                            int r = cmd.ExecuteNonQuery();
+                            cmd.Parameters.Add(outputParam);
+                            cmd.ExecuteNonQuery();
 
-                            if (r > 0)
+                            int result = (int)cmd.Parameters["@Result"].Value;
+
+                            //int r = cmd.ExecuteNonQuery();
+
+                            //if (r > 0)
+                            //{
+                            //    Clear();
+                            //    lblMsg.Visible = true;
+                            //    lblMsg.Text = "Registered successfully!";
+                            //    lblMsg.CssClass = "alert alert-success";
+                            //}
+                            //else
+                            //{
+                            //    lblMsg.Visible = true;
+                            //    lblMsg.Text = "Failed to send message. Please try again later.";
+                            //    lblMsg.CssClass = "alert alert-danger";
+                            //}
+
+                            if (result == 1)
                             {
                                 Clear();
                                 lblMsg.Visible = true;
                                 lblMsg.Text = "Registered successfully!";
                                 lblMsg.CssClass = "alert alert-success";
                             }
+                            else if (result == -1)
+                            {
+                                lblMsg.Visible = true;
+                                lblMsg.Text = $"<b>{txtUserName.Text.Trim()}</b> already exists. Please choose a different username.";
+                                lblMsg.CssClass = "alert alert-warning";
+                            }
                             else
                             {
                                 lblMsg.Visible = true;
-                                lblMsg.Text = "Failed to send message. Please try again later.";
+                                lblMsg.Text = "Failed to register. Please try again later.";
                                 lblMsg.CssClass = "alert alert-danger";
                             }
                         }
@@ -114,8 +141,6 @@ namespace Online_Job_Portal.User
                         lblMsg.Visible = true;
                         lblMsg.Text = $"SQL Error: {sqlEx.Message}";
                         lblMsg.CssClass = "alert alert-danger";
-                        // Ghi lại lỗi chi tiết trong log file hoặc console
-                        Console.WriteLine($"SQL Error: {sqlEx.Message}");
                     }
                     catch (Exception ex)
                     {
@@ -123,7 +148,6 @@ namespace Online_Job_Portal.User
                         lblMsg.Visible = true;
                         lblMsg.Text = $"Error: {ex.Message}";
                         lblMsg.CssClass = "alert alert-danger";
-                        Console.WriteLine($"Error: {ex.Message}");
                     }
                 }
             }
