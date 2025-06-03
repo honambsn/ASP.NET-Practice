@@ -80,18 +80,18 @@
                                 <div class="form-group">
                                     <label>Country</label>
                                     <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-contact w-100"
-                                         AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
+                                        AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please select a country."
                                         ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlCountry"
-                                         InitialValue="0"></asp:RequiredFieldValidator>
+                                        InitialValue="0"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group mt-3">
                             <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn mr-4"
-                                 OnClick="btnRegister_Click" />
+                                OnClick="btnRegister_Click" />
                             <span class="clickLink"><a href="Login.aspx">Already Register? Click to login</a></span>
                         </div>
                     </div>

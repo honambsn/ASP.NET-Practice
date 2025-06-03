@@ -222,6 +222,7 @@
     <Content Include="User\Default.aspx" />
     <Content Include="User\JobDetails.aspx" />
     <Content Include="User\JobListing.aspx" />
+    <Content Include="User\Login.aspx" />
     <Content Include="User\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="User\JobListing.aspx.designer.cs">
       <DependentUpon>JobListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
