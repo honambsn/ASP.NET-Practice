@@ -20,7 +20,7 @@ namespace Online_Job_Portal.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void LoadLoginTypes()
@@ -96,101 +96,98 @@ namespace Online_Job_Portal.User
                         {
                             if (cm.State == ConnectionState.Closed)
                                 cm.Open();
-                            //#region LoadLoginTypes
-                            //try
-                            //{
-                            //    using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
-                            //    {
-                            //        // Open the connection if it is closed
-                            //        if (cm.State == ConnectionState.Closed)
-                            //            cm.Open();
-
-                            //        // Define the stored procedure and create the command
-                            //        string storedProc = "UsersSP"; // The name of your stored procedure
-                            //        using (SqlCommand cmd = new SqlCommand(storedProc, cm))
-                            //        {
-                            //            cmd.CommandType = CommandType.StoredProcedure;
-
-                            //            // Add input parameters
-                            //            cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = txtUserName.Text.Trim();
-                            //            cmd.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtPassword.Text.Trim();  // Only for Login and Update actions
-                            //            cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Login";  // Action is passed from client
-
-                            //            // Add output parameters
-                            //            cmd.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
-                            //            cmd.Parameters.Add("@UserID", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-                            //            // Execute the stored procedure
-                            //            cmd.ExecuteNonQuery();
-
-                            //            // Get the output parameters
-                            //            int result = (int)cmd.Parameters["@Result"].Value;
-                            //            int userID = (int)cmd.Parameters["@UserID"].Value;
-
-                            //            if (result == 1)
-                            //            {
-                            //                // Successful login
-                            //                Session["user"] = txtUserName.Text.Trim();
-                            //                Session["userID"] = userID.ToString();
-
-                            //                // Redirect to Default.aspx after successful login
-                            //                Response.Redirect("Default.aspx", false);
-                            //            }
-                            //            else
-                            //            {
-                            //                // Handle different result codes for specific actions
-                            //                string errorMsg = string.Empty;
-                            //                if (result == -2)
-                            //                {
-                            //                    errorMsg = "Invalid username or password.";
-                            //                }
-                            //                else if (result == -1)
-                            //                {
-                            //                    errorMsg = "Username already exists.";
-                            //                }
-                            //                else if (result == -3)
-                            //                {
-                            //                    errorMsg = "Username not found.";
-                            //                }
-                            //                else if (result == -4)
-                            //                {
-                            //                    errorMsg = "Invalid action.";
-                            //                }
-
-                            //                // Show the error message
-                            //                showErrorMsg(errorMsg);
-                            //            }
-                            //        }
-                            //    }
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    // Handle any exceptions
-                            //    Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
-                            //}
-
-                            //#endregion 
-                            //string query = @"SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password AND UserType = @UserType";
-                            string query = @"SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
-                            cmd = new SqlCommand(query, cm);
-                            cmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
-
-
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            #region LoadLoginTypes
+                            try
                             {
-                                if (sdr.Read())
-                                {
-                                    Session["user"] = sdr["Username"].ToString();
-                                    Session["UserID"] = sdr["UserID"].ToString();
+                                // Open the connection if it is closed
+                                if (cm.State == ConnectionState.Closed)
+                                    cm.Open();
 
-                                    Response.Redirect("Default.aspx", false);
-                                }
-                                else
+                                // Define the stored procedure and create the command
+                                string storedProc = "UsersSP"; // The name of your stored procedure
+                                using (SqlCommand cmd = new SqlCommand(storedProc, cm))
                                 {
-                                    showErrorMsg("User");
+                                    cmd.CommandType = CommandType.StoredProcedure;
+
+                                    // Add input parameters
+                                    cmd.Parameters.Add("@Username", SqlDbType.NVarChar).Value = txtUserName.Text.Trim();
+                                    cmd.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtPassword.Text.Trim();  // Only for Login and Update actions
+                                    cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Login";  // Action is passed from client
+
+                                    // Add output parameters
+                                    cmd.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
+                                    cmd.Parameters.Add("@UserID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                                    // Execute the stored procedure
+                                    cmd.ExecuteNonQuery();
+
+                                    // Get the output parameters
+                                    int result = (int)cmd.Parameters["@Result"].Value;
+                                    int userID = (int)cmd.Parameters["@UserID"].Value;
+
+                                    if (result == 1)
+                                    {
+                                        // Successful login
+                                        Session["user"] = txtUserName.Text.Trim();
+                                        Session["userID"] = userID.ToString();
+
+                                        // Redirect to Default.aspx after successful login
+                                        Response.Redirect("Default.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        // Handle different result codes for specific actions
+                                        string errorMsg = string.Empty;
+                                        if (result == -2)
+                                        {
+                                            errorMsg = "Invalid username or password.";
+                                        }
+                                        else if (result == -1)
+                                        {
+                                            errorMsg = "Username already exists.";
+                                        }
+                                        else if (result == -3)
+                                        {
+                                            errorMsg = "Username not found.";
+                                        }
+                                        else if (result == -4)
+                                        {
+                                            errorMsg = "Invalid action.";
+                                        }
+
+                                        // Show the error message
+                                        showErrorMsg(errorMsg);
+                                    }
                                 }
                             }
+                            catch (Exception ex)
+                            {
+                                // Handle any exceptions
+                                Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+                            }
+
+                            #endregion 
+                            //string query = @"SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password AND UserType = @UserType";
+                            //string query = @"SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
+                            //cmd = new SqlCommand(query, cm);
+                            //cmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
+                            //cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+
+
+                            //using (SqlDataReader sdr = cmd.ExecuteReader())
+                            //{
+                            //    if (sdr.Read())
+                            //    {
+                            //        Session["user"] = sdr["Username"].ToString();
+                            //        Session["UserID"] = sdr["UserID"].ToString();
+
+                            //        Response.Redirect("Default.aspx", false);
+                            //    }
+                            //    else
+                            //    {
+                            //        showErrorMsg("User");
+                            //    }
+                            //}
                         }
                     }
                     catch (Exception ex)

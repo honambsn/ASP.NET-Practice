@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\usermaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\usermaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\usermaster.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\usermaster.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\admin\\adminmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:admin\\adminmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\admin\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:admin\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|d:\\ba nam\\own project\\practice\\c#\\asp.net practice\\online job portal\\user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -25,14 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\contact.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\contact.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\user\\usermaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|solutionrelative:user\\usermaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C689E45D-E2A5-46DA-A815-98A5B07DF2E7}|Online Job Portal.csproj|D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\assets\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -85,87 +97,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx.cs",
-              "RelativeDocumentMoniker": "User\\Login.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx.cs",
-              "RelativeToolTip": "User\\Login.aspx.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAQwKsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T13:54:22.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx",
-              "RelativeDocumentMoniker": "User\\Login.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx",
-              "RelativeToolTip": "User\\Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-06-03T13:45:42.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Register.aspx",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx",
-              "RelativeDocumentMoniker": "User\\Register.aspx",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx",
-              "RelativeToolTip": "User\\Register.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-27T14:20:10.61Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Register.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
-              "RelativeDocumentMoniker": "User\\Register.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
-              "RelativeToolTip": "User\\Register.aspx.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwDAAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T14:17:27.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Web.config",
-              "RelativeDocumentMoniker": "Web.config",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Web.config",
-              "RelativeToolTip": "Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-05-20T14:09:31.391Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "job_listing.html",
-              "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_listing.html",
-              "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_listing.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-05-23T13:37:09.952Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 6,
@@ -176,35 +109,12 @@
               "RelativeToolTip": "User\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-20T14:19:41.635Z"
+              "WhenOpened": "2025-05-20T14:19:41.635Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Global.asax.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Global.asax.cs",
-              "RelativeDocumentMoniker": "Global.asax.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Global.asax.cs",
-              "RelativeToolTip": "Global.asax.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:17:17.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Contact.aspx.cs",
-              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Contact.aspx.cs",
-              "RelativeDocumentMoniker": "User\\Contact.aspx.cs",
-              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Contact.aspx.cs",
-              "RelativeToolTip": "User\\Contact.aspx.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T14:30:46.211Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "UserMaster.Master",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\UserMaster.Master",
               "RelativeDocumentMoniker": "User\\UserMaster.Master",
@@ -217,7 +127,143 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "User\\Login.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx.cs",
+              "RelativeToolTip": "User\\Login.aspx.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:54:22.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Register.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx",
+              "RelativeDocumentMoniker": "User\\Register.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx",
+              "RelativeToolTip": "User\\Register.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-05-27T14:20:10.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminMaster.Master",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Admin\\AdminMaster.Master",
+              "RelativeDocumentMoniker": "Admin\\AdminMaster.Master",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Admin\\AdminMaster.Master",
+              "RelativeToolTip": "Admin\\AdminMaster.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-04T14:01:25.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserMaster.Master.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\UserMaster.Master.cs",
+              "RelativeDocumentMoniker": "User\\UserMaster.Master.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\UserMaster.Master.cs",
+              "RelativeToolTip": "User\\UserMaster.Master.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswDEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:14:02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-20T14:09:31.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
+              "RelativeDocumentMoniker": "User\\Register.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Register.aspx.cs",
+              "RelativeToolTip": "User\\Register.aspx.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwDAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T14:17:27.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Dashboard.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Admin\\Dashboard.aspx",
+              "RelativeDocumentMoniker": "Admin\\Dashboard.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Admin\\Dashboard.aspx",
+              "RelativeToolTip": "Admin\\Dashboard.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-04T14:02:41.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx",
+              "RelativeDocumentMoniker": "User\\Login.aspx",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Login.aspx",
+              "RelativeToolTip": "User\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-03T13:45:42.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "job_listing.html",
+              "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_listing.html",
+              "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_listing.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T13:37:09.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Global.asax.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Global.asax.cs",
+              "RelativeToolTip": "Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:17:17.065Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "Contact.aspx.cs",
+              "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Contact.aspx.cs",
+              "RelativeDocumentMoniker": "User\\Contact.aspx.cs",
+              "ToolTip": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Contact.aspx.cs",
+              "RelativeToolTip": "User\\Contact.aspx.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T14:30:46.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Contact.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\Contact.aspx",
               "RelativeDocumentMoniker": "User\\Contact.aspx",
@@ -229,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "style.css",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\assets\\css\\style.css",
               "RelativeDocumentMoniker": "assets\\css\\style.css",
@@ -241,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "JobListing.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\JobListing.aspx",
               "RelativeDocumentMoniker": "User\\JobListing.aspx",
@@ -253,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Connection.cs",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\Connection.cs",
               "RelativeDocumentMoniker": "Connection.cs",
@@ -265,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "contact.html",
               "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\contact.html",
               "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\contact.html",
@@ -275,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "about.html",
               "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\about.html",
               "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\about.html",
@@ -285,7 +331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "JobDetails.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\JobDetails.aspx",
               "RelativeDocumentMoniker": "User\\JobDetails.aspx",
@@ -297,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "job_details.html",
               "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_details.html",
               "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\job_details.html",
@@ -307,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "About.aspx",
               "DocumentMoniker": "D:\\Ba Nam\\Own project\\Practice\\c#\\ASP.Net Practice\\Online Job Portal\\User\\About.aspx",
               "RelativeDocumentMoniker": "User\\About.aspx",
@@ -319,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\index.html",
               "ToolTip": "C:\\Users\\honam\\Downloads\\jobfinderportal-master\\jobfinderportal-master\\index.html",
