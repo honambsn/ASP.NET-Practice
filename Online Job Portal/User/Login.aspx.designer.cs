@@ -42,13 +42,13 @@ namespace Online_Job_Portal.User
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// ddlLoginType control.
+        /// ddlTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLoginType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTypeName;
 
         /// <summary>
         /// RequiredFieldValidator1 control.

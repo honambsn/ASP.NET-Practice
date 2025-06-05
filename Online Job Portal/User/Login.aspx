@@ -29,18 +29,31 @@
                                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Enter Password" required></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <%--<div class="col-12">
                                 <div class="form-group">
                                     <label>Login Type</label>
-                                    <asp:DropDownList ID="ddlLoginType" runat="server" CssClass="form-control w-100">
-                                        <asp:ListItem Value="0">Select Login Type</asp:ListItem>
-                                        <asp:ListItem>Admin</asp:ListItem>
-                                        <asp:ListItem>User</asp:ListItem>
+                                    <asp:DropDownList ID="ddlLoginType" runat="server" CssClass="form-contact w-100"
+                                        AppendDataBoundItems="true" DataTextField="TypeName" DataValueField="TypeName">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please select user type."
+                                        ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlLoginType"
+                                        InitialValue="0"></asp:RequiredFieldValidator>
+                                    <%--<asp:DropDownList ID="ddlLoginType" runat="server" CssClass="form-control w-100"
+                                        AppendDataBoundItems="true" DataTextField="TypeName" DataValueField="TypeName">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="UserType is required"
                                         ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlLoginType"
+                                        InitialValue="0"></asp:RequiredFieldValidator>--%>
+                            <%--<textarea class="form-control w-100" runat="server" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message" required></textarea>--%>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Login Type</label>
+                                    <asp:DropDownList ID="ddlTypeName" runat="server" CssClass="form-contact w-100"
+                                        AppendDataBoundItems="true" DataTextField="TypeName" DataValueField="TypeName">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please select a login type."
+                                        ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlTypeName"
                                         InitialValue="0"></asp:RequiredFieldValidator>
-                                    <%--<textarea class="form-control w-100" runat="server" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message" required></textarea>--%>
                                 </div>
                             </div>
 
@@ -53,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         </div>
     </section>
 </asp:Content>

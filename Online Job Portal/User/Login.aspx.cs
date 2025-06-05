@@ -20,42 +20,100 @@ namespace Online_Job_Portal.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                LoadLoginTypes();
+            }
         }
 
+        //private void LoadLoginTypes()
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+        //        {
+        //            if (cm.State == ConnectionState.Closed)
+        //                cm.Open();
+
+        //            using (SqlCommand cmd = new SqlCommand("LoginTypeSP", cm))
+        //            {
+        //                cmd.Parameters.AddWithValue("@Action", "SELECT");
+        //                cmd.CommandType = CommandType.StoredProcedure;
+
+        //                cmd.Parameters.Add("@TypeName", SqlDbType.VarChar).Value = DBNull.Value;
+
+        //                using (SqlDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                    ddlTypeName.Items.Clear();
+        //                    ddlTypeName.Items.Add(new ListItem("Select Login Type", "0")); // Default item
+
+        //                    if (reader.HasRows)
+        //                    {
+        //                        while (reader.Read())
+        //                        {
+        //                            string loginType = reader["TypeName"].ToString();
+        //                            ddlTypeName.Items.Add(new ListItem(loginType, loginType));
+        //                            //Console.WriteLine("LoginType: " + loginType);
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        Response.Write("<script>alert('No Login Types Found');</script>"); // Alert if no login types found
+        //                    }
+        //                    ddlTypeName.SelectedValue = "0";
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+        //    }
+        //}
         private void LoadLoginTypes()
         {
             try
             {
                 using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
                 {
-                    if (cm.State == ConnectionState.Closed)
-                        cm.Open();
+                    cm.Open();
 
                     using (SqlCommand cmd = new SqlCommand("LoginTypeSP", cm))
                     {
-                        cmd.Parameters.AddWithValue("@Action", "SELECT");
                         cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số @Action
+                        cmd.Parameters.Add("@Action", SqlDbType.VarChar).Value = "SELECT";
+
+                        // Thêm tham số thiếu @TypeName
+                        // Sử dụng chuỗi rỗng hoặc NULL nếu không cần cho hành động SELECT
+                        cmd.Parameters.Add("@TypeName", SqlDbType.VarChar).Value = DBNull.Value; // Use DBNull for TypeName if not needed
+                        cmd.Parameters.Add("@DisplayName", SqlDbType.VarChar).Value = DBNull.Value; // Use DBNull for DisplayName if not needed
+                        cmd.Parameters.Add("@ID", SqlDbType.Int).Value = DBNull.Value; // Pass NULL for ID if not needed
+
+                        SqlParameter resultParam = new SqlParameter("@Result", SqlDbType.Int);
+                        resultParam.Direction = ParameterDirection.Output;  // Set the direction to Output
+                        cmd.Parameters.Add(resultParam);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            ddlLoginType.Items.Clear();
-                            ddlLoginType.Items.Add(new ListItem("Select Login Type", "0"));
+                            ddlTypeName.Items.Clear();
+                            ddlTypeName.Items.Add(new ListItem("Select Login Type", "0"));
 
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
                                     string loginType = reader["TypeName"].ToString();
-                                    ddlLoginType.Items.Add(new ListItem(loginType, loginType));
-
+                                    ddlTypeName.Items.Add(new ListItem(loginType, loginType));
                                 }
                             }
                             else
                             {
-                                Response.Write("<script>alert('No Login Types Found');</script>"); // Alert if no login types found
+                                Response.Write("<script>alert('No Login Types Found');</script>");
                             }
-                            ddlLoginType.SelectedValue = "0";
+
+                            ddlTypeName.SelectedValue = "0";
                         }
                     }
                 }
@@ -66,11 +124,12 @@ namespace Online_Job_Portal.User
             }
         }
 
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ddlLoginType.SelectedValue == "Admin")
+                if (ddlTypeName.SelectedValue == "Admin")
                 {
                     username = ConfigurationManager.AppSettings["username"];
                     password = ConfigurationManager.AppSettings["password"];

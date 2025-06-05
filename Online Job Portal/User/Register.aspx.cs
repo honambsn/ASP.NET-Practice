@@ -49,6 +49,10 @@ namespace Online_Job_Portal.User
                                     ddlCountry.Items.Add(new ListItem(country, country));
                                 }
                             }
+                            else
+                            {
+                                Response.Write("<script>alert('No countries found');</script>"); // Alert if no countries found
+                            }
                             ddlCountry.SelectedValue = "0"; // Mặc định chọn item đầu tiên
                         }
                     }
