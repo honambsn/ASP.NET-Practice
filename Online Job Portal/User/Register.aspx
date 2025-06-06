@@ -79,7 +79,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Country</label>
-                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-contact w-100"
+                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control w-100"
                                         AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please select a country."
