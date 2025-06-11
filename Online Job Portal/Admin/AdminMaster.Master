@@ -146,9 +146,45 @@
     <link href="../Asset/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../Asset/css/demo.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Khi click vào một nav-item, chuyển đổi class active
+            // Bắt sự kiện click vào nav-item
+            $(".nav-item").click(function () {
+                // Loại bỏ class 'active' khỏi tất cả các nav-item
+                $(".nav-item").removeClass("active");
 
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                // Thêm class 'active' vào nav-item đang được click
+                $(this).addClass("active");
+            });
+
+
+            // Hamburger menu toggle (nếu bạn có hamburger để mở sidebar)
+            $(".hamburger").click(function () {
+                $(".sidebar").addClass("active");
+            });
+
+            // Đóng sidebar khi click vào nút close hoặc vùng nền
+            $(".close, .bg_shadow").click(function () {
+                $(".sidebar").removeClass("active");
+            });
+        });
+
+        $(function () {
+            var url = window.location.href;
+
+            $("sub-header a").each(function () {
+                if (this.href === url) {
+                    $(this).closest("li").addClass("active");
+                }
+            });
+        });
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
 </head>
 
 <body>
@@ -178,31 +214,31 @@
                                 <p>New Job</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="JobList.aspx">
                                 <i class="nc-icon nc-notes"></i>
                                 <p>Job List</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="ViewResume.aspx">
                                 <i class="nc-icon nc-paper-2"></i>
                                 <p>View Resume</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="ContactList.aspx">
                                 <i class="nc-icon nc-atom"></i>
                                 <p>Contact List </p>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./maps.html">
                                 <i class="nc-icon nc-pin-3"></i>
                                 <p>Maps</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./notifications.html">
                                 <i class="nc-icon nc-bell-55"></i>
                                 <p>Notifications</p>
@@ -277,8 +313,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <div class="nav-link logout_btn" href="#pablo">
-                                        <span class="no-icon"><asp:LinkButton ID="btnLogOut" runat="server" 
-    CausesValidation="false">Logout</asp:LinkButton></span>
+                                        <span class="no-icon">
+                                            <asp:LinkButton ID="btnLogOut" runat="server"
+                                                CausesValidation="false">Logout</asp:LinkButton></span>
                                     </div>
                                 </li>
                             </ul>
@@ -287,6 +324,8 @@
                 </nav>
                 <!-- End Navbar -->
                 <div class="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4">
@@ -506,8 +545,8 @@
                         </div>
                     </div>
                 </div>
-                <asp:ContentPlaceHolder ID="head" runat="server">
-                </asp:ContentPlaceHolder>
+
+
             </div>
         </div>
     </form>
@@ -528,4 +567,6 @@
 <script src="../Asset/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../Asset/js/demo.js"></script>
+
+
 </html>
