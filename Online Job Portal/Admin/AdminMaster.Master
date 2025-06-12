@@ -149,16 +149,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Khi click vào một nav-item, chuyển đổi class active
-            // Bắt sự kiện click vào nav-item
-            $(".nav-item").click(function () {
-                // Loại bỏ class 'active' khỏi tất cả các nav-item
-                $(".nav-item").removeClass("active");
+            // Bắt sự kiện click vào các liên kết .nav-link
+            $('.nav-link').on('click', function () {
+                // Xóa lớp 'active' khỏi tất cả các .nav-item
+                $('.nav-item').removeClass('active');
 
-                // Thêm class 'active' vào nav-item đang được click
-                $(this).addClass("active");
+                // Thêm lớp 'active' vào nav-item chứa phần tử nav-link được click
+                $(this).closest('.nav-item').addClass('active');
             });
-
 
             // Hamburger menu toggle (nếu bạn có hamburger để mở sidebar)
             $(".hamburger").click(function () {
@@ -173,8 +171,7 @@
 
         $(function () {
             var url = window.location.href;
-
-            $("sub-header a").each(function () {
+            $(".nav a").each(function () {
                 if (this.href === url) {
                     $(this).closest("li").addClass("active");
                 }
@@ -202,7 +199,7 @@
                         </a>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="Dashboard.aspx">
                                 <i class="nc-icon nc-chart-pie-35"></i>
                                 <p>Dashboard</p>

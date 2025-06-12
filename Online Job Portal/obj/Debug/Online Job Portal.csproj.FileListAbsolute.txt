@@ -57,9 +57,6 @@ D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\Online Job 
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\Online Job Portal\obj\Debug\Online J.535333AC.Up2Date
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\Online Job Portal\obj\Debug\Online Job Portal.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\Online Job Portal\obj\Debug\Online Job Portal.pdb
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.ValueTuple.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\VBCSCompiler.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\Online Job Portal.dll.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\Online Job Portal.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\Online Job Portal.pdb
@@ -102,12 +99,15 @@ D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.ValueTuple.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Xml.XmlDocument.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Xml.XPath.dll
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\System.Xml.XPath.XDocument.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\vbc.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\vbc.exe.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\vbc.rsp
+D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\VBCSCompiler.exe
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\roslyn\VBCSCompiler.exe.config
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Ba Nam\Own project\Practice\c#\ASP.Net Practice\Online Job Portal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
