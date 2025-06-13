@@ -79,8 +79,9 @@
 
                 <div class="col-md-6 pt-3">
                     <label for="txtLastDate" style="font-weight: 600">Job Type</label>
-                    <asp:DropDownList ID="ddlJobType" runat="server" CssClass="form-control">
-                        <asp:ListItem Value="0">Select Job Type </asp:ListItem>
+                    <asp:DropDownList ID="ddlJobType" runat="server" CssClass="form-control"
+                         AppendDataBoundItems="true" DataTextField="JobType" DataValueField="JobType" style="cursor: pointer;">
+                        <%--<asp:ListItem Value="0">Select Job Type </asp:ListItem>
                         <asp:ListItem Value="FullTime">Full Time</asp:ListItem>
                         <asp:ListItem Value="PartTime">Part Time</asp:ListItem>
                         <asp:ListItem Value="Contract">Contract</asp:ListItem>
@@ -93,8 +94,12 @@
                         <asp:ListItem Value="Hybrid">Hybrid</asp:ListItem>
                         <asp:ListItem Value="Commission">Commission</asp:ListItem>
                         <asp:ListItem Value="Volunteer">Volunteer</asp:ListItem>
-                        <asp:ListItem Value="Other">Other</asp:ListItem>
+                        <asp:ListItem Value="Other">Other</asp:ListItem>--%>
                     </asp:DropDownList>
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="JobType is required"
+                        ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ControlToValidate="ddlJobType"
+                        InitialValue="0"></asp:RequiredFieldValidator>
                 </div>
             </div>
         </div>
