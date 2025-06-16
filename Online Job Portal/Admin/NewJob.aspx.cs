@@ -16,6 +16,7 @@ namespace Online_Job_Portal.Admin
             if (!IsPostBack)
             {
                 LoadJobType();
+                LoadCountries();
             }
         }
 
@@ -80,5 +81,52 @@ namespace Online_Job_Portal.Admin
             }
         }
 
+
+        private void LoadCountries()
+        {
+            try
+            {
+                using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                {
+                    if (cm.State == ConnectionState.Closed)
+                        cm.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("CountrySP", cm))
+                    {
+                        cmd.Parameters.AddWithValue("@Action", "SELECT");
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            ddlCountry.Items.Clear();
+                            ddlCountry.Items.Add(new ListItem("Select country", "0"));
+
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    string country = reader["CountryName"].ToString();
+                                    ddlCountry.Items.Add(new ListItem(country, country));
+                                }
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert('No countries found');</script>"); // Alert if no countries found
+                            }
+                            ddlCountry.SelectedValue = "0"; // Mặc định chọn item đầu tiên
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+            }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

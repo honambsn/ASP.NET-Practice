@@ -166,15 +166,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Bắt sự kiện click vào các liên kết .nav-link
             $('.nav-link').on('click', function () {
                 // Xóa lớp 'active' khỏi tất cả các .nav-item
                 $('.nav-item').removeClass('active');
 
                 // Thêm lớp 'active' vào nav-item chứa phần tử nav-link được click
-                $(this).closest('.nav-item').addClass('active');
+                var closestNavItem = $(this).closest('.nav-item');
+                closestNavItem.addClass('active');
+
+                // Đổi màu cho văn bản của nav-item active
+                closestNavItem.find('p').css('color', 'red');
             });
 
+            
             // Hamburger menu toggle (nếu bạn có hamburger để mở sidebar)
             $(".hamburger").click(function () {
                 $(".sidebar").addClass("active");
@@ -184,6 +188,7 @@
             $(".close, .bg_shadow").click(function () {
                 $(".sidebar").removeClass("active");
             });
+
         });
 
         $(function () {
@@ -195,6 +200,15 @@
             });
         });
     </script>
+
+    <style>
+        .nav-item.active p {
+            color: #64E2B7 !important; /* Buộc màu sắc được ghi đè */
+        }
+        .nav-item p{
+             color: #FFE1E0;
+        }
+    </style>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -218,10 +232,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Dashboard.aspx">
                                 <i class="nc-icon nc-chart-pie-35"></i>
-                                <p style="color: #FFE1E0;">Dashboard</p>
+                                <p>Dashboard</p>
                             </a>
                         </li>
-                        <li>
+                        <li class ="nav-item">
                             <a class="nav-link" href="NewJob.aspx">
                                 <i class="nc-icon nc-circle-09"></i>
                                 <p>New Job</p>
