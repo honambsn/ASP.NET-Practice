@@ -46,9 +46,8 @@
                 </div>
 
                 <div class="col-md-6 pt-3">
-                    <label for="txtExperience" style="font-weight: 600">Experience Required</label>
-                    <asp:TextBox ID="txtExperience" runat="server" CssClass="form-control" placeholder="Ex: 2 Years, 1.5 Years"
-                        TextMode="Number" required>
+                    <label for="txtExperience" style="font-weight: 600">Experience Required(Years)</label>
+                    <asp:TextBox ID="txtExperience" runat="server" CssClass="form-control" placeholder="Ex: 2 Years, 1.5 Years" required>
                     </asp:TextBox>
                 </div>
             </div>
@@ -71,7 +70,7 @@
 
             <div class="row mr-lg-5 ml-lg-5 mb-3">
                 <div class="col-md-6 pt-3">
-                    <label for="txtSalary" style="font-weight: 600">Salary</label>
+                    <label for="txtSalary" style="font-weight: 600">Salary(/month)</label>
                     <asp:TextBox ID="txtSalary" runat="server" CssClass="form-control"
                         placeholder="Enter Salary" required TextMode="MultiLine">
                     </asp:TextBox>

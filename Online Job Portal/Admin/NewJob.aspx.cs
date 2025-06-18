@@ -16,14 +16,18 @@ namespace Online_Job_Portal.Admin
         string query = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    LoadJobType();
-            //    LoadCountries();
-            //}
             if (Session["admin"] == null)
             {
                 Response.Redirect("~/User/Login.aspx");
+            }
+            else
+            {
+
+                if (!IsPostBack)
+                {
+                    LoadJobType();
+                    LoadCountries();
+                }
             }
         }
 
@@ -135,22 +139,8 @@ namespace Online_Job_Portal.Admin
         {
             try
             {
-                string concatQuery, imagePath = string.Empty;
-                bool isValidToExecute = true;
-                if (fuCompanyLogo.HasFile)
-                {
-                    if (IsValidExtension(fuCompanyLogo.FileName, new[] { ".jpg", ".jpeg", ".png", ".gif" }))
-                    {
-                        //imagePath = "~/Images/CompanyLogos/" + fuCompanyLogo.FileName;
-                        //fuCompanyLogo.SaveAs(Server.MapPath(imagePath));
-                        concatQuery = "";
-                    }
-                    else
-                    {
-                        isValidToExecute = false;
-                        Response.Write("<script>alert('Invalid file type. Please upload an image file.');</script>");
-                    }
-                }
+                string imagePath = string.Empty;
+                bool isValidToExecute = false;
 
                 try
                 {
@@ -169,7 +159,7 @@ namespace Online_Job_Portal.Admin
 
                                 cmd.Parameters.AddWithValue("@Action", "INSERT");
                                 
-                                cmd.Parameters.AddWithValue("@JobTitle", txtJobTitle.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
                                 cmd.Parameters.AddWithValue("@NoOfPost", txtNoOfPost.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
@@ -184,7 +174,7 @@ namespace Online_Job_Portal.Admin
                                 else
                                 {
                                     // Xử lý trường hợp ngày không hợp lệ
-                                    cmd.Parameters.AddWithValue("@LastDateToApply", DBNull.Value); // hoặc giá trị mặc định khác
+                                    cmd.Parameters.AddWithValue("@LastDateToApply", DateTime.Now); // hoặc giá trị mặc định khác
                                 }
 
                                 cmd.Parameters.AddWithValue("@Salary", txtSalary.Text.Trim());
@@ -195,54 +185,78 @@ namespace Online_Job_Portal.Admin
                                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
                                 cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
-                                cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
 
 
-                                SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+                                if (fuCompanyLogo.HasFile)
                                 {
-                                    Direction = ParameterDirection.Output
-                                };
+                                    // Check if the file is valid
+                                    if (IsValidExtension(fuCompanyLogo.FileName))
+                                    {
+                                        // Generate unique image name
+                                        Guid obj = Guid.NewGuid();
+                                        imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
 
-                                cmd.Parameters.Add(outputParam);
-                                cmd.ExecuteNonQuery();
+                                        // Save the file to the server
+                                        fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() + fuCompanyLogo.FileName);
 
-                                int result = (int)cmd.Parameters["@Result"].Value;
-
-                                //int r = cmd.ExecuteNonQuery();
-
-                                //if (r > 0)
-                                //{
-                                //    Clear();
-                                //    lblMsg.Visible = true;
-                                //    lblMsg.Text = "Registered successfully!";
-                                //    lblMsg.CssClass = "alert alert-success";
-                                //}
-                                //else
-                                //{
-                                //    lblMsg.Visible = true;
-                                //    lblMsg.Text = "Failed to send message. Please try again later.";
-                                //    lblMsg.CssClass = "alert alert-danger";
-                                //}
-
-                                if (result == 1)
-                                {
-                                    Clear();
-                                    lblMsg.Visible = true;
-                                    lblMsg.Text = "Registered successfully!";
-                                    lblMsg.CssClass = "alert alert-success";
-                                }
-                                else if (result == -1)
-                                {
-                                    lblMsg.Visible = true;
-                                    lblMsg.Text = $"<b>{txtUserName.Text.Trim()}</b> already exists. Please choose a different username.";
-                                    lblMsg.CssClass = "alert alert-warning";
+                                        // Use the image path for the parameter
+                                        cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
+                                        isValidToExecute = true;
+                                    }
+                                    else
+                                    {
+                                        lblMsg.Text = "Please select a valid image file (jpg, jpeg, png).";
+                                        lblMsg.CssClass = "alert alert-danger";
+                                    }
                                 }
                                 else
                                 {
+                                    // No file uploaded, so set to null
+                                    cmd.Parameters.AddWithValue("@CompanyImage", DBNull.Value);
+                                    isValidToExecute = true; // Continue execution even without an image
+                                }
+
+
+                                if (!isValidToExecute)
+                                {
                                     lblMsg.Visible = true;
-                                    lblMsg.Text = "Failed to register. Please try again later.";
+                                    lblMsg.Text = "Please fill all required fields correctly.";
                                     lblMsg.CssClass = "alert alert-danger";
                                 }
+                                else
+                                {
+                                    SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+                                    {
+                                        Direction = ParameterDirection.Output
+                                    };
+
+                                    cmd.Parameters.Add(outputParam);
+                                    cmd.ExecuteNonQuery();
+
+                                    int result = (int)cmd.Parameters["@Result"].Value;
+
+                                    if (result == 1)
+                                    {
+                                        Clear();
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Registered successfully!";
+                                        lblMsg.CssClass = "alert alert-success";
+                                    }
+                                    else if (result == -1)
+                                    {
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Job title" + $"<b>{txtJobTitle.Text.Trim()}</b>" + "already exists. Please choose a different job title.";
+                                        lblMsg.CssClass = "alert alert-warning";
+                                    }
+                                    else
+                                    {
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Failed to register. Please try again later.";
+                                        lblMsg.CssClass = "alert alert-danger";
+                                    }
+                                }
+
                             }
                         }
                         catch (SqlException sqlEx)
@@ -269,27 +283,49 @@ namespace Online_Job_Portal.Admin
                     lblMsg.CssClass = "alert alert-danger";
                     Console.WriteLine($"Error: {ex.Message}");
                 }
-                finally
-                {
-                    // Đảm bảo kết nối được đóng đúng cách
-                    if (con != null && con.State == ConnectionState.Open)
-                    {
-                        con.Close();
-                        Console.WriteLine($"Inserting user: {txtUserName.Text.Trim()}");
-                    }
-                }
-
             }
             catch (Exception ex)
             {
-
+                lblMsg.Visible = true;
+                lblMsg.Text = $"Error: {ex.Message}";
+                lblMsg.CssClass = "alert alert-danger";
+                Console.WriteLine($"Error: {ex.Message}"); // In ra lỗi để gỡ rối
             }
         }
 
-        private bool IsValidExtension(string fileName, string[] allowedExtensions)
+        private void Clear()
         {
-            string fileExtension = Path.GetExtension(fileName).ToLower();
-            return allowedExtensions.Contains(fileExtension);
+            txtJobTitle.Text = string.Empty;
+            txtNoOfPost.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+            txtQualification.Text = string.Empty;
+            txtExperience.Text = string.Empty;
+            txtSpecialization.Text = string.Empty;
+            txtLastDate.Text = string.Empty;
+            txtSalary.Text = string.Empty;
+            ddlJobType.ClearSelection();
+            txtCompany.Text = string.Empty;
+            txtWebsite.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            ddlCountry.ClearSelection();
+            txtState.Text = string.Empty;
+
+        }
+
+        private bool IsValidExtension(string fileName)
+        {
+            bool isValid = false;
+            string[] fileExtension = { ".jpg", ".jpeg", ".png" };
+            for (int i = 0; i < fileExtension.Length - 1; i++)
+            {
+                if (fileName.EndsWith(fileExtension[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    isValid = true;
+                    break;
+                }
+            }
+            return isValid;
         }
 
     }
