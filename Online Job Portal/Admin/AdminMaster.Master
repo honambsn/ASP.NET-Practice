@@ -353,7 +353,7 @@
                 <div class="content">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
-                    <div class="container-fluid">
+                    <%--<div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card ">
@@ -570,7 +570,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
 
