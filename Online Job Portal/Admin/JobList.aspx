@@ -15,7 +15,8 @@
                 <div class="col-md-12">
                     <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered"
                          EmptyDataText="No record to display...!" AutoGenerateColumns="False" AllowPaging="True"
-                         PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="JobID">
+                         PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="JobID"
+                         OnRowDeleting="GridView1_RowDeleting">
                         <Columns>
                             <asp:BoundField DataField="Sr.No" HeaderText="Sr.No">
                             <ItemStyle HorizontalAlign="Center" />
@@ -68,6 +69,13 @@
                             <ItemStyle HorizontalAlign="Center" />
                             </asp:BoundField>
                             
+                            <asp:CommandField CausesValidation="false" HeaderText="Delete" ShowDeleteButton="true"
+                                 DeleteImageUrl="../assets/img/icon/trashIcon.png" ButtonType="Image">
+                                <ControlStyle Height="25px" Width="25px"/>
+                                <ItemStyle HorizontalAlign="Center" />
+
+                            </asp:CommandField>
+
                         </Columns>
                         <HeaderStyle BackColor="#7200cf" ForeColor="White" />
                     </asp:GridView>
@@ -75,4 +83,18 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Check if lblMsg is visible
+            var lblMsg = $('#<%= lblMsg.ClientID %>');
+
+            // If lblMsg is visible, hide it after 3 seconds
+            if (lblMsg.is(':visible')) {
+                setTimeout(function() {
+                    lblMsg.fadeOut(); // Use fadeOut to hide the message
+                }, 3000); // 3000ms = 3 seconds
+            }
+        });
+    </script>
 </asp:Content>
