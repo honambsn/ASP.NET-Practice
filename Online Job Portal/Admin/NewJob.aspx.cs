@@ -27,6 +27,82 @@ namespace Online_Job_Portal.Admin
                 {
                     LoadJobType();
                     LoadCountries();
+                    fillData();
+                }
+            }
+        }
+
+        private void fillData()
+        {
+            if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int jobId))
+            {
+                try
+                {
+                    using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                    {
+                        if (cm.State == ConnectionState.Closed)
+                            cm.Open();
+
+                        //string query = "select * from Jobs where JobID = '" + Request.QueryString["id"] + "' ";
+                        //string query = "select * from Jobs where JobID = @JobID";
+                        using (SqlCommand cmd = new SqlCommand("JobsSP", cm))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            
+                            cmd.Parameters.AddWithValue("@Action", "SELECTBYID");
+                            cmd.Parameters.AddWithValue("@JobID", jobId);
+
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                if (sdr.HasRows)
+                                {
+                                    while (sdr.Read())
+                                    {
+                                        txtJobTitle.Text = sdr["Title"].ToString();
+                                        txtNoOfPost.Text = sdr["NoOfPost"].ToString();
+                                        txtDescription.Text = sdr["Description"].ToString();
+                                        txtQualification.Text = sdr["Qualification"].ToString();
+                                        txtExperience.Text = sdr["Experience"].ToString();
+                                        txtSpecialization.Text = sdr["Specialization"].ToString();
+
+                                        //txtLastDate.Text = Convert.ToDateTime(sdr["LastDateToApply"]).ToString("yyyy-MM-dd");
+                                        if (sdr["LastDateToApply"] != DBNull.Value)
+                                        {
+                                            DateTime lastDate = Convert.ToDateTime(sdr["LastDateToApply"]);
+                                            txtLastDate.Text = lastDate.ToString("yyyy-MM-dd"); // Định dạng ngày tháng theo chuẩn yyyy-MM-dd
+                                        }
+                                        else
+                                        {
+                                            txtLastDate.Text = string.Empty; // Hoặc giá trị mặc định khác nếu cần thiết
+                                        }
+
+                                        txtSalary.Text = sdr["Salary"].ToString();
+                                        ddlJobType.SelectedValue = sdr["JobType"].ToString();
+                                        txtCompany.Text = sdr["CompanyName"].ToString();
+                                        txtWebsite.Text = sdr["Website"].ToString();
+                                        txtEmail.Text = sdr["Email"].ToString();
+                                        txtAddress.Text = sdr["Address"].ToString();
+                                        ddlCountry.SelectedValue = sdr["Country"].ToString();
+                                        txtState.Text = sdr["State"].ToString();
+
+                                        btnAdd.Text = "Update";
+                                    }
+                                }
+                                else
+                                {
+                                    lblMsg.Visible = true;
+                                    lblMsg.Text = "No job found with the provided ID.";
+                                    lblMsg.CssClass = "alert alert-warning";
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
                 }
             }
         }
@@ -139,150 +215,177 @@ namespace Online_Job_Portal.Admin
         {
             try
             {
+                string type= "";
                 string imagePath = string.Empty;
                 bool isValidToExecute = false;
 
-                try
+                string concatQuery = string.Empty;
+
+                if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int jobId))
                 {
-                    using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                    if (fuCompanyLogo.HasFile)
                     {
-                        if (cm.State == ConnectionState.Closed)
+                        if (IsValidExtension(fuCompanyLogo.FileName))
                         {
-                            cm.Open();
+                            concatQuery = "CompanyImage = @CompanyImage";
                         }
-
-                        try
+                        else
                         {
-                            using (SqlCommand cmd = new SqlCommand("JobsSP", cm))
-                            {
-                                cmd.CommandType = CommandType.StoredProcedure;
-
-                                cmd.Parameters.AddWithValue("@Action", "INSERT");
-                                
-                                cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
-                                cmd.Parameters.AddWithValue("@NoOfPost", txtNoOfPost.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Experience", txtExperience.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Specialization", txtSpecialization.Text.Trim());
-
-                                DateTime lastDate;
-                                if (DateTime.TryParse(txtLastDate.Text.Trim(), out lastDate))
-                                {
-                                    cmd.Parameters.AddWithValue("@LastDateToApply", lastDate);
-                                }
-                                else
-                                {
-                                    // Xử lý trường hợp ngày không hợp lệ
-                                    cmd.Parameters.AddWithValue("@LastDateToApply", DateTime.Now); // hoặc giá trị mặc định khác
-                                }
-
-                                cmd.Parameters.AddWithValue("@Salary", txtSalary.Text.Trim());
-                                cmd.Parameters.AddWithValue("@JobType", ddlJobType.SelectedValue);
-                                cmd.Parameters.AddWithValue("@CompanyName", txtCompany.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Website", txtWebsite.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
-                                cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
-                                cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
-
-
-                                if (fuCompanyLogo.HasFile)
-                                {
-                                    // Check if the file is valid
-                                    if (IsValidExtension(fuCompanyLogo.FileName))
-                                    {
-                                        // Generate unique image name
-                                        Guid obj = Guid.NewGuid();
-                                        imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
-
-                                        // Save the file to the server
-                                        fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() + fuCompanyLogo.FileName);
-
-                                        // Use the image path for the parameter
-                                        cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
-                                        isValidToExecute = true;
-                                    }
-                                    else
-                                    {
-                                        lblMsg.Text = "Please select a valid image file (jpg, jpeg, png).";
-                                        lblMsg.CssClass = "alert alert-danger";
-                                    }
-                                }
-                                else
-                                {
-                                    // No file uploaded, so set to null
-                                    cmd.Parameters.AddWithValue("@CompanyImage", DBNull.Value);
-                                    isValidToExecute = true; // Continue execution even without an image
-                                }
-
-
-                                if (!isValidToExecute)
-                                {
-                                    lblMsg.Visible = true;
-                                    lblMsg.Text = "Please fill all required fields correctly.";
-                                    lblMsg.CssClass = "alert alert-danger";
-                                }
-                                else
-                                {
-                                    SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
-                                    {
-                                        Direction = ParameterDirection.Output
-                                    };
-
-                                    cmd.Parameters.Add(outputParam);
-                                    cmd.ExecuteNonQuery();
-
-                                    int result = (int)cmd.Parameters["@Result"].Value;
-
-                                    if (result == 1)
-                                    {
-                                        Clear();
-                                        lblMsg.Visible = true;
-                                        lblMsg.Text = "Registered successfully!";
-                                        lblMsg.CssClass = "alert alert-success";
-                                    }
-                                    else if (result == -1)
-                                    {
-                                        lblMsg.Visible = true;
-                                        lblMsg.Text = "Job title" + $"<b>{txtJobTitle.Text.Trim()}</b>" + "already exists. Please choose a different job title.";
-                                        lblMsg.CssClass = "alert alert-warning";
-                                    }
-                                    else
-                                    {
-                                        lblMsg.Visible = true;
-                                        lblMsg.Text = "Failed to register. Please try again later.";
-                                        lblMsg.CssClass = "alert alert-danger";
-                                    }
-                                }
-
-                            }
-                        }
-                        catch (SqlException sqlEx)
-                        {
-                            // In ra lỗi SQL chi tiết để gỡ rối
-                            lblMsg.Visible = true;
-                            lblMsg.Text = $"SQL Error: {sqlEx.Message}";
-                            lblMsg.CssClass = "alert alert-danger";
-                        }
-                        catch (Exception ex)
-                        {
-                            // In ra lỗi chung
-                            lblMsg.Visible = true;
-                            lblMsg.Text = $"Error: {ex.Message}";
-                            lblMsg.CssClass = "alert alert-danger";
+                            concatQuery = string.Empty; // Không có hình ảnh, không cần cập nhật trường này
                         }
                     }
+                    else
+                    {
+                        concatQuery = string.Empty; // Không có hình ảnh, không cần cập nhật trường này
+                    }
+                    //update JobsSP
                 }
-                catch (Exception ex)
+                else
                 {
-                    // In ra lỗi chung
-                    lblMsg.Visible = true;
-                    lblMsg.Text = $"Error: {ex.Message}";
-                    lblMsg.CssClass = "alert alert-danger";
-                    Console.WriteLine($"Error: {ex.Message}");
+                    try
+                    {
+                        using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                        {
+                            if (cm.State == ConnectionState.Closed)
+                            {
+                                cm.Open();
+                            }
+
+                            try
+                            {
+                                using (SqlCommand cmd = new SqlCommand("JobsSP", cm))
+                                {
+                                    cmd.CommandType = CommandType.StoredProcedure;
+
+                                    cmd.Parameters.AddWithValue("@Action", "INSERT");
+
+                                    cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@NoOfPost", txtNoOfPost.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Experience", txtExperience.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Specialization", txtSpecialization.Text.Trim());
+
+                                    DateTime lastDate;
+                                    if (DateTime.TryParse(txtLastDate.Text.Trim(), out lastDate))
+                                    {
+                                        cmd.Parameters.AddWithValue("@LastDateToApply", lastDate);
+                                    }
+                                    else
+                                    {
+                                        // Xử lý trường hợp ngày không hợp lệ
+                                        cmd.Parameters.AddWithValue("@LastDateToApply", DateTime.Now); // hoặc giá trị mặc định khác
+                                    }
+
+                                    cmd.Parameters.AddWithValue("@Salary", txtSalary.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@JobType", ddlJobType.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@CompanyName", txtCompany.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Website", txtWebsite.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
+
+
+                                    if (fuCompanyLogo.HasFile)
+                                    {
+                                        // Check if the file is valid
+                                        if (IsValidExtension(fuCompanyLogo.FileName))
+                                        {
+                                            // Generate unique image name
+                                            Guid obj = Guid.NewGuid();
+                                            imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
+
+                                            // Save the file to the server
+                                            fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() + fuCompanyLogo.FileName);
+
+                                            // Use the image path for the parameter
+                                            cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
+                                            isValidToExecute = true;
+                                        }
+                                        else
+                                        {
+                                            lblMsg.Text = "Please select a valid image file (jpg, jpeg, png).";
+                                            lblMsg.CssClass = "alert alert-danger";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // No file uploaded, so set to null
+                                        cmd.Parameters.AddWithValue("@CompanyImage", DBNull.Value);
+                                        isValidToExecute = true; // Continue execution even without an image
+                                    }
+
+
+                                    if (!isValidToExecute)
+                                    {
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Please fill all required fields correctly.";
+                                        lblMsg.CssClass = "alert alert-danger";
+                                    }
+                                    else
+                                    {
+                                        SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+                                        {
+                                            Direction = ParameterDirection.Output
+                                        };
+
+                                        cmd.Parameters.Add(outputParam);
+                                        cmd.ExecuteNonQuery();
+
+                                        int result = (int)cmd.Parameters["@Result"].Value;
+
+                                        if (result == 1)
+                                        {
+                                            Clear();
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Registered successfully!";
+                                            lblMsg.CssClass = "alert alert-success";
+                                        }
+                                        else if (result == -1)
+                                        {
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Job title" + $"<b>{txtJobTitle.Text.Trim()}</b>" + "already exists. Please choose a different job title.";
+                                            lblMsg.CssClass = "alert alert-warning";
+                                        }
+                                        else
+                                        {
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Failed to register. Please try again later.";
+                                            lblMsg.CssClass = "alert alert-danger";
+                                        }
+                                    }
+
+                                }
+                            }
+                            catch (SqlException sqlEx)
+                            {
+                                // In ra lỗi SQL chi tiết để gỡ rối
+                                lblMsg.Visible = true;
+                                lblMsg.Text = $"SQL Error: {sqlEx.Message}";
+                                lblMsg.CssClass = "alert alert-danger";
+                            }
+                            catch (Exception ex)
+                            {
+                                // In ra lỗi chung
+                                lblMsg.Visible = true;
+                                lblMsg.Text = $"Error: {ex.Message}";
+                                lblMsg.CssClass = "alert alert-danger";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // In ra lỗi chung
+                        lblMsg.Visible = true;
+                        lblMsg.Text = $"Error: {ex.Message}";
+                        lblMsg.CssClass = "alert alert-danger";
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
                 }
+
+                
             }
             catch (Exception ex)
             {

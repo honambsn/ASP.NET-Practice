@@ -146,6 +146,7 @@
     <Content Include="assets\img\gallery\how-applybg.png" />
     <Content Include="assets\img\hero\about.jpg" />
     <Content Include="assets\img\hero\h1_hero.jpg" />
+    <Content Include="assets\img\icon\editIcon.png" />
     <Content Include="assets\img\icon\form.png" />
     <Content Include="assets\img\icon\job-list1.png" />
     <Content Include="assets\img\icon\job-list2.png" />
