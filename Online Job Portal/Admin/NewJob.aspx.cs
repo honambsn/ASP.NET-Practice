@@ -52,6 +52,14 @@ namespace Online_Job_Portal.Admin
                             cmd.Parameters.AddWithValue("@Action", "SELECTBYID");
                             cmd.Parameters.AddWithValue("@JobID", jobId);
 
+                            SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+
+                            {
+                                Direction = ParameterDirection.Output
+                            };
+
+                            cmd.Parameters.Add(outputParam);
+
                             using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
                                 if (sdr.HasRows)
@@ -77,12 +85,41 @@ namespace Online_Job_Portal.Admin
                                         }
 
                                         txtSalary.Text = sdr["Salary"].ToString();
-                                        ddlJobType.SelectedValue = sdr["JobType"].ToString();
+                                        //ddlJobType.SelectedValue = sdr["JobType"].ToString();
+
+                                        // Xử lý dropdown JobType
+                                        string jobType = sdr["JobType"].ToString();
+                                        if (ddlJobType.Items.FindByValue(jobType) != null)
+                                        {
+                                            ddlJobType.SelectedValue = jobType;
+                                        }
+                                        else
+                                        {
+                                            ddlJobType.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Job Type not found in the dropdown.";
+                                            lblMsg.CssClass = "alert alert-warning";
+                                        }
+
                                         txtCompany.Text = sdr["CompanyName"].ToString();
                                         txtWebsite.Text = sdr["Website"].ToString();
                                         txtEmail.Text = sdr["Email"].ToString();
                                         txtAddress.Text = sdr["Address"].ToString();
-                                        ddlCountry.SelectedValue = sdr["Country"].ToString();
+
+                                        // Xử lý dropdown Country
+                                        string country = sdr["Country"].ToString();
+                                        if (ddlCountry.Items.FindByValue(country) != null)
+                                        {
+                                            ddlCountry.SelectedValue = country;
+                                        }
+                                        else
+                                        {
+                                            ddlCountry.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Country not found in the dropdown.";
+                                            lblMsg.CssClass = "alert alert-warning";
+                                        }
+
                                         txtState.Text = sdr["State"].ToString();
 
                                         btnAdd.Text = "Update";
@@ -223,6 +260,8 @@ namespace Online_Job_Portal.Admin
 
                 if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int jobId))
                 {
+                    type = "updated";
+
                     if (fuCompanyLogo.HasFile)
                     {
                         if (IsValidExtension(fuCompanyLogo.FileName))
@@ -239,9 +278,127 @@ namespace Online_Job_Portal.Admin
                         concatQuery = string.Empty; // Không có hình ảnh, không cần cập nhật trường này
                     }
                     //update JobsSP
+
+
+                    query = @"Update Jobs set Title=@Title, NoOfPost=@NoOfPost, Description=@Description, Qualification=@Qualification, Experience=@Experience, Specialization=@Specialization, LastDateToApply=@LastDateToApply,
+                        Salary=@Salary, JobType=@JobType, CompanyName=@CompanyName, " + concatQuery + @"Website=@Website,
+                        Email=@Email, Address=@Address, Country=@Country, State=@State where JobId=@id";
+                    try
+                    {
+                        using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
+                        {
+                            if (cm.State == ConnectionState.Closed)
+                            {
+                                cm.Open();
+                            }
+
+                            try
+                            {
+                                using (SqlCommand cmd = new SqlCommand("JobsSP", cm))
+                                {
+                                    cmd.CommandType = CommandType.StoredProcedure;
+
+                                    cmd.Parameters.AddWithValue("@Action", "UPDATE");
+
+                                    cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@NoOfPost", txtNoOfPost.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Experience", txtExperience.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Specialization", txtSpecialization.Text.Trim());
+                                    
+                                    DateTime lastDate;
+                                    if (DateTime.TryParse(txtLastDate.Text.Trim(), out lastDate))
+                                    {
+                                        cmd.Parameters.AddWithValue("@LastDateToApply", lastDate);
+                                    }
+                                    else
+                                    {
+                                        // Xử lý trường hợp ngày không hợp lệ
+                                        cmd.Parameters.AddWithValue("@LastDateToApply", DateTime.Now); // hoặc giá trị mặc định khác
+                                    }
+
+                                    cmd.Parameters.AddWithValue("@Salary", txtSalary.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@JobType", ddlJobType.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@CompanyName", txtCompany.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Website", txtWebsite.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
+
+                                    cmd.Parameters.AddWithValue("@id", jobId);
+
+                                    if (fuCompanyLogo.HasFile)
+                                    {
+                                        if (IsValidExtension(fuCompanyLogo.FileName))
+                                        {
+                                            Guid obj = Guid.NewGuid();
+                                            imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
+
+                                            fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() + fuCompanyLogo.FileName);
+                                            cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
+                                        }
+                                        else
+                                        {
+                                            lblMsg.Visible = true;
+                                            lblMsg.Text = "Please select a valid image file (jpg, jpeg, png).";
+                                            lblMsg.CssClass = "alert alert-danger";
+                                            return; // Dừng thực hiện nếu không có hình ảnh hợp lệ
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.AddWithValue("@CompanyImage", DBNull.Value); // Không có hình ảnh, đặt là NULL
+                                    }
+
+                                    SqlParameter outputParam = new SqlParameter("@Result", SqlDbType.Int)
+                                    {
+                                        Direction = ParameterDirection.Output
+                                    };
+
+                                    cmd.Parameters.Add(outputParam);
+                                    cmd.ExecuteNonQuery();
+
+                                    int result = (int)cmd.Parameters["@Result"].Value;
+
+                                    if (result == 1)
+                                    {
+                                        Clear();
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Updated successfully!";
+                                        lblMsg.CssClass = "alert alert-success";
+                                    }
+                                    else 
+                                    {
+                                        lblMsg.Visible = true;
+                                        lblMsg.Text = "Failed to" + type + ". Please try again later.";
+                                        lblMsg.CssClass = "alert alert-danger";
+                                    }
+                                }
+                            }
+                            catch (SqlException sqlEx)
+                            {
+                                // In ra lỗi SQL chi tiết để gỡ rối
+                                lblMsg.Visible = true;
+                                lblMsg.Text = $"SQL Error: {sqlEx.Message}";
+                                lblMsg.CssClass = "alert alert-danger";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        lblMsg.Visible = true;
+                        lblMsg.Text = $"Error: {ex.Message}";
+                        lblMsg.CssClass = "alert alert-danger";
+                        Console.WriteLine($"Error: {ex.Message}"); // In ra lỗi để gỡ rối
+                    }
+
                 }
                 else
                 {
+                    type = "saved";
                     try
                     {
                         using (SqlConnection cm = new SqlConnection(Connection.GetConnectionString()))
@@ -352,7 +509,7 @@ namespace Online_Job_Portal.Admin
                                         else
                                         {
                                             lblMsg.Visible = true;
-                                            lblMsg.Text = "Failed to register. Please try again later.";
+                                            lblMsg.Text = "Failed to" + type + ". Please try again later.";
                                             lblMsg.CssClass = "alert alert-danger";
                                         }
                                     }
